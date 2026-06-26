@@ -6,6 +6,7 @@ import { HeroParallaxLayer } from './HeroParallaxLayer'
 import { JoinButton } from '../ui/JoinButton'
 import { PartnerButton } from '../ui/PartnerButton'
 import { Badge } from '../ui/Badge'
+import { asset } from '../../lib/utils'
 
 const HEADLINE = ['Exploring', 'AI.']
 const HEADLINE_ACCENT = 'Together.'
@@ -43,7 +44,7 @@ export const Hero: FC = () => {
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'var(--hero-overlay), url("/official/ai-members.jpeg")',
+          backgroundImage: `var(--hero-overlay), url("${asset('/official/ai-members.jpeg')}")`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           opacity: 'var(--hero-img-opacity)',
@@ -69,7 +70,7 @@ export const Hero: FC = () => {
         style={{ position: 'relative', zIndex: 2, marginBottom: 24 }}
       >
         <Image
-          src="/official/logo.png"
+          src={asset('/official/logo.png')}
           alt="Bayreuth AI Association logo"
           fit="contain"
           style={{

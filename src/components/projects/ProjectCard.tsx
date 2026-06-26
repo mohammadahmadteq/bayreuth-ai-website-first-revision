@@ -4,6 +4,7 @@ import { IconExternalLink, IconArrowUpRight } from '@tabler/icons-react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import type { Project } from '../../types/content'
 import { Badge } from '../ui/Badge'
+import { asset } from '../../lib/utils'
 
 interface ProjectCardProps {
   project: Project
@@ -38,7 +39,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
       }}
     >
       <img
-        src={project.imageUrl}
+        src={asset(project.imageUrl)}
         alt={project.title}
         loading="lazy"
         style={{

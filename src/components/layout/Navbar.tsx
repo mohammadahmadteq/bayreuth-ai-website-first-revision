@@ -7,6 +7,7 @@ import { IconSun, IconMoon } from '@tabler/icons-react'
 import { LanguageSwitcher } from '../LanguageSwitcher'
 import { JoinButton } from '../ui/JoinButton'
 import { PartnerButton } from '../ui/PartnerButton'
+import { asset } from '../../lib/utils'
 
 interface NavLinkItem {
   to: string
@@ -80,7 +81,7 @@ export const Navbar: FC = () => {
         <Link to="/" style={{ textDecoration: 'none' }}>
           <Group gap={10} wrap="nowrap">
             <Image
-              src="/official/logo.png"
+              src={asset('/official/logo.png')}
               alt="Bayreuth AI Association"
               fit="contain"
               style={{

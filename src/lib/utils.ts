@@ -5,6 +5,16 @@ export function cn(...classes: Array<string | false | null | undefined>): string
   return classes.filter(Boolean).join(' ')
 }
 
+/**
+ * Resolve a `public/` asset path against Vite's base URL. Root-relative paths
+ * (e.g. "/official/logo.png") break under the GitHub Pages subpath because the
+ * browser resolves them at the domain root; prefixing `import.meta.env.BASE_URL`
+ * makes them work both in dev ("/") and in production ("/<repo>/").
+ */
+export function asset(path: string): string {
+  return `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+}
+
 /** Format an ISO date string as e.g. "9 Jul 2026". */
 export function formatDate(iso: string, locale = 'en-GB'): string {
   const d = new Date(iso)

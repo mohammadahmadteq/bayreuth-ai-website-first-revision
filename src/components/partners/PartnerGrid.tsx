@@ -2,6 +2,7 @@ import { type FC } from 'react'
 import { Box, SimpleGrid, Stack, Text } from '@mantine/core'
 import type { Partner, PartnerTier } from '../../types/content'
 import { FadeInWhenVisible } from '../ui/FadeInWhenVisible'
+import { asset } from '../../lib/utils'
 
 interface PartnerGridProps {
   partners: Partner[]
@@ -22,7 +23,7 @@ const PartnerLogo: FC<{ partner: Partner }> = ({ partner }) => {
       style={{ padding: 24, height: '100%', textAlign: 'center' }}
     >
       <img
-        src={partner.logoUrl}
+        src={asset(partner.logoUrl)}
         alt={`${partner.name} logo`}
         loading="lazy"
         style={{ maxWidth: '100%', height: 56, objectFit: 'contain' }}

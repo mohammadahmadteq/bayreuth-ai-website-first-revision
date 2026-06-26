@@ -2,6 +2,7 @@ import { type FC } from 'react'
 import { Box, Stack, Text, ActionIcon } from '@mantine/core'
 import { IconBrandLinkedin } from '@tabler/icons-react'
 import type { TeamMember } from '../../types/content'
+import { asset } from '../../lib/utils'
 
 interface TeamMemberCardProps {
   member: TeamMember
@@ -16,7 +17,7 @@ export const TeamMemberCard: FC<TeamMemberCardProps> = ({ member }) => {
     >
       <Box style={{ position: 'relative', aspectRatio: '1 / 1', overflow: 'hidden' }}>
         <img
-          src={member.imageUrl}
+          src={asset(member.imageUrl)}
           alt={`Portrait of ${member.name}`}
           loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
