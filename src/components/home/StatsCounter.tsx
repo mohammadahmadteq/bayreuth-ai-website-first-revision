@@ -47,7 +47,7 @@ export const StatsCounter: FC<StatsCounterProps> = ({ stats }) => {
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontSize: 'clamp(34px, 5vw, 52px)',
                   fontWeight: 700,
-                  lineHeight: 1,
+                  lineHeight: 1.5,
                   color: 'var(--color-text)',
                 }}
               >
