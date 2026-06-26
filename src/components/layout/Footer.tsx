@@ -1,7 +1,7 @@
 import { type FC } from 'react'
 import { Link } from 'react-router-dom'
 import { Box, Container, Group, Stack, Text, SimpleGrid } from '@mantine/core'
-import { IconBrandLinkedin, IconBrandGithub, IconMail } from '@tabler/icons-react'
+import { IconBrandLinkedin, IconBrandInstagram, IconMail } from '@tabler/icons-react'
 
 const NAV = [
   { to: '/meetings', label: 'Meetings' },
@@ -60,25 +60,29 @@ export const Footer: FC = () => {
             </Text>
             <Group gap={10} mt={4}>
               <a
-                href="mailto:hello@bayreuth.ai"
+                href="mailto:bayreuth.ai@gmail.com"
                 aria-label="Email"
                 style={{ color: 'var(--color-subtext)' }}
               >
                 <IconMail size={20} />
               </a>
               <a
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/company/bayreuth-ai-association/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="LinkedIn"
                 style={{ color: 'var(--color-subtext)' }}
               >
                 <IconBrandLinkedin size={20} />
               </a>
               <a
-                href="https://github.com/"
-                aria-label="GitHub"
+                href="https://www.instagram.com/bayreuth.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
                 style={{ color: 'var(--color-subtext)' }}
               >
-                <IconBrandGithub size={20} />
+                <IconBrandInstagram size={20} />
               </a>
             </Group>
           </Stack>

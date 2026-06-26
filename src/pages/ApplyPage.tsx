@@ -5,7 +5,7 @@ import { PageHeader } from '../components/layout/PageHeader'
 import { JoinButton } from '../components/ui/JoinButton'
 import { FadeInWhenVisible } from '../components/ui/FadeInWhenVisible'
 
-const APPLY_EMAIL = 'join@bayreuth.ai'
+const APPLY_EMAIL = 'bayreuth.ai@gmail.com'
 
 const REASONS = [
   'Work on real AI projects with a supportive, interdisciplinary team.',

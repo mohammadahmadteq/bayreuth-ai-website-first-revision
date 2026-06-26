@@ -9,7 +9,7 @@ import { FadeInWhenVisible } from '../components/ui/FadeInWhenVisible'
 import { ErrorBoundary } from '../components/ErrorBoundary'
 import { partners } from '../data'
 
-const PARTNER_EMAIL = 'partners@bayreuth.ai'
+const PARTNER_EMAIL = 'bayreuth.ai@gmail.com'
 
 export const PartnersPage: FC = () => {
   return (
