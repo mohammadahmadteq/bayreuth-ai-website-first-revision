@@ -1,0 +1,6 @@
+[
+  { "id": "members", "label": "Active Members", "value": 48, "suffix": "+", "icon": "users" },
+  { "id": "founded", "label": "Founded", "value": 2024, "suffix": "", "icon": "flag" },
+  { "id": "events", "label": "Events Hosted", "value": 32, "suffix": "+", "icon": "calendar" },
+  { "id": "majors", "label": "Majors & Nationalities", "value": 19, "suffix": "", "icon": "globe" }
+]
