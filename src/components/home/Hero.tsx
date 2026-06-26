@@ -43,11 +43,10 @@ export const Hero: FC = () => {
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage:
-            'linear-gradient(180deg, rgba(10,10,15,0.72), rgba(10,10,15,0.9)), url("/official/ai-members.jpeg")',
+          backgroundImage: 'var(--hero-overlay), url("/official/ai-members.jpeg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          opacity: 0.72,
+          opacity: 'var(--hero-img-opacity)',
         }}
       />
       <HeroParallaxLayer />
@@ -70,16 +69,13 @@ export const Hero: FC = () => {
         style={{ position: 'relative', zIndex: 2, marginBottom: 24 }}
       >
         <Image
-          src="/official/bayreuth-ai-logo.png"
+          src="/official/logo.png"
           alt="Bayreuth AI Association logo"
           fit="contain"
           style={{
-            width: 'min(620px, 88vw)',
-            background: 'rgba(255,255,255,0.92)',
-            borderRadius: 8,
-            padding: 'clamp(12px, 2.4vw, 22px)',
-            border: '1px solid rgba(255,255,255,0.18)',
-            boxShadow: '0 28px 90px -46px rgba(0,0,0,0.9)',
+            width: 'min(260px, 60vw)',
+            margin: '0 auto',
+            filter: 'drop-shadow(0 0 36px rgba(45, 224, 200, 0.35))',
           }}
         />
       </motion.div>
@@ -110,7 +106,11 @@ export const Hero: FC = () => {
             {w}
           </motion.span>
         ))}
-        <motion.span variants={word} className="gradient-text" style={{ display: 'inline-block' }}>
+        <motion.span
+          variants={word}
+          className="gradient-text"
+          style={{ display: 'inline-block', lineHeight: 1.15, paddingBottom: '0.08em' }}
+        >
           {HEADLINE_ACCENT}
         </motion.span>
       </motion.h1>
@@ -124,7 +124,7 @@ export const Hero: FC = () => {
         <Stack gap={16} align="center" style={{ marginBottom: 34 }}>
           <Text
             style={{
-              color: 'rgba(236,236,242,0.92)',
+              color: 'var(--hero-subtext)',
               maxWidth: 720,
               margin: '0 auto',
               fontSize: 'clamp(16px, 2.2vw, 20px)',

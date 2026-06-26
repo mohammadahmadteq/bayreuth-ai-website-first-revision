@@ -24,15 +24,19 @@ const NAV_LINKS: NavLinkItem[] = [
 ]
 
 const linkStyle = (isActive: boolean) => ({
+  display: 'inline-flex' as const,
+  alignItems: 'center' as const,
+  height: 32,
   fontSize: 14,
   fontWeight: 500,
   fontFamily: 'Space Grotesk, sans-serif',
   color: isActive ? 'var(--teal)' : 'var(--color-subtext)',
   textDecoration: 'none',
-  borderBottom: `2px solid ${isActive ? 'var(--teal)' : 'transparent'}`,
-  paddingBottom: 4,
+  lineHeight: 1,
   letterSpacing: 0,
-  transition: 'color 0.2s, border-color 0.2s',
+  // Underline drawn with box-shadow so it never shifts the text box vertically
+  boxShadow: isActive ? 'inset 0 -2px 0 0 var(--teal)' : 'none',
+  transition: 'color 0.2s, box-shadow 0.2s',
   whiteSpace: 'nowrap' as const,
 })
 
@@ -76,15 +80,12 @@ export const Navbar: FC = () => {
         <Link to="/" style={{ textDecoration: 'none' }}>
           <Group gap={10} wrap="nowrap">
             <Image
-              src="/official/bayreuth-ai-logo.png"
+              src="/official/logo.png"
               alt="Bayreuth AI Association"
               fit="contain"
               style={{
-                width: 62,
-                height: 34,
-                borderRadius: 6,
-                background: '#fff',
-                padding: 3,
+                width: 38,
+                height: 38,
               }}
             />
             <Text
@@ -167,6 +168,9 @@ export const Navbar: FC = () => {
               onClick={close}
               style={({ isActive }) => ({
                 ...linkStyle(isActive),
+                height: 'auto',
+                boxShadow: 'none',
+                display: 'block',
                 fontSize: 18,
                 padding: '12px 0',
                 borderBottom: '1px solid var(--border)',

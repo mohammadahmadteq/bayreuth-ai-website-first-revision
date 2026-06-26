@@ -15,7 +15,7 @@
 > / CMS). Editing a `.json` file updates the site directly. A previous Supabase
 > carousel was removed in the deep-space-academia rebuild.
 
-> ⚠️ **Vite plugin:** `@vitejs/plugin-react@4.x` is pinned (not v6). v6 dropped the `babel.plugins` option that Lingui's macro plugin requires. Do not upgrade to v6 unless replacing the Lingui macro setup with the SWC/oxc equivalent.
+> ⚠️ **Vite plugin:** `@vitejs/plugin-react@6` is used (matched to Vite 8's Rolldown/oxc engine). v6 still accepts the inline `babel: { plugins: [...] }` option that Lingui's macro plugin uses — it just no longer bundles `@babel/core`, so we declare `@babel/core` as an explicit devDependency (pinned to `^7` to match the Lingui macro plugin). Do **not** downgrade to v4.x on Vite 8: v4 injects an `optimizeDeps.rollupOptions.jsx` key that Rolldown rejects, producing repeated `Invalid input options … For the "jsx"` warnings.
 
 ## Architecture: Separation of Concerns
 
