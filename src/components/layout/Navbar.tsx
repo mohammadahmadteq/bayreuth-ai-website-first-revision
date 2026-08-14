@@ -81,7 +81,7 @@ export const Navbar: FC = () => {
         <Link to="/" style={{ textDecoration: 'none' }}>
           <Group gap={10} wrap="nowrap">
             <Image
-              src={asset('/official/logo.png')}
+              src={asset('/official/logo.svg')}
               alt="Bayreuth AI Association"
               fit="contain"
               style={{

@@ -70,7 +70,7 @@ export const Hero: FC = () => {
         style={{ position: 'relative', zIndex: 2, marginBottom: 24 }}
       >
         <Image
-          src={asset('/official/logo.png')}
+          src={asset('/official/logo.svg')}
           alt="Bayreuth AI Association logo"
           fit="contain"
           style={{
