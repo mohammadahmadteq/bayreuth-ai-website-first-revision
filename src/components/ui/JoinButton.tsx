@@ -9,11 +9,11 @@ const MotionAnchor = motion.a
 type Size = 'sm' | 'md' | 'lg'
 
 const PADDING: Record<Size, string> = {
-  sm: '8px 18px',
-  md: '12px 26px',
-  lg: '16px 36px',
+  sm: '11px 24px',
+  md: '15px 32px',
+  lg: '20px 44px',
 }
-const FONT: Record<Size, number> = { sm: 14, md: 15, lg: 17 }
+const FONT: Record<Size, number> = { sm: 15, md: 16, lg: 18 }
 
 interface JoinButtonProps {
   /** Internal route (default) — ignored when `href` is set. */

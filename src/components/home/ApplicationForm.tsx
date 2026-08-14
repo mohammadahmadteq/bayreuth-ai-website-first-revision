@@ -13,7 +13,7 @@ export const ApplicationForm: FC = () => {
       <SectionHeading
         eyebrow="Join in"
         title="Start with the mailing list, then come to a Thursday meeting."
-        subtitle="The association uses this official form for updates. Meetings during lecture period are every other Thursday from 18:00 to 19:30 in room S122, GW I."
+        subtitle="Meetings run every other Thursday, 18:00–19:30, in room S122, GW I."
       />
       <Box
         className="glow-card application-form"
@@ -35,8 +35,7 @@ export const ApplicationForm: FC = () => {
             No prior AI background required.
           </Text>
           <Text style={{ color: 'var(--color-subtext)', lineHeight: 1.65 }}>
-            Whether you are just starting or already building with machine learning, the community is
-            meant to be open, practical, and interdisciplinary.
+            Beginners and builders alike — open, practical, interdisciplinary.
           </Text>
           <Group gap={12}>
             <JoinButton

@@ -58,8 +58,8 @@ export const PartnerBenefitsList: FC = () => {
                 flexShrink: 0,
                 display: 'grid',
                 placeItems: 'center',
-                background: 'rgba(57,255,106,0.1)',
-                border: '1px solid rgba(57,255,106,0.25)',
+                background: 'rgba(var(--neon-rgb),0.1)',
+                border: '1px solid rgba(var(--neon-rgb),0.25)',
               }}
             >
               <b.icon size={22} color="var(--neon)" stroke={1.7} />

@@ -44,7 +44,7 @@ export const HeroParallaxLayer: FC = () => {
           marginLeft: -340,
           borderRadius: '50%',
           background:
-            'radial-gradient(circle, rgba(45,224,200,0.16), rgba(57,255,106,0.06) 45%, transparent 70%)',
+            'radial-gradient(circle, rgba(var(--teal-rgb),0.16), rgba(var(--neon-rgb),0.06) 45%, transparent 70%)',
           filter: 'blur(20px)',
           y: reduce ? 0 : glowY,
         }}

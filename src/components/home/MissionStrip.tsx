@@ -8,17 +8,17 @@ const PILLARS = [
   {
     icon: IconBulb,
     title: 'Learn by building',
-    body: 'We favour hands-on projects over passive lectures — you leave with something you actually made.',
+    body: 'Hands-on projects, not passive lectures.',
   },
   {
     icon: IconUsersGroup,
     title: 'Open to every major',
-    body: 'Computer scientists, biologists, economists, philosophers — AI is interdisciplinary, and so are we.',
+    body: 'AI is interdisciplinary — so is our community.',
   },
   {
     icon: IconShieldHalf,
     title: 'Thoughtful, not hype-driven',
-    body: 'We care about doing AI well: rigorous, safe, and honest about what these systems can and cannot do.',
+    body: 'Rigorous, safe, and honest about what AI can do.',
   },
 ]
 
@@ -28,7 +28,7 @@ export const MissionStrip: FC = () => {
       <SectionHeading
         eyebrow="Our mission"
         title="Serious about AI, warm about people."
-        subtitle="The Bayreuth AI Association is a space for students to explore artificial intelligence together — academically credible, but genuinely welcoming."
+        subtitle="A space for students to explore AI together — credible, and welcoming."
       />
 
       <SimpleGrid cols={{ base: 1, md: 3 }} spacing={20} mt={48}>
@@ -46,8 +46,8 @@ export const MissionStrip: FC = () => {
                   borderRadius: 12,
                   display: 'grid',
                   placeItems: 'center',
-                  background: 'rgba(45,224,200,0.1)',
-                  border: '1px solid rgba(45,224,200,0.25)',
+                  background: 'rgba(var(--teal-rgb),0.1)',
+                  border: '1px solid rgba(var(--teal-rgb),0.25)',
                 }}
               >
                 <p.icon size={22} color="var(--teal)" stroke={1.7} />

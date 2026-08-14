@@ -19,7 +19,7 @@ export const PartnerTeaser: FC = () => {
           padding: 'clamp(28px, 5vw, 56px)',
           border: '1px solid var(--border)',
           background:
-            'linear-gradient(120deg, rgba(45,224,200,0.07), rgba(57,255,106,0.04) 60%, transparent)',
+            'linear-gradient(120deg, rgba(var(--teal-rgb),0.07), rgba(var(--neon-rgb),0.04) 60%, transparent)',
         }}
       >
         <Box
@@ -55,8 +55,8 @@ export const PartnerTeaser: FC = () => {
               Interested in partnering with us?
             </Text>
             <Text style={{ color: 'var(--color-subtext)', fontSize: 16, lineHeight: 1.6 }}>
-              Reach a motivated, interdisciplinary talent pool, co-host workshops, and put your
-              brand in front of the next generation of AI practitioners.
+              Reach motivated students, co-host workshops, and support the next generation of AI
+              talent.
             </Text>
           </Stack>
           <PartnerButton size="lg" />

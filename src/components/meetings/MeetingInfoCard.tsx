@@ -31,8 +31,8 @@ export const MeetingInfoCard: FC = () => {
                 flexShrink: 0,
                 display: 'grid',
                 placeItems: 'center',
-                background: 'rgba(45,224,200,0.1)',
-                border: '1px solid rgba(45,224,200,0.25)',
+                background: 'rgba(var(--teal-rgb),0.1)',
+                border: '1px solid rgba(var(--teal-rgb),0.25)',
               }}
             >
               <row.icon size={20} color="var(--teal)" stroke={1.7} />

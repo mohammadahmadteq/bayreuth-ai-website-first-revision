@@ -45,7 +45,7 @@ export const PartnersPage: FC = () => {
                 padding: 'clamp(40px, 7vw, 80px) 24px',
                 border: '1px solid var(--border-glow)',
                 background:
-                  'linear-gradient(135deg, rgba(45,224,200,0.1), rgba(57,255,106,0.05) 60%, transparent)',
+                  'linear-gradient(135deg, rgba(var(--teal-rgb),0.1), rgba(var(--neon-rgb),0.05) 60%, transparent)',
               }}
             >
               <Box

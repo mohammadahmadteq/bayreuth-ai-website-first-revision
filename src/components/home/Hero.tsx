@@ -26,7 +26,7 @@ export const Hero: FC = () => {
   return (
     <Box
       component="section"
-      className="noise-bg"
+      className="noise-bg chrome-scope"
       style={{
         position: 'relative',
         minHeight: 'calc(100vh - 68px)',
@@ -76,7 +76,7 @@ export const Hero: FC = () => {
           style={{
             width: 'min(260px, 60vw)',
             margin: '0 auto',
-            filter: 'drop-shadow(0 0 36px rgba(45, 224, 200, 0.35))',
+            filter: 'drop-shadow(0 0 36px rgba(var(--teal-rgb), 0.35))',
           }}
         />
       </motion.div>
@@ -132,8 +132,8 @@ export const Hero: FC = () => {
               lineHeight: 1.6,
             }}
           >
-            A student-led association at the University of Bayreuth where curiosity meets
-            collaboration: hands-on AI projects, practical applications, talks, and open exchange.
+            A student-led AI community at the University of Bayreuth — hands-on projects, talks,
+            and open exchange.
           </Text>
           <Group gap={10} justify="center">
             <Badge variant="neon" leftSection={<IconCalendarTime size={13} />}>

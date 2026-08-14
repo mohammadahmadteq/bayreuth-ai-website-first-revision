@@ -17,6 +17,7 @@ export const Footer: FC = () => {
   return (
     <Box
       component="footer"
+      className="chrome-scope"
       style={{
         borderTop: '1px solid var(--border)',
         background: 'var(--color-bg-2)',

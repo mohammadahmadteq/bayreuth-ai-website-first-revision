@@ -49,8 +49,8 @@ export const ApplyPage: FC = () => {
                     size={22}
                     radius="xl"
                     style={{
-                      background: 'rgba(45,224,200,0.15)',
-                      border: '1px solid rgba(45,224,200,0.3)',
+                      background: 'rgba(var(--teal-rgb),0.15)',
+                      border: '1px solid rgba(var(--teal-rgb),0.3)',
                     }}
                   >
                     <IconCheck size={14} color="var(--teal)" />
@@ -85,8 +85,8 @@ export const ApplyPage: FC = () => {
                     size={22}
                     radius="xl"
                     style={{
-                      background: 'rgba(57,255,106,0.15)',
-                      border: '1px solid rgba(57,255,106,0.3)',
+                      background: 'rgba(var(--neon-rgb),0.15)',
+                      border: '1px solid rgba(var(--neon-rgb),0.3)',
                     }}
                   >
                     <IconCheck size={14} color="var(--neon)" />
@@ -114,7 +114,7 @@ export const ApplyPage: FC = () => {
                 padding: 'clamp(36px, 6vw, 64px) 24px',
                 border: '1px solid var(--border-glow)',
                 background:
-                  'linear-gradient(135deg, rgba(45,224,200,0.1), rgba(57,255,106,0.05) 60%, transparent)',
+                  'linear-gradient(135deg, rgba(var(--teal-rgb),0.1), rgba(var(--neon-rgb),0.05) 60%, transparent)',
               }}
             >
               <Stack gap={22} align="center">

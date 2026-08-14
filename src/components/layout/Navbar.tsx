@@ -1,9 +1,7 @@
 import { type FC, useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { Box, Group, ActionIcon, Text, Burger, Drawer, Stack, Image } from '@mantine/core'
+import { Box, Group, Text, Burger, Drawer, Stack, Image } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { useMantineColorScheme } from '@mantine/core'
-import { IconSun, IconMoon } from '@tabler/icons-react'
 import { LanguageSwitcher } from '../LanguageSwitcher'
 import { JoinButton } from '../ui/JoinButton'
 import { PartnerButton } from '../ui/PartnerButton'
@@ -42,7 +40,6 @@ const linkStyle = (isActive: boolean) => ({
 })
 
 export const Navbar: FC = () => {
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme()
   const [opened, { toggle, close }] = useDisclosure(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -56,6 +53,7 @@ export const Navbar: FC = () => {
   return (
     <Box
       component="nav"
+      className="chrome-scope"
       style={{
         position: 'fixed',
         top: 0,
@@ -116,15 +114,6 @@ export const Navbar: FC = () => {
         {/* Right cluster */}
         <Group gap={10} wrap="nowrap">
           <LanguageSwitcher compact />
-          <ActionIcon
-            variant="subtle"
-            onClick={() => toggleColorScheme()}
-            aria-label="Toggle color scheme"
-            size={34}
-            style={{ color: 'var(--color-subtext)' }}
-          >
-            {colorScheme === 'dark' ? <IconSun size={17} /> : <IconMoon size={17} />}
-          </ActionIcon>
 
           {/* Both CTAs visible on desktop, distinct styles */}
           <Group gap={8} visibleFrom="lg" wrap="nowrap">
@@ -151,10 +140,11 @@ export const Navbar: FC = () => {
         size="78%"
         padding="lg"
         title={
-          <Text fw={700} ff="Space Grotesk, sans-serif">
+          <Text fw={700} ff="Space Grotesk, sans-serif" style={{ color: 'var(--color-text)' }}>
             Menu
           </Text>
         }
+        classNames={{ content: 'chrome-scope', header: 'chrome-scope' }}
         styles={{
           content: { background: 'var(--color-bg-2)' },
           header: { background: 'var(--color-bg-2)' },

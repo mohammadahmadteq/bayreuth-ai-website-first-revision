@@ -3,52 +3,52 @@
    ============================================================ */
 
 :root {
-  /* Backgrounds: near-black with a subtle purple undertone */
-  --color-bg: #0a0a0f;
-  --color-bg-2: #0d0b14;
-  --color-surface: rgba(255, 255, 255, 0.025);
-  --color-surface-strong: rgba(255, 255, 255, 0.05);
+  /* Content surfaces: light, airy — the bulk of the site */
+  --color-bg: #f4f4f8;
+  --color-bg-2: #eceaf3;
+  --color-surface: rgba(13, 11, 20, 0.03);
+  --color-surface-strong: rgba(13, 11, 20, 0.05);
 
   /* Text */
-  --color-text: #ececf2;
-  --color-subtext: #9a9ab4;
+  --color-text: #14131a;
+  --color-subtext: #55556a;
 
-  /* Accents */
-  --teal: #2de0c8;
-  --teal-dim: rgba(45, 224, 200, 0.5);
-  --neon: #39ff6a;
+  /* Accents — primary brand green */
+  --teal: #008751;
+  --teal-rgb: 0, 135, 81;
+  --teal-dim: rgba(0, 135, 81, 0.45);
+  --neon: #10b53d;
+  --neon-rgb: 16, 181, 61;
 
   /* Lines & borders */
-  --border: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(45, 224, 200, 0.35);
-  --grid-line: rgba(255, 255, 255, 0.035);
-  --nav-bg: rgba(10, 10, 15, 0.7);
+  --border: rgba(13, 11, 20, 0.1);
+  --border-glow: rgba(0, 135, 81, 0.4);
+  --grid-line: rgba(13, 11, 20, 0.04);
+  --nav-bg: rgba(244, 244, 248, 0.8);
 
-  /* Hero photo overlay — darkens the image so light text stays readable */
+  /* Hero photo overlay — near-black so light text stays readable */
   --hero-overlay: linear-gradient(180deg, rgba(10, 10, 15, 0.7), rgba(10, 10, 15, 0.92));
   --hero-img-opacity: 0.7;
   --hero-subtext: rgba(236, 236, 242, 0.92);
 }
 
-[data-mantine-color-scheme='light'] {
-  --color-bg: #f4f4f8;
-  --color-bg-2: #eceaf3;
-  --color-surface: rgba(13, 11, 20, 0.03);
-  --color-surface-strong: rgba(13, 11, 20, 0.05);
-  --color-text: #14131a;
-  --color-subtext: #55556a;
-  --teal: #07a08e;
-  --teal-dim: rgba(7, 160, 142, 0.45);
-  --neon: #10b53d;
-  --border: rgba(13, 11, 20, 0.1);
-  --border-glow: rgba(7, 160, 142, 0.4);
-  --grid-line: rgba(13, 11, 20, 0.04);
-  --nav-bg: rgba(244, 244, 248, 0.8);
-
-  /* Light wash so the dark hero text reads against the photo */
-  --hero-overlay: linear-gradient(180deg, rgba(244, 244, 248, 0.82), rgba(236, 234, 243, 0.95));
-  --hero-img-opacity: 0.5;
-  --hero-subtext: rgba(20, 19, 26, 0.85);
+/* Dark "chrome" — navbar, footer, hero. Everything else stays light. */
+.chrome-scope {
+  --color-bg: #0a0a0f;
+  --color-bg-2: #0d0b14;
+  --color-surface: rgba(255, 255, 255, 0.025);
+  --color-surface-strong: rgba(255, 255, 255, 0.05);
+  --color-text: #ececf2;
+  --color-subtext: #9a9ab4;
+  --teal: #2fe6a3;
+  --teal-rgb: 47, 230, 163;
+  --teal-dim: rgba(47, 230, 163, 0.5);
+  --neon: #39ff6a;
+  --neon-rgb: 57, 255, 106;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(47, 230, 163, 0.35);
+  --grid-line: rgba(255, 255, 255, 0.035);
+  --nav-bg: rgba(10, 10, 15, 0.7);
 }
 
 /* --- Base --- */
@@ -128,7 +128,7 @@ section[id],
   border-color: var(--border-glow);
   box-shadow:
     0 0 0 1px var(--border-glow),
-    0 18px 50px -20px rgba(45, 224, 200, 0.35);
+    0 18px 50px -20px rgba(var(--teal-rgb), 0.35);
 }
 
 .glow-card--lift:hover {
@@ -145,7 +145,7 @@ section[id],
   font-weight: 700 !important;
   letter-spacing: 0.01em !important;
   border: none !important;
-  box-shadow: 0 8px 24px -8px rgba(45, 224, 200, 0.6) !important;
+  box-shadow: 0 8px 24px -8px rgba(var(--teal-rgb), 0.6) !important;
   transition:
     transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.3s ease !important;
@@ -169,8 +169,8 @@ section[id],
 .btn-member:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 14px 40px -8px rgba(57, 255, 106, 0.55),
-    0 0 50px -10px rgba(45, 224, 200, 0.5) !important;
+    0 14px 40px -8px rgba(var(--neon-rgb), 0.55),
+    0 0 50px -10px rgba(var(--teal-rgb), 0.5) !important;
 }
 .btn-member:hover::before {
   transform: translateX(320%) skewX(-12deg);
@@ -209,9 +209,9 @@ section[id],
   pointer-events: none;
 }
 .btn-partner:hover {
-  background: rgba(45, 224, 200, 0.08) !important;
+  background: rgba(var(--teal-rgb), 0.08) !important;
   border-color: var(--teal) !important;
-  box-shadow: 0 0 28px -8px rgba(45, 224, 200, 0.5) !important;
+  box-shadow: 0 0 28px -8px rgba(var(--teal-rgb), 0.5) !important;
 }
 
 /* --- Animated gradient text --- */
@@ -253,11 +253,11 @@ section[id],
   0%,
   100% {
     opacity: 1;
-    box-shadow: 0 0 12px rgba(57, 255, 106, 0.5);
+    box-shadow: 0 0 12px rgba(var(--neon-rgb), 0.5);
   }
   50% {
     opacity: 0.55;
-    box-shadow: 0 0 22px rgba(57, 255, 106, 0.8);
+    box-shadow: 0 0 22px rgba(var(--neon-rgb), 0.8);
   }
 }
 

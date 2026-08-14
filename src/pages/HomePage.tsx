@@ -18,7 +18,7 @@ export const HomePage: FC = () => {
       </ErrorBoundary>
 
       <Container size={1280} px={24}>
-        <Stack gap={104} py={{ base: 64, md: 96 }}>
+        <Stack gap={80} py={{ base: 56, md: 80 }}>
           <ErrorBoundary label="Stats">
             <StatsCounter stats={stats} />
           </ErrorBoundary>

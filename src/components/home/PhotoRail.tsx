@@ -25,7 +25,7 @@ export const PhotoRail: FC = () => {
       <SectionHeading
         eyebrow="From the official site"
         title="People, projects, and moments from the association."
-        subtitle="A moving gallery using public images from the Bayreuth AI Association pages."
+        subtitle="Snapshots from the association."
         align="center"
       />
       <Box className="photo-rail" aria-label="Bayreuth AI Association photo gallery">

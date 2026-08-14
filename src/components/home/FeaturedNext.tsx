@@ -71,8 +71,8 @@ export const FeaturedNext: FC<FeaturedNextProps> = ({ events }) => {
               minWidth: 76,
               padding: '12px 8px',
               borderRadius: 14,
-              background: 'rgba(45,224,200,0.08)',
-              border: '1px solid rgba(45,224,200,0.2)',
+              background: 'rgba(var(--teal-rgb),0.08)',
+              border: '1px solid rgba(var(--teal-rgb),0.2)',
             }}
           >
             <Text

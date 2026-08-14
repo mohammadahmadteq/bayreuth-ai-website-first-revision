@@ -81,7 +81,7 @@ export const Timeline: FC<TimelineProps> = ({ events }) => {
                   borderRadius: '50%',
                   background: 'var(--color-bg)',
                   border: `2px solid ${event.isFeatured ? 'var(--neon)' : 'var(--teal)'}`,
-                  boxShadow: event.isFeatured ? '0 0 12px rgba(57,255,106,0.5)' : 'none',
+                  boxShadow: event.isFeatured ? '0 0 12px rgba(var(--neon-rgb),0.5)' : 'none',
                 }}
               />
             </Box>

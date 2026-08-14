@@ -5,11 +5,12 @@ import { type MantineColorsTuple, createTheme } from '@mantine/core'
  *
  * Color reference
  * ---------------
- * bg (near-black, purple undertone) .... #0A0A0F / #0D0B14   → CSS var --color-bg
- * primary accent (electric teal) ....... #2DE0C8             → `teal` tuple, index 5
+ * content bg (light) ................... #F4F4F8 / #ECEAF3   → CSS var --color-bg
+ * chrome bg (navbar/footer/hero, dark) . #0A0A0F / #0D0B14    → .chrome-scope --color-bg
+ * primary accent (brand green) ......... #008751              → `teal` tuple, index 5
  * secondary accent (neon green) ........ #39FF6A             → `neon` tuple, index 4 (use sparingly)
- * heading text ......................... #ECECF2             → CSS var --color-text
- * body / muted text .................... #9A9AB4             → CSS var --color-subtext
+ * heading text (content) ............... #14131A             → CSS var --color-text
+ * body / muted text (content) .......... #55556A             → CSS var --color-subtext
  *
  * Type reference
  * --------------
@@ -18,18 +19,18 @@ import { type MantineColorsTuple, createTheme } from '@mantine/core'
  * mono ................................. Space Grotesk
  */
 
-// Electric teal — primary accent (index 6 is Mantine's default shade).
+// Brand green — primary accent (index 5 is Mantine's default shade, matches --teal).
 const teal: MantineColorsTuple = [
-  '#defcf7',
-  '#bcf6ec',
-  '#90eee0',
-  '#5fe6d2',
-  '#3ee1ca',
-  '#2de0c8',
-  '#19c8b1',
-  '#06a08e',
-  '#007266',
-  '#00463e',
+  '#e3f6ec',
+  '#b7e8d1',
+  '#86d9b3',
+  '#52c993',
+  '#1f9c68',
+  '#008751',
+  '#007a49',
+  '#006a40',
+  '#005935',
+  '#00432a',
 ]
 
 // Neon / digital green — secondary accent, highlights & CTAs only.

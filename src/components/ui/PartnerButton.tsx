@@ -9,11 +9,11 @@ const MotionAnchor = motion.a
 type Size = 'sm' | 'md' | 'lg'
 
 const PADDING: Record<Size, string> = {
-  sm: '7px 17px',
-  md: '11px 25px',
-  lg: '15px 35px',
+  sm: '10px 23px',
+  md: '14px 31px',
+  lg: '19px 43px',
 }
-const FONT: Record<Size, number> = { sm: 14, md: 15, lg: 17 }
+const FONT: Record<Size, number> = { sm: 15, md: 16, lg: 18 }
 
 interface PartnerButtonProps {
   /** Internal route (default) — ignored when `href` is set. */
