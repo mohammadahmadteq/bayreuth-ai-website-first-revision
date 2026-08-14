@@ -7,7 +7,7 @@ export function cn(...classes: Array<string | false | null | undefined>): string
 
 /**
  * Resolve a `public/` asset path against Vite's base URL. Root-relative paths
- * (e.g. "/official/logo.png") break under the GitHub Pages subpath because the
+ * (e.g. "/official/logo.svg") break under the GitHub Pages subpath because the
  * browser resolves them at the domain root; prefixing `import.meta.env.BASE_URL`
  * makes them work both in dev ("/") and in production ("/<repo>/").
  */
