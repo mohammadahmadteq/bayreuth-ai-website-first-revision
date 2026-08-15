@@ -4,7 +4,6 @@ import { Box, Group, Text, Burger, Drawer, Stack, Image } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { LanguageSwitcher } from '../LanguageSwitcher'
 import { JoinButton } from '../ui/JoinButton'
-import { PartnerButton } from '../ui/PartnerButton'
 import { asset } from '../../lib/utils'
 
 interface NavLinkItem {
@@ -17,8 +16,6 @@ const NAV_LINKS: NavLinkItem[] = [
   { to: '/', label: 'Home', end: true },
   { to: '/meetings', label: 'Meetings' },
   { to: '/team', label: 'Team' },
-  { to: '/dates', label: 'Important Dates' },
-  { to: '/resources', label: 'Resources' },
   { to: '/projects', label: 'Projects' },
 ]
 
@@ -115,11 +112,9 @@ export const Navbar: FC = () => {
         <Group gap={10} wrap="nowrap">
           <LanguageSwitcher compact />
 
-          {/* Both CTAs visible on desktop, distinct styles */}
-          <Group gap={8} visibleFrom="lg" wrap="nowrap">
-            <PartnerButton size="sm" withIcon={false} />
+          <Box visibleFrom="lg">
             <JoinButton size="sm" withArrow={false} />
-          </Group>
+          </Box>
 
           <Burger
             opened={opened}
@@ -172,11 +167,7 @@ export const Navbar: FC = () => {
           ))}
         </Stack>
 
-        {/* Member prioritised as the top action on mobile */}
-        <Stack gap={12}>
-          <JoinButton size="lg" className="" />
-          <PartnerButton size="lg" />
-        </Stack>
+        <JoinButton size="lg" className="" />
       </Drawer>
     </Box>
   )

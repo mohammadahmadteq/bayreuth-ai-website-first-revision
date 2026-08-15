@@ -31,7 +31,7 @@ export const FeaturedNext: FC<FeaturedNextProps> = ({ events }) => {
     <FadeInWhenVisible>
       <Box
         component={Link}
-        to="/dates"
+        to="/meetings"
         className="glow-card glow-card--lift"
         style={{
           display: 'block',

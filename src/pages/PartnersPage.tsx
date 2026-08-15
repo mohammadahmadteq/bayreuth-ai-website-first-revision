@@ -21,7 +21,7 @@ export const PartnersPage: FC = () => {
       />
 
       <Container size={1280} px={24} py={{ base: 56, md: 88 }}>
-        <Stack gap={80}>
+        <Stack gap={64}>
           <Stack gap={28}>
             <SectionHeading eyebrow="Why partner" title="What sponsors get" />
             <PartnerBenefitsList />

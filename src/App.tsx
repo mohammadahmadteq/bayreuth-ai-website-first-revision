@@ -1,5 +1,5 @@
 import { type FC, useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
@@ -8,7 +8,6 @@ import { ErrorBoundary } from './components/ErrorBoundary'
 import { HomePage } from './pages/HomePage'
 import { MeetingsPage } from './pages/MeetingsPage'
 import { TeamPage } from './pages/TeamPage'
-import { DatesPage } from './pages/DatesPage'
 import { ResourcesPage } from './pages/ResourcesPage'
 import { ProjectsPage } from './pages/ProjectsPage'
 import { PartnersPage } from './pages/PartnersPage'
@@ -53,14 +52,7 @@ const AnimatedRoutes: FC = () => {
             </PageTransition>
           }
         />
-        <Route
-          path="/dates"
-          element={
-            <PageTransition>
-              <DatesPage />
-            </PageTransition>
-          }
-        />
+        <Route path="/dates" element={<Navigate to="/meetings" replace />} />
         <Route
           path="/resources"
           element={

@@ -27,7 +27,7 @@ interface JoinButtonProps {
 }
 
 /**
- * "Become a Member" — primary CTA. Solid teal→neon fill, strongest weight.
+ * "Join Us" — primary CTA. Solid teal→neon fill, strongest weight.
  * Always visually and functionally distinct from PartnerButton.
  */
 export const JoinButton: FC<JoinButtonProps> = ({
@@ -56,7 +56,7 @@ export const JoinButton: FC<JoinButtonProps> = ({
 
   const content = (
     <>
-      {children ?? 'Become a Member'}
+      {children ?? 'Join Us'}
       {withArrow && <IconArrowRight size={size === 'lg' ? 20 : 16} stroke={2.4} />}
     </>
   )

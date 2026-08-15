@@ -110,6 +110,31 @@ section[id],
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* --- Hero: deep teal bloom over near-black (ZeBeyond-style backdrop) --- */
+.hero-gradient-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(110% 85% at 76% 42%, rgba(var(--teal-rgb), 0.17), transparent 58%),
+    radial-gradient(70% 60% at 88% 80%, rgba(var(--neon-rgb), 0.07), transparent 60%),
+    linear-gradient(150deg, #0b1712 0%, var(--color-bg) 68%);
+}
+
+/* Soft aura behind the 3D logo card */
+.hero-card-glow {
+  position: absolute;
+  inset: -18%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(var(--teal-rgb), 0.2),
+    rgba(var(--neon-rgb), 0.05) 45%,
+    transparent 70%
+  );
+  filter: blur(28px);
+}
+
 /* --- Glow card: thin 1px border with low-opacity glow --- */
 .glow-card {
   position: relative;
@@ -184,6 +209,136 @@ section[id],
   color: var(--color-text) !important;
   border: 1px solid var(--border-glow) !important;
   box-shadow: none !important;
+}
+
+/* --- Big 3D CTA: extruded "keycap" that lifts and tilts toward the cursor ---
+   --j3d-rx / --j3d-ry are written by JS from the pointer position; the rest of
+   the depth (lift + edge thickness) is driven by :hover / :active alone.
+   The accent is pinned to the vivid dark-mode teal/neon rather than the scoped
+   tokens: this CTA sits on the light content surface, where the muted light
+   variants would leave near-black label text at poor contrast. */
+.btn-join-3d {
+  --j3d-rx: 0deg;
+  --j3d-ry: 0deg;
+  --j3d-lift: 0px;
+  --j3d-edge: 9px;
+  --j3d-teal: 47, 230, 163;
+  --j3d-neon: 57, 255, 106;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: clamp(18px, 2.2vw, 26px) clamp(32px, 4.6vw, 60px);
+  border: none;
+  border-radius: 9999px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(17px, 1.9vw, 22px);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  max-width: 100%;
+  color: #04140f;
+  background: linear-gradient(120deg, rgb(var(--j3d-teal)), rgb(var(--j3d-neon)));
+  transform: perspective(900px) rotateX(var(--j3d-rx)) rotateY(var(--j3d-ry))
+    translateY(var(--j3d-lift));
+  box-shadow:
+    0 var(--j3d-edge) 0 -2px rgba(4, 60, 42, 0.95),
+    0 calc(var(--j3d-edge) + 16px) 44px -14px rgba(var(--j3d-teal), 0.65),
+    0 0 0 1px rgba(var(--j3d-neon), 0.35);
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease;
+}
+
+/* Glossy top highlight — sits beneath the label */
+.btn-join-3d::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), transparent 52%);
+  pointer-events: none;
+}
+
+/* Shine sweep — passes over the label on hover */
+.btn-join-3d::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 70%
+  );
+  transform: translateX(-220%) skewX(-12deg);
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.btn-join-3d > * {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-join-3d:hover {
+  --j3d-lift: -7px;
+  --j3d-edge: 15px;
+  box-shadow:
+    0 var(--j3d-edge) 0 -2px rgba(4, 60, 42, 0.95),
+    0 calc(var(--j3d-edge) + 22px) 60px -12px rgba(var(--j3d-neon), 0.6),
+    0 0 60px -12px rgba(var(--j3d-teal), 0.65),
+    0 0 0 1px rgba(var(--j3d-neon), 0.55);
+}
+
+.btn-join-3d:hover::before {
+  transform: translateX(320%) skewX(-12deg);
+}
+
+.btn-join-3d:active {
+  --j3d-lift: 3px;
+  --j3d-edge: 4px;
+  transition-duration: 0.08s;
+}
+
+.btn-join-3d:focus-visible {
+  outline: 2px solid var(--neon);
+  outline-offset: 4px;
+}
+
+/* Below ~430px the nowrap label is wider than the card it sits in — let it
+   wrap and tighten the padding so the CTA stays inside its container. */
+@media (max-width: 480px) {
+  .btn-join-3d {
+    padding: 16px 22px;
+    gap: 10px;
+    font-size: 16px;
+    line-height: 1.3;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-join-3d {
+    transition: none;
+    transform: none;
+  }
+  .btn-join-3d:hover {
+    transform: none;
+  }
+  .btn-join-3d::before {
+    display: none;
+  }
 }
 
 .btn-partner {
@@ -331,12 +486,6 @@ section[id],
   }
   to {
     transform: translateX(calc(-50% - 9px));
-  }
-}
-
-@media (max-width: 760px) {
-  .application-form {
-    grid-template-columns: 1fr !important;
   }
 }
 

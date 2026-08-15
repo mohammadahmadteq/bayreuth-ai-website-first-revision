@@ -6,11 +6,10 @@ import { IconBrandLinkedin, IconBrandInstagram, IconMail } from '@tabler/icons-r
 const NAV = [
   { to: '/meetings', label: 'Meetings' },
   { to: '/team', label: 'Team' },
-  { to: '/dates', label: 'Important Dates' },
-  { to: '/resources', label: 'Resources' },
+  { to: '/resources', label: 'Learning resources' },
   { to: '/projects', label: 'Projects' },
   { to: '/partners', label: 'Partners' },
-  { to: '/apply', label: 'Become a Member' },
+  { to: '/apply', label: 'Join Us' },
 ]
 
 export const Footer: FC = () => {

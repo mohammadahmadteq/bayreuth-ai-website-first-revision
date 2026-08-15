@@ -1,5 +1,5 @@
 import { type FC, useMemo, useState } from 'react'
-import { SimpleGrid, Stack, Text } from '@mantine/core'
+import { Stack, Text } from '@mantine/core'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import type { Project } from '../../types/content'
 import { ProjectCard } from './ProjectCard'
@@ -37,7 +37,7 @@ export const ProjectGrid: FC<ProjectGridProps> = ({ projects }) => {
     <Stack gap={32}>
       <ProjectFilterBar filters={filters} active={active} onChange={setActive} />
 
-      <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing={20}>
+      <Stack gap={28}>
         <AnimatePresence mode="popLayout">
           {visible.map((p) => (
             <motion.div
@@ -52,7 +52,7 @@ export const ProjectGrid: FC<ProjectGridProps> = ({ projects }) => {
             </motion.div>
           ))}
         </AnimatePresence>
-      </SimpleGrid>
+      </Stack>
     </Stack>
   )
 }

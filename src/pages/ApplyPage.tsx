@@ -25,9 +25,9 @@ export const ApplyPage: FC = () => {
   return (
     <>
       <PageHeader
-        eyebrow="Become a Member"
+        eyebrow="Join Us"
         title="Join the association."
-        subtitle="If you’re curious about AI, you already belong here. Here’s what to expect and how to get started."
+        subtitle="If you’re curious about AI, you already belong here."
       />
 
       <Container size={920} px={24} py={{ base: 56, md: 88 }}>

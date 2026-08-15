@@ -1,5 +1,6 @@
 import { type FC, useState } from 'react'
 import { Box, Group, Stack, Text } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
 import { IconExternalLink, IconArrowUpRight } from '@tabler/icons-react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import type { Project } from '../../types/content'
@@ -14,6 +15,9 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
   const [hovered, setHovered] = useState(false)
   const reduce = useReducedMotion()
   const showOverlay = hovered || reduce
+  const isMobile = useMediaQuery('(max-width: 767px)')
+  const isTablet = useMediaQuery('(max-width: 1023px)')
+  const aspectRatio = isMobile ? '4 / 3' : isTablet ? '16 / 9' : '16 / 7'
 
   const Wrapper = project.link ? 'a' : 'div'
   const wrapperProps = project.link
@@ -34,7 +38,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
         position: 'relative',
         overflow: 'hidden',
         textDecoration: 'none',
-        aspectRatio: '4 / 3',
+        aspectRatio,
         cursor: project.link ? 'pointer' : 'default',
       }}
     >
