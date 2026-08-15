@@ -1,7 +1,13 @@
 import { type FC } from 'react'
 import { Link } from 'react-router-dom'
 import { Group, Text } from '@mantine/core'
-import { IconBook2, IconTool, IconRoute, IconArrowUpRight, type TablerIcon } from '@tabler/icons-react'
+import {
+  IconBook2,
+  IconTool,
+  IconRoute,
+  IconArrowUpRight,
+  type TablerIcon,
+} from '@tabler/icons-react'
 import type { Program, ProgramFormat } from '../../types/content'
 
 const FORMAT_ICON: Record<ProgramFormat, TablerIcon> = {

@@ -374,12 +374,7 @@ async function buildPhotoBackTexture(photoSrc: string): Promise<THREE.CanvasText
  * drag) flips it to show the photo at full strength. Falls back to a plain
  * <img> when WebGL is unavailable.
  */
-export const Logo3DCard: FC<Logo3DCardProps> = ({
-  logoSrc,
-  photoSrc,
-  alt = '',
-  photoAlt = '',
-}) => {
+export const Logo3DCard: FC<Logo3DCardProps> = ({ logoSrc, photoSrc, alt = '', photoAlt = '' }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [webglFailed, setWebglFailed] = useState(() => {
     try {

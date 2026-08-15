@@ -6,9 +6,7 @@ import { useMediaQuery } from '@mantine/hooks'
 import { HeroParallaxLayer } from './HeroParallaxLayer'
 
 // Lazy so three.js stays out of the main bundle
-const Logo3DCard = lazy(() =>
-  import('./Logo3DCard').then((m) => ({ default: m.Logo3DCard })),
-)
+const Logo3DCard = lazy(() => import('./Logo3DCard').then((m) => ({ default: m.Logo3DCard })))
 import { JoinButton } from '../ui/JoinButton'
 import { PartnerButton } from '../ui/PartnerButton'
 import { Badge } from '../ui/Badge'
