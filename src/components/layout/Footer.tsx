@@ -49,7 +49,11 @@ export const Footer: FC = () => {
               >
                 ai
               </Box>
-              <Text fw={700} ff='"Source Sans 3", sans-serif' style={{ color: 'var(--color-text)' }}>
+              <Text
+                fw={700}
+                ff='"Source Sans 3", sans-serif'
+                style={{ color: 'var(--color-text)' }}
+              >
                 Bayreuth AI Association e.V.
               </Text>
             </Group>

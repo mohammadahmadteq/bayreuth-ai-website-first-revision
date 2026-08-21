@@ -17,7 +17,12 @@ const ROWS: InfoRow[] = [
 export const MeetingInfoCard: FC = () => {
   return (
     <Stack gap={20} className="glow-card" style={{ padding: 'clamp(24px, 4vw, 40px)' }}>
-      <Text ff='"Source Sans 3", sans-serif' fw={700} fz={22} style={{ color: 'var(--color-text)' }}>
+      <Text
+        ff='"Source Sans 3", sans-serif'
+        fw={700}
+        fz={22}
+        style={{ color: 'var(--color-text)' }}
+      >
         Recurring meeting
       </Text>
       <Stack gap={18}>

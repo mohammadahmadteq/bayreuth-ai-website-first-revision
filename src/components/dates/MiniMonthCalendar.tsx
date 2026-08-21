@@ -46,7 +46,12 @@ export const MiniMonthCalendar: FC<MiniMonthCalendarProps> = ({ events, month = 
 
   return (
     <Stack gap={16} className="glow-card" style={{ padding: 'clamp(20px, 2.5vw, 28px)' }}>
-      <Text ff='"Source Sans 3", sans-serif' fw={600} fz={15} style={{ color: 'var(--color-text)' }}>
+      <Text
+        ff='"Source Sans 3", sans-serif'
+        fw={600}
+        fz={15}
+        style={{ color: 'var(--color-text)' }}
+      >
         {month.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
       </Text>
 

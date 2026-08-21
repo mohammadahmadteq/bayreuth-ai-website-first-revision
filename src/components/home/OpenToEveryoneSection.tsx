@@ -17,12 +17,13 @@ export const OpenToEveryoneSection: FC = () => {
       />
 
       <SimpleGrid cols={{ base: 1, md: 2 }} spacing={32} mt={40}>
-        <Stack
-          gap={10}
-          className="glow-card"
-          style={{ padding: 'clamp(24px, 3vw, 32px)' }}
-        >
-          <Text fw={600} ff='"Source Sans 3", sans-serif' fz={17} style={{ color: 'var(--color-text)' }}>
+        <Stack gap={10} className="glow-card" style={{ padding: 'clamp(24px, 3vw, 32px)' }}>
+          <Text
+            fw={600}
+            ff='"Source Sans 3", sans-serif'
+            fz={17}
+            style={{ color: 'var(--color-text)' }}
+          >
             New to AI
           </Text>
           <Text style={{ color: 'var(--color-subtext)', fontSize: 15, lineHeight: 1.65 }}>
@@ -31,17 +32,18 @@ export const OpenToEveryoneSection: FC = () => {
           </Text>
         </Stack>
 
-        <Stack
-          gap={10}
-          className="glow-card"
-          style={{ padding: 'clamp(24px, 3vw, 32px)' }}
-        >
-          <Text fw={600} ff='"Source Sans 3", sans-serif' fz={17} style={{ color: 'var(--color-text)' }}>
+        <Stack gap={10} className="glow-card" style={{ padding: 'clamp(24px, 3vw, 32px)' }}>
+          <Text
+            fw={600}
+            ff='"Source Sans 3", sans-serif'
+            fz={17}
+            style={{ color: 'var(--color-text)' }}
+          >
             Already experienced
           </Text>
           <Text style={{ color: 'var(--color-subtext)', fontSize: 15, lineHeight: 1.65 }}>
-            Contribute to real projects, review code, experiment with models, and work with
-            other technically strong members on things worth building.
+            Contribute to real projects, review code, experiment with models, and work with other
+            technically strong members on things worth building.
           </Text>
         </Stack>
       </SimpleGrid>

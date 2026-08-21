@@ -20,12 +20,11 @@ export const HomePage: FC = () => {
 
       <Container size={1280} px={24}>
         <Stack gap={64} py={{ base: 48, md: 72 }}>
-
           <ErrorBoundary label="What we do">
             <MissionStrip />
           </ErrorBoundary>
 
-            <ErrorBoundary label="Community">
+          <ErrorBoundary label="Community">
             <PhotoRail />
           </ErrorBoundary>
 
@@ -41,17 +40,13 @@ export const HomePage: FC = () => {
             <ProjectsSpotlight projects={projects} />
           </ErrorBoundary>
 
-        
-
           <ErrorBoundary label="Join">
             <JoinSection />
           </ErrorBoundary>
 
-
           <ErrorBoundary label="Partners">
             <PartnersStrip partners={partners} />
           </ErrorBoundary>
-
         </Stack>
       </Container>
     </>
