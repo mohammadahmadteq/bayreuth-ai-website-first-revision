@@ -29,7 +29,7 @@ export const SectionHeading: FC<SectionHeadingProps> = ({
           <Text
             component="p"
             style={{
-              fontFamily: 'Space Grotesk, sans-serif',
+              fontFamily: '"Source Sans 3", sans-serif',
               fontSize: 13,
               fontWeight: 700,
               letterSpacing: '0.18em',
@@ -44,7 +44,7 @@ export const SectionHeading: FC<SectionHeadingProps> = ({
         <Text
           component="h2"
           style={{
-            fontFamily: 'Space Grotesk, sans-serif',
+            fontFamily: '"Source Sans 3", sans-serif',
             fontSize: 'clamp(28px, 4.5vw, 46px)',
             fontWeight: 700,
             lineHeight: 1.05,

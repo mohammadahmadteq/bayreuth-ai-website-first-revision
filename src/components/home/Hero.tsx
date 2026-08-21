@@ -1,6 +1,6 @@
 import { type FC, Suspense, lazy } from 'react'
 import { Box, Group, Stack, Text } from '@mantine/core'
-import { IconCalendarTime, IconMapPin, IconSparkles } from '@tabler/icons-react'
+import { IconCalendarTime, IconMapPin } from '@tabler/icons-react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { useMediaQuery } from '@mantine/hooks'
 import { HeroParallaxLayer } from './HeroParallaxLayer'
@@ -28,7 +28,7 @@ export const Hero: FC = () => {
   return (
     <Box
       component="section"
-      className="noise-bg chrome-scope"
+      className="chrome-scope"
       style={{
         position: 'relative',
         display: 'flex',
@@ -64,15 +64,13 @@ export const Hero: FC = () => {
             style={{ height: '100%' }}
           >
             <motion.div variants={item} style={{ marginBottom: 20 }}>
-              <Badge variant="teal" leftSection={<IconSparkles size={13} />}>
-                Everyone is welcome
-              </Badge>
+              <Badge variant="teal">Everyone is welcome</Badge>
             </motion.div>
 
             <motion.h1
               variants={item}
               style={{
-                fontFamily: 'Space Grotesk, sans-serif',
+                fontFamily: '"Source Sans 3", sans-serif',
                 fontSize: 'clamp(48px, 8vw, 112px)',
                 lineHeight: 1.0,
                 fontWeight: 700,
@@ -83,7 +81,7 @@ export const Hero: FC = () => {
             >
               Exploring AI.
               <br />
-              <span className="gradient-text">Together.</span>
+              <span style={{ color: 'var(--teal)' }}>Together.</span>
             </motion.h1>
 
             <motion.div variants={item}>
@@ -134,7 +132,6 @@ export const Hero: FC = () => {
           transition={{ duration: 0.8, delay: reduce ? 0 : 0.25, ease: [0.2, 0, 0, 1] }}
           style={{ position: 'relative', justifySelf: 'center', width: '100%', height: '100%' }}
         >
-          <div className="hero-card-glow" aria-hidden="true" />
           <Box
             style={{
               position: 'relative',

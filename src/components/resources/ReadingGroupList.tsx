@@ -20,7 +20,7 @@ export const ReadingGroupList: FC = () => {
           wrap="nowrap"
           style={{ padding: '14px 4px', borderBottom: '1px solid var(--border)' }}
         >
-          <Text ff="Space Grotesk, sans-serif" fw={700} fz={13} style={{ color: 'var(--teal)' }}>
+          <Text ff='"Source Sans 3", sans-serif' fw={700} fz={13} style={{ color: 'var(--teal)' }}>
             W{s.week}
           </Text>
           <Text fz={15} style={{ color: 'var(--color-text)' }}>

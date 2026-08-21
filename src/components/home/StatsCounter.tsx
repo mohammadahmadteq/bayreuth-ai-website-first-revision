@@ -44,7 +44,7 @@ export const StatsCounter: FC<StatsCounterProps> = ({ stats }) => {
               <Icon size={24} color="var(--teal)" stroke={1.6} />
               <Text
                 style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
+                  fontFamily: '"Source Sans 3", sans-serif',
                   fontSize: 'clamp(34px, 5vw, 52px)',
                   fontWeight: 700,
                   lineHeight: 1.5,

@@ -73,7 +73,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
         <Group justify="space-between" align="center" wrap="nowrap">
           <Text
             fw={700}
-            ff="Space Grotesk, sans-serif"
+            ff='"Source Sans 3", sans-serif'
             fz="clamp(18px, 2.4vw, 22px)"
             style={{ color: '#fff', lineHeight: 1.1 }}
           >
@@ -95,7 +95,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
               style={{ overflow: 'hidden' }}
             >
               <Text
-                fz={14}
+                fz={16}
                 style={{ color: 'rgba(236,236,242,0.85)', lineHeight: 1.55, marginTop: 4 }}
               >
                 {project.description}

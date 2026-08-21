@@ -40,12 +40,11 @@ export const PartnersPage: FC = () => {
               style={{
                 position: 'relative',
                 overflow: 'hidden',
-                borderRadius: 24,
+                borderRadius: 12,
                 textAlign: 'center',
                 padding: 'clamp(40px, 7vw, 80px) 24px',
-                border: '1px solid var(--border-glow)',
-                background:
-                  'linear-gradient(135deg, rgba(var(--teal-rgb),0.1), rgba(var(--neon-rgb),0.05) 60%, transparent)',
+                border: '1px solid var(--border-strong)',
+                background: 'rgba(var(--teal-rgb),0.06)',
               }}
             >
               <Box
@@ -54,7 +53,7 @@ export const PartnersPage: FC = () => {
               />
               <Stack gap={20} align="center" style={{ position: 'relative', zIndex: 1 }}>
                 <Text
-                  ff="Space Grotesk, sans-serif"
+                  ff='"Source Sans 3", sans-serif'
                   fw={700}
                   fz="clamp(26px, 5vw, 44px)"
                   style={{ color: 'var(--color-text)', lineHeight: 1.1, maxWidth: 700 }}

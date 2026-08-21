@@ -7,15 +7,14 @@ export const NotFoundPage: FC = () => {
     <Container size={720} px={24} py={{ base: 96, md: 160 }}>
       <Stack gap={20} align="center" style={{ textAlign: 'center' }}>
         <Text
-          ff="Space Grotesk, sans-serif"
+          ff='"Source Sans 3", sans-serif'
           fw={700}
-          className="gradient-text"
-          style={{ fontSize: 'clamp(64px, 14vw, 140px)', lineHeight: 1 }}
+          style={{ fontSize: 'clamp(64px, 14vw, 140px)', lineHeight: 1, color: 'var(--teal)' }}
         >
           404
         </Text>
         <Text
-          ff="Space Grotesk, sans-serif"
+          ff='"Source Sans 3", sans-serif'
           fw={700}
           fz="clamp(22px, 4vw, 32px)"
           style={{ color: 'var(--color-text)' }}

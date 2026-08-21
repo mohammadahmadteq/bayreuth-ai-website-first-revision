@@ -30,5 +30,12 @@
     "websiteUrl": "https://www.instagram.com/bayreuth.ai?igsh=MW1ueXJ3ZTN3c3prcA==",
     "tier": "cooperation",
     "description": "Public channel for event snapshots and community announcements."
+  },
+  {
+    "id": "ptn-tmt",
+    "name": "TMT Business Solutions",
+    "logoUrl": "/official/tmt-logo.png",
+    "websiteUrl": "https://www.tmt.de/",
+    "tier": "sponsor"
   }
 ]

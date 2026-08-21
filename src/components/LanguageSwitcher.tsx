@@ -31,7 +31,7 @@ export function LanguageSwitcher({ compact = false }: LanguageSwitcherProps) {
               borderRadius: 9999,
               fontSize: compact ? 10 : 11,
               fontWeight: 700,
-              fontFamily: 'Space Grotesk, sans-serif',
+              fontFamily: '"Source Sans 3", sans-serif',
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
               color: active ? 'white' : 'var(--color-subtext)',

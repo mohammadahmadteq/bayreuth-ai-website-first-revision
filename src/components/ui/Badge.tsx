@@ -1,6 +1,6 @@
 import { type FC, type ReactNode } from 'react'
 
-type Variant = 'teal' | 'neon' | 'muted'
+type Variant = 'teal' | 'accent' | 'muted'
 
 const STYLES: Record<Variant, { color: string; bg: string; border: string }> = {
   teal: {
@@ -8,10 +8,10 @@ const STYLES: Record<Variant, { color: string; bg: string; border: string }> = {
     bg: 'rgba(var(--teal-rgb), 0.1)',
     border: 'rgba(var(--teal-rgb), 0.3)',
   },
-  neon: {
-    color: 'var(--neon)',
-    bg: 'rgba(var(--neon-rgb), 0.1)',
-    border: 'rgba(var(--neon-rgb), 0.3)',
+  accent: {
+    color: '#04140f',
+    bg: 'var(--teal)',
+    border: 'var(--teal)',
   },
   muted: {
     color: 'var(--color-subtext)',
@@ -38,7 +38,7 @@ export const Badge: FC<BadgeProps> = ({ children, variant = 'teal', leftSection 
         borderRadius: 9999,
         fontSize: 12,
         fontWeight: 600,
-        fontFamily: 'Space Grotesk, sans-serif',
+        fontFamily: '"Source Sans 3", sans-serif',
         letterSpacing: '0.02em',
         color: s.color,
         background: s.bg,

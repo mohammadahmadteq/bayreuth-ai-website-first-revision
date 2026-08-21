@@ -1,5 +1,8 @@
 import type { EventItem } from '../types/content'
 
+/** Shared WhatsApp invite link — the single source of truth for all CTAs. */
+export const WHATSAPP_URL = 'https://chat.whatsapp.com/CYZelJF7rDYFkEuz94n86j'
+
 /** Join class names, dropping falsy values. */
 export function cn(...classes: Array<string | false | null | undefined>): string {
   return classes.filter(Boolean).join(' ')

@@ -13,7 +13,7 @@ const Group: FC<{ title: string; members: TeamMember[] }> = ({ title, members })
   return (
     <Stack gap={24}>
       <Text
-        ff="Space Grotesk, sans-serif"
+        ff='"Source Sans 3", sans-serif'
         fw={700}
         fz={13}
         tt="uppercase"

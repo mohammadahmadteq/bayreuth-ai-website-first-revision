@@ -1,7 +1,13 @@
 import { type FC } from 'react'
 import { Link } from 'react-router-dom'
 import { Box, Container, Group, Stack, Text, SimpleGrid } from '@mantine/core'
-import { IconBrandLinkedin, IconBrandInstagram, IconMail } from '@tabler/icons-react'
+import {
+  IconBrandLinkedin,
+  IconBrandInstagram,
+  IconBrandWhatsapp,
+  IconMail,
+} from '@tabler/icons-react'
+import { WHATSAPP_URL } from '../../lib/utils'
 
 const NAV = [
   { to: '/meetings', label: 'Meetings' },
@@ -32,18 +38,18 @@ export const Footer: FC = () => {
                   width: 28,
                   height: 28,
                   borderRadius: 8,
-                  background: 'linear-gradient(120deg, var(--teal), var(--neon))',
+                  background: 'var(--teal)',
                   display: 'grid',
                   placeItems: 'center',
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontWeight: 800,
+                  fontFamily: '"Source Sans 3", sans-serif',
+                  fontWeight: 700,
                   color: '#04140f',
                   fontSize: 14,
                 }}
               >
                 ai
               </Box>
-              <Text fw={700} ff="Space Grotesk, sans-serif" style={{ color: 'var(--color-text)' }}>
+              <Text fw={700} ff='"Source Sans 3", sans-serif' style={{ color: 'var(--color-text)' }}>
                 Bayreuth AI Association e.V.
               </Text>
             </Group>
@@ -84,13 +90,22 @@ export const Footer: FC = () => {
               >
                 <IconBrandInstagram size={20} />
               </a>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                style={{ color: 'var(--color-subtext)' }}
+              >
+                <IconBrandWhatsapp size={20} />
+              </a>
             </Group>
           </Stack>
 
           <Stack gap={10}>
             <Text
               fw={700}
-              ff="Space Grotesk, sans-serif"
+              ff='"Source Sans 3", sans-serif'
               fz={13}
               tt="uppercase"
               style={{ letterSpacing: '0.14em', color: 'var(--teal)' }}
@@ -106,12 +121,15 @@ export const Footer: FC = () => {
                 {n.label}
               </Link>
             ))}
+            <Text style={{ color: 'var(--color-subtext)', fontSize: 14, opacity: 0.6 }}>
+              Q&amp;A (coming soon)
+            </Text>
           </Stack>
 
           <Stack gap={10}>
             <Text
               fw={700}
-              ff="Space Grotesk, sans-serif"
+              ff='"Source Sans 3", sans-serif'
               fz={13}
               tt="uppercase"
               style={{ letterSpacing: '0.14em', color: 'var(--teal)' }}

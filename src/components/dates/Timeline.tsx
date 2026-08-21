@@ -53,7 +53,7 @@ export const Timeline: FC<TimelineProps> = ({ events }) => {
           width: 2,
           originY: 0,
           scaleY: reduce ? 1 : scaleY,
-          background: 'linear-gradient(to bottom, var(--teal), var(--neon))',
+          background: 'var(--teal)',
         }}
       />
 
@@ -79,9 +79,8 @@ export const Timeline: FC<TimelineProps> = ({ events }) => {
                   width: 16,
                   height: 16,
                   borderRadius: '50%',
-                  background: 'var(--color-bg)',
-                  border: `2px solid ${event.isFeatured ? 'var(--neon)' : 'var(--teal)'}`,
-                  boxShadow: event.isFeatured ? '0 0 12px rgba(var(--neon-rgb),0.5)' : 'none',
+                  border: `2px solid var(--teal)`,
+                  background: event.isFeatured ? 'var(--teal)' : 'var(--color-bg)',
                 }}
               />
             </Box>

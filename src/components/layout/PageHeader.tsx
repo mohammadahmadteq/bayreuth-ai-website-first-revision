@@ -39,7 +39,7 @@ export const PageHeader: FC<PageHeaderProps> = ({ eyebrow, title, subtitle }) =>
           transition={{ duration: 0.6, ease: [0.2, 0, 0, 1] }}
         >
           <Text
-            ff="Space Grotesk, sans-serif"
+            ff='"Source Sans 3", sans-serif'
             fw={700}
             fz={13}
             tt="uppercase"
@@ -49,7 +49,7 @@ export const PageHeader: FC<PageHeaderProps> = ({ eyebrow, title, subtitle }) =>
           </Text>
           <Text
             component="h1"
-            ff="Space Grotesk, sans-serif"
+            ff='"Source Sans 3", sans-serif'
             style={{
               fontSize: 'clamp(36px, 6.5vw, 72px)',
               fontWeight: 700,

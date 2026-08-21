@@ -35,7 +35,7 @@ export const ApplyPage: FC = () => {
           <FadeInWhenVisible>
             <Stack gap={18} className="glow-card" style={{ padding: 'clamp(24px, 4vw, 40px)' }}>
               <Text
-                ff="Space Grotesk, sans-serif"
+                ff='"Source Sans 3", sans-serif'
                 fw={700}
                 fz={24}
                 style={{ color: 'var(--color-text)' }}
@@ -71,7 +71,7 @@ export const ApplyPage: FC = () => {
           <FadeInWhenVisible delay={0.08}>
             <Stack gap={18} className="glow-card" style={{ padding: 'clamp(24px, 4vw, 40px)' }}>
               <Text
-                ff="Space Grotesk, sans-serif"
+                ff='"Source Sans 3", sans-serif'
                 fw={700}
                 fz={24}
                 style={{ color: 'var(--color-text)' }}
@@ -85,11 +85,11 @@ export const ApplyPage: FC = () => {
                     size={22}
                     radius="xl"
                     style={{
-                      background: 'rgba(var(--neon-rgb),0.15)',
-                      border: '1px solid rgba(var(--neon-rgb),0.3)',
+                      background: 'rgba(var(--teal-dark-rgb),0.15)',
+                      border: '1px solid rgba(var(--teal-dark-rgb),0.4)',
                     }}
                   >
-                    <IconCheck size={14} color="var(--neon)" />
+                    <IconCheck size={14} color="var(--teal-dark)" />
                   </ThemeIcon>
                 }
               >
@@ -110,16 +110,15 @@ export const ApplyPage: FC = () => {
             <Box
               style={{
                 textAlign: 'center',
-                borderRadius: 24,
+                borderRadius: 12,
                 padding: 'clamp(36px, 6vw, 64px) 24px',
-                border: '1px solid var(--border-glow)',
-                background:
-                  'linear-gradient(135deg, rgba(var(--teal-rgb),0.1), rgba(var(--neon-rgb),0.05) 60%, transparent)',
+                border: '1px solid var(--border-strong)',
+                background: 'rgba(var(--teal-rgb),0.06)',
               }}
             >
               <Stack gap={22} align="center">
                 <Text
-                  ff="Space Grotesk, sans-serif"
+                  ff='"Source Sans 3", sans-serif'
                   fw={700}
                   fz="clamp(24px, 4.5vw, 38px)"
                   style={{ color: 'var(--color-text)' }}

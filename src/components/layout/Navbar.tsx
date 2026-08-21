@@ -1,7 +1,7 @@
 import { type FC, useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Box, Group, Text, Burger, Drawer, Stack, Image } from '@mantine/core'
-import { useDisclosure } from '@mantine/hooks'
+import { useDisclosure, useMediaQuery } from '@mantine/hooks'
 import { LanguageSwitcher } from '../LanguageSwitcher'
 import { JoinButton } from '../ui/JoinButton'
 import { asset } from '../../lib/utils'
@@ -25,7 +25,7 @@ const linkStyle = (isActive: boolean) => ({
   height: 32,
   fontSize: 14,
   fontWeight: 500,
-  fontFamily: 'Space Grotesk, sans-serif',
+  fontFamily: '"Source Sans 3", sans-serif',
   color: isActive ? 'var(--teal)' : 'var(--color-subtext)',
   textDecoration: 'none',
   lineHeight: 1,
@@ -36,9 +36,49 @@ const linkStyle = (isActive: boolean) => ({
   whiteSpace: 'nowrap' as const,
 })
 
+/** Q&A has no page yet — shown as a quiet "coming soon" label, not a link. */
+const QASoonLabel: FC<{ mobile?: boolean }> = ({ mobile }) => (
+  <Group
+    gap={6}
+    wrap="nowrap"
+    style={{
+      height: mobile ? 'auto' : 32,
+      padding: mobile ? '12px 0' : 0,
+      borderBottom: mobile ? '1px solid var(--border)' : 'none',
+    }}
+  >
+    <Text
+      style={{
+        fontSize: mobile ? 18 : 14,
+        fontWeight: 500,
+        fontFamily: '"Source Sans 3", sans-serif',
+        color: 'var(--color-subtext)',
+        opacity: 0.6,
+      }}
+    >
+      Q&amp;A
+    </Text>
+    <Text
+      style={{
+        fontSize: 10,
+        fontWeight: 600,
+        letterSpacing: '0.06em',
+        textTransform: 'uppercase',
+        color: 'var(--color-subtext)',
+        border: '1px solid var(--border)',
+        borderRadius: 4,
+        padding: '1px 5px',
+      }}
+    >
+      Soon
+    </Text>
+  </Group>
+)
+
 export const Navbar: FC = () => {
   const [opened, { toggle, close }] = useDisclosure(false)
   const [scrolled, setScrolled] = useState(false)
+  const isMobile = useMediaQuery('(max-width: 767px)')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -53,25 +93,27 @@ export const Navbar: FC = () => {
       className="chrome-scope"
       style={{
         position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
         zIndex: 200,
+        top: isMobile ? 10 : 18,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: isMobile ? 'calc(100% - 20px)' : 'min(calc(100% - 32px), 1280px)',
+        display: 'flex',
+        alignItems: 'center',
+        minHeight: 64,
+        padding: isMobile ? '0 8px 0 14px' : '0 10px 0 20px',
+        borderRadius: 18,
+        border: '1px solid var(--border)',
         backgroundColor: 'var(--nav-bg)',
-        backdropFilter: 'blur(14px)',
-        WebkitBackdropFilter: 'blur(14px)',
-        borderBottom: `1px solid ${scrolled ? 'var(--border)' : 'transparent'}`,
-        boxShadow: scrolled ? '0 8px 30px -16px rgba(0,0,0,0.6)' : 'none',
-        height: 68,
-        transition: 'border-color 0.3s, box-shadow 0.3s',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        boxShadow: scrolled
+          ? '0 12px 34px -12px rgba(0,0,0,0.55)'
+          : '0 4px 22px -8px rgba(0,0,0,0.35)',
+        transition: 'box-shadow 0.3s ease, top 0.3s ease',
       }}
     >
-      <Group
-        justify="space-between"
-        align="center"
-        wrap="nowrap"
-        style={{ maxWidth: 1280, margin: '0 auto', height: '100%', padding: '0 24px' }}
-      >
+      <Group justify="space-between" align="center" wrap="nowrap" style={{ width: '100%' }}>
         {/* Brand */}
         <Link to="/" style={{ textDecoration: 'none' }}>
           <Group gap={10} wrap="nowrap">
@@ -90,7 +132,7 @@ export const Navbar: FC = () => {
                 letterSpacing: 0,
                 fontSize: 15,
                 color: 'var(--color-text)',
-                fontFamily: 'Space Grotesk, sans-serif',
+                fontFamily: '"Source Sans 3", sans-serif',
               }}
               visibleFrom="xs"
             >
@@ -106,6 +148,7 @@ export const Navbar: FC = () => {
               {label}
             </NavLink>
           ))}
+          <QASoonLabel />
         </Group>
 
         {/* Right cluster */}
@@ -135,7 +178,7 @@ export const Navbar: FC = () => {
         size="78%"
         padding="lg"
         title={
-          <Text fw={700} ff="Space Grotesk, sans-serif" style={{ color: 'var(--color-text)' }}>
+          <Text fw={700} ff='"Source Sans 3", sans-serif' style={{ color: 'var(--color-text)' }}>
             Menu
           </Text>
         }
@@ -165,6 +208,7 @@ export const Navbar: FC = () => {
               {label}
             </NavLink>
           ))}
+          <QASoonLabel mobile />
         </Stack>
 
         <JoinButton size="lg" className="" />

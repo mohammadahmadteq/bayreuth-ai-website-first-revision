@@ -20,8 +20,7 @@ export const EventCard: FC<EventCardProps> = ({ event }) => {
       className="glow-card"
       style={{
         padding: 20,
-        borderColor: event.isFeatured ? 'var(--border-glow)' : 'var(--border)',
-        boxShadow: event.isFeatured ? '0 0 0 1px var(--border-glow)' : undefined,
+        borderColor: event.isFeatured ? 'var(--border-strong)' : 'var(--border)',
       }}
     >
       <UnstyledButton
@@ -44,7 +43,7 @@ export const EventCard: FC<EventCardProps> = ({ event }) => {
               }}
             >
               <Text
-                ff="Space Grotesk, sans-serif"
+                ff='"Source Sans 3", sans-serif'
                 fw={700}
                 fz={11}
                 style={{ color: 'var(--teal)', letterSpacing: '0.08em' }}
@@ -52,7 +51,7 @@ export const EventCard: FC<EventCardProps> = ({ event }) => {
                 {month}
               </Text>
               <Text
-                ff="Space Grotesk, sans-serif"
+                ff='"Source Sans 3", sans-serif'
                 fw={700}
                 fz={24}
                 style={{ color: 'var(--color-text)', lineHeight: 1 }}
@@ -63,12 +62,12 @@ export const EventCard: FC<EventCardProps> = ({ event }) => {
 
             <Stack gap={6} style={{ minWidth: 0 }}>
               <Group gap={8}>
-                <Badge variant={event.isFeatured ? 'neon' : 'muted'}>{event.category}</Badge>
+                <Badge variant={event.isFeatured ? 'accent' : 'muted'}>{event.category}</Badge>
                 {event.isFeatured && <Badge variant="teal">Featured</Badge>}
               </Group>
               <Text
                 fw={700}
-                ff="Space Grotesk, sans-serif"
+                ff='"Source Sans 3", sans-serif'
                 fz={18}
                 style={{ color: 'var(--color-text)' }}
                 lineClamp={1}

@@ -22,10 +22,10 @@ export const ProjectFilterBar: FC<ProjectFilterBarProps> = ({ filters, active, o
             style={{
               cursor: 'pointer',
               padding: '7px 16px',
-              borderRadius: 9999,
+              borderRadius: 8,
               fontSize: 13,
               fontWeight: 600,
-              fontFamily: 'Space Grotesk, sans-serif',
+              fontFamily: '"Source Sans 3", sans-serif',
               textTransform: 'capitalize',
               color: isActive ? '#04140f' : 'var(--color-subtext)',
               background: isActive ? 'var(--teal)' : 'var(--color-surface-strong)',

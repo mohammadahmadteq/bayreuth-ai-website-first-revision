@@ -58,22 +58,22 @@ export const PartnerBenefitsList: FC = () => {
                 flexShrink: 0,
                 display: 'grid',
                 placeItems: 'center',
-                background: 'rgba(var(--neon-rgb),0.1)',
-                border: '1px solid rgba(var(--neon-rgb),0.25)',
+                background: 'rgba(var(--teal-rgb),0.1)',
+                border: '1px solid rgba(var(--teal-rgb),0.25)',
               }}
             >
-              <b.icon size={22} color="var(--neon)" stroke={1.7} />
+              <b.icon size={22} color="var(--teal)" stroke={1.7} />
             </Group>
             <Stack gap={6}>
               <Text
                 fw={700}
-                ff="Space Grotesk, sans-serif"
+                ff='"Source Sans 3", sans-serif'
                 fz={18}
                 style={{ color: 'var(--color-text)' }}
               >
                 {b.title}
               </Text>
-              <Text fz={14} style={{ color: 'var(--color-subtext)', lineHeight: 1.6 }}>
+              <Text fz={16} style={{ color: 'var(--color-subtext)', lineHeight: 1.6 }}>
                 {b.body}
               </Text>
             </Stack>

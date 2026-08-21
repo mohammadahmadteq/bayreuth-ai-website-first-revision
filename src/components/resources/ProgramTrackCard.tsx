@@ -34,7 +34,7 @@ export const ProgramTrackCard: FC<ProgramTrackCardProps> = ({ program }) => {
           <Icon size={20} color="var(--teal)" stroke={1.7} style={{ flexShrink: 0 }} />
           <Text
             fw={700}
-            ff="Space Grotesk, sans-serif"
+            ff='"Source Sans 3", sans-serif'
             fz={16}
             style={{ color: 'var(--color-text)' }}
           >

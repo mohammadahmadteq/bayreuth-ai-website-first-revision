@@ -29,7 +29,7 @@ const PartnerLogo: FC<{ partner: Partner }> = ({ partner }) => {
         style={{ maxWidth: '100%', height: 56, objectFit: 'contain' }}
       />
       {partner.description && (
-        <Text fz={13} style={{ color: 'var(--color-subtext)', lineHeight: 1.5 }}>
+        <Text fz={16} style={{ color: 'var(--color-subtext)', lineHeight: 1.5 }}>
           {partner.description}
         </Text>
       )}
@@ -71,7 +71,7 @@ export const PartnerGrid: FC<PartnerGridProps> = ({ partners }) => {
         return (
           <Stack key={tier} gap={22}>
             <Text
-              ff="Space Grotesk, sans-serif"
+              ff='"Source Sans 3", sans-serif'
               fw={700}
               fz={13}
               tt="uppercase"

@@ -33,7 +33,7 @@ export const TeamMemberCard: FC<TeamMemberCardProps> = ({ member }) => {
       <Stack gap={6} style={{ padding: 18 }}>
         <Text
           fw={700}
-          ff="Space Grotesk, sans-serif"
+          ff='"Source Sans 3", sans-serif'
           fz={18}
           style={{ color: 'var(--color-text)' }}
         >
@@ -42,7 +42,7 @@ export const TeamMemberCard: FC<TeamMemberCardProps> = ({ member }) => {
         <Text fz={13} fw={600} style={{ color: 'var(--teal)' }}>
           {member.role}
         </Text>
-        <Text fz={14} style={{ color: 'var(--color-subtext)', lineHeight: 1.55 }}>
+        <Text fz={16} style={{ color: 'var(--color-subtext)', lineHeight: 1.55 }}>
           {member.bio}
         </Text>
         {member.linkedin && (

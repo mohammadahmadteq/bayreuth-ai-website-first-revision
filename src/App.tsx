@@ -103,7 +103,7 @@ export default function App() {
     <>
       <ScrollToTop />
       <Navbar />
-      <main style={{ paddingTop: 68, position: 'relative', overflow: 'clip' }}>
+      <main style={{ position: 'relative', overflow: 'clip' }}>
         <ErrorBoundary label="Page">
           <AnimatedRoutes />
         </ErrorBoundary>

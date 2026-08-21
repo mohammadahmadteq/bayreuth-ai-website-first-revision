@@ -42,7 +42,7 @@ export const FeaturedNext: FC<FeaturedNextProps> = ({ events }) => {
       >
         <Group justify="space-between" align="flex-start" mb={18} wrap="nowrap">
           <Badge
-            variant="neon"
+            variant="accent"
             leftSection={
               <span
                 className="live-dot"
@@ -50,7 +50,7 @@ export const FeaturedNext: FC<FeaturedNextProps> = ({ events }) => {
                   width: 7,
                   height: 7,
                   borderRadius: 99,
-                  background: 'var(--neon)',
+                  background: '#04140f',
                   display: 'inline-block',
                 }}
               />
@@ -76,7 +76,7 @@ export const FeaturedNext: FC<FeaturedNextProps> = ({ events }) => {
             }}
           >
             <Text
-              ff="Space Grotesk, sans-serif"
+              ff='"Source Sans 3", sans-serif'
               fw={700}
               fz={12}
               style={{ color: 'var(--teal)', letterSpacing: '0.1em' }}
@@ -84,7 +84,7 @@ export const FeaturedNext: FC<FeaturedNextProps> = ({ events }) => {
               {month}
             </Text>
             <Text
-              ff="Space Grotesk, sans-serif"
+              ff='"Source Sans 3", sans-serif'
               fw={700}
               fz={30}
               style={{ color: 'var(--color-text)', lineHeight: 1 }}
@@ -96,7 +96,7 @@ export const FeaturedNext: FC<FeaturedNextProps> = ({ events }) => {
           <Stack gap={8} style={{ minWidth: 0 }}>
             <Text
               fw={700}
-              ff="Space Grotesk, sans-serif"
+              ff='"Source Sans 3", sans-serif'
               fz="clamp(18px, 2.4vw, 24px)"
               style={{ color: 'var(--color-text)' }}
             >

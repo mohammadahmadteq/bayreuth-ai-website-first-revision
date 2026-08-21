@@ -1,10 +1,9 @@
 import { type FC } from 'react'
 import { Box, Group, Stack, Text } from '@mantine/core'
-import { IconArrowRight, IconBrandWhatsapp, IconCalendarTime } from '@tabler/icons-react'
-import { JoinCtaButton } from '../ui/JoinCtaButton'
+import { IconBrandWhatsapp, IconCalendarTime } from '@tabler/icons-react'
+import { JoinButton } from '../ui/JoinButton'
 import { SectionHeading } from '../ui/SectionHeading'
-
-const WHATSAPP_URL = 'https://chat.whatsapp.com/CYZelJF7rDYFkEuz94n86j'
+import { WHATSAPP_URL } from '../../lib/utils'
 
 export const JoinSection: FC = () => {
   return (
@@ -20,14 +19,13 @@ export const JoinSection: FC = () => {
         style={{
           padding: 'clamp(40px, 7vw, 76px) clamp(24px, 4vw, 48px)',
           textAlign: 'center',
-          background:
-            'linear-gradient(135deg, rgba(var(--teal-rgb), 0.07), rgba(var(--neon-rgb), 0.04) 55%, transparent)',
+          background: 'rgba(var(--teal-rgb), 0.05)',
         }}
       >
         <Stack gap={26} align="center">
           <Stack gap={10} align="center">
             <Text
-              ff="Space Grotesk, sans-serif"
+              ff='"Source Sans 3", sans-serif'
               fw={700}
               fz="clamp(24px, 4vw, 36px)"
               style={{ color: 'var(--color-text)' }}
@@ -46,15 +44,14 @@ export const JoinSection: FC = () => {
             </Text>
           </Stack>
 
-          <JoinCtaButton href={WHATSAPP_URL} ariaLabel="Join the Bayreuth AI WhatsApp group">
-            <IconBrandWhatsapp size={24} stroke={2.2} />
+          <JoinButton href={WHATSAPP_URL} size="lg" withArrow={false}>
+            <IconBrandWhatsapp size={20} stroke={2.2} />
             Join Us on WhatsApp
-            <IconArrowRight size={22} stroke={2.4} />
-          </JoinCtaButton>
+          </JoinButton>
 
           <Group gap={8} justify="center">
             <IconCalendarTime size={16} color="var(--color-subtext)" />
-            <Text fz={14} style={{ color: 'var(--color-subtext)' }}>
+            <Text fz={16} style={{ color: 'var(--color-subtext)' }}>
               Next up: every other Thursday, 18:00 · Room S122, GW I
             </Text>
           </Group>
