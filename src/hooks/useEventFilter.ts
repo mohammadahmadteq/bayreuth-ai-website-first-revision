@@ -34,8 +34,7 @@ export function useEventFilter(events: EventItem[]): UseEventFilterResult {
   const filteredEvents = useMemo(() => {
     const now = new Date()
     return events.filter(
-      (e) =>
-        (category === 'all' || e.category === category) && matchesTimeframe(e, timeframe, now),
+      (e) => (category === 'all' || e.category === category) && matchesTimeframe(e, timeframe, now),
     )
   }, [events, category, timeframe])
 

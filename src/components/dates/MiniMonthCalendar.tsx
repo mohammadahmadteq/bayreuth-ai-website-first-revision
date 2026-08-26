@@ -127,7 +127,9 @@ export const MiniMonthCalendar: FC<MiniMonthCalendarProps> = ({
             <Box
               key={day}
               component={interactive ? UnstyledButton : 'div'}
-              onClick={interactive ? () => onSelectDay?.(new Date(year, monthIndex, day)) : undefined}
+              onClick={
+                interactive ? () => onSelectDay?.(new Date(year, monthIndex, day)) : undefined
+              }
               aria-label={interactive ? `Events on ${day}` : undefined}
               style={{
                 position: 'relative',

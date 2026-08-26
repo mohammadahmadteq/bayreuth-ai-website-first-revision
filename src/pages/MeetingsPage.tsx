@@ -30,7 +30,9 @@ export const MeetingsPage: FC = () => {
   const listTitle = timeframe === 'past' ? 'Past dates' : 'Upcoming dates'
 
   const selectDayEvent = (date: Date) => {
-    const match = filteredEvents.find((e) => new Date(e.date).toDateString() === date.toDateString())
+    const match = filteredEvents.find(
+      (e) => new Date(e.date).toDateString() === date.toDateString(),
+    )
     if (match) setSelected(match)
   }
 

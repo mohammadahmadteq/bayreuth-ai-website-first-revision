@@ -2,7 +2,11 @@ import type { EventItem } from '../types/content'
 
 /** Escape a value for an iCalendar text field (RFC 5545 §3.3.11). */
 function escapeText(value: string): string {
-  return value.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n')
+  return value
+    .replace(/\\/g, '\\\\')
+    .replace(/;/g, '\\;')
+    .replace(/,/g, '\\,')
+    .replace(/\n/g, '\\n')
 }
 
 function pad(n: number): string {

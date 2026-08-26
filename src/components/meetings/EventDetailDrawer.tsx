@@ -93,11 +93,7 @@ export const EventDetailDrawer: FC<EventDetailDrawerProps> = ({ event, onClose }
           </Stack>
 
           <Group gap={12} pt={8}>
-            <JoinButton
-              size="sm"
-              withArrow={false}
-              onClick={() => downloadICS([event], event.id)}
-            >
+            <JoinButton size="sm" withArrow={false} onClick={() => downloadICS([event], event.id)}>
               <IconCalendarPlus size={17} stroke={2} />
               Add to calendar
             </JoinButton>
