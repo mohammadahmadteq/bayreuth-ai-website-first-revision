@@ -9,7 +9,7 @@ const STYLES: Record<Variant, { color: string; bg: string; border: string }> = {
     border: 'rgba(var(--teal-rgb), 0.3)',
   },
   accent: {
-    color: '#04140f',
+    color: 'var(--on-teal)',
     bg: 'var(--teal)',
     border: 'var(--teal)',
   },

@@ -13,9 +13,9 @@ export const ResourcesPage: FC = () => {
     <>
       <PageHeader eyebrow="Learning Resources" title="Learn with us." />
 
-      <Container size={760} px={24} py={{ base: 56, md: 88 }}>
+      <Container size={760} px={24} py={{ base: 32, md: 48 }}>
         <Stack gap={64}>
-          <Stack gap={20}>
+          <Stack gap={40}>
             <SectionHeading eyebrow="Programs" title="Tracks & workshops" />
             <ErrorBoundary label="Programs">
               <Stack gap={10}>
@@ -28,7 +28,7 @@ export const ResourcesPage: FC = () => {
             </ErrorBoundary>
           </Stack>
 
-          <Stack gap={20}>
+          <Stack gap={40}>
             <SectionHeading eyebrow="Curriculum" title="AI Safety Fundamentals — reading group" />
             <ErrorBoundary label="Reading group">
               <ReadingGroupList />

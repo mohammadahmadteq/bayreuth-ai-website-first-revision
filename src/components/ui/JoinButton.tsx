@@ -5,6 +5,7 @@ import { IconArrowRight } from '@tabler/icons-react'
 
 const MotionLink = motion.create(Link)
 const MotionAnchor = motion.a
+const MotionButton = motion.button
 
 type Size = 'sm' | 'md' | 'lg'
 
@@ -20,6 +21,8 @@ interface JoinButtonProps {
   to?: string
   /** External / mailto link. Renders an <a> instead of a router Link. */
   href?: string
+  /** Action handler. Renders a <button> instead of a link — takes precedence over `to`/`href`. */
+  onClick?: () => void
   size?: Size
   withArrow?: boolean
   children?: ReactNode
@@ -33,6 +36,7 @@ interface JoinButtonProps {
 export const JoinButton: FC<JoinButtonProps> = ({
   to = '/apply',
   href,
+  onClick,
   size = 'md',
   withArrow = true,
   children,
@@ -61,6 +65,13 @@ export const JoinButton: FC<JoinButtonProps> = ({
     </>
   )
 
+  if (onClick) {
+    return (
+      <MotionButton type="button" onClick={onClick} {...shared}>
+        {content}
+      </MotionButton>
+    )
+  }
   if (href) {
     return (
       <MotionAnchor href={href} {...shared}>

@@ -19,6 +19,10 @@
   --teal-dim: rgba(0, 135, 81, 0.4);
   --teal-dark: #00432a;
   --teal-dark-rgb: 0, 67, 42;
+  /* Text/icon colour that sits *on top of* a solid --teal fill. The content
+     teal is dark, so it takes white; the chrome teal is a bright mint and
+     takes near-black. Never hard-code either — always use this. */
+  --on-teal: #ffffff;
 
   /* Lines & borders */
   --border: rgba(10, 20, 15, 0.1);
@@ -43,6 +47,7 @@
   --teal: #2fe6a3;
   --teal-rgb: 47, 230, 163;
   --teal-dim: rgba(47, 230, 163, 0.5);
+  --on-teal: #04140f;
   --teal-dark: #0d3b2c;
   --teal-dark-rgb: 13, 59, 44;
   --border: rgba(255, 255, 255, 0.08);
@@ -73,7 +78,7 @@ body {
 
 ::selection {
   background: var(--teal);
-  color: #04140f;
+  color: var(--on-teal);
 }
 
 a {
@@ -110,25 +115,25 @@ section[id],
   content: '';
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(100px);
   will-change: transform, opacity;
 }
 
 .hero-gradient-bg::before {
-  top: -30%;
-  left: -15%;
-  width: 70%;
-  height: 110%;
-  background: radial-gradient(circle, rgba(var(--teal-rgb), 0.09), transparent 68%);
+  top: -45%;
+  left: -30%;
+  width: 120%;
+  height: 170%;
+  background: radial-gradient(ellipse at center, rgba(var(--teal-rgb), 0.09), transparent 70%);
   animation: hero-drift-a 42s ease-in-out infinite alternate;
 }
 
 .hero-gradient-bg::after {
-  bottom: -40%;
-  right: -20%;
-  width: 75%;
-  height: 115%;
-  background: radial-gradient(circle, rgba(var(--teal-dark-rgb), 0.55), transparent 66%);
+  bottom: -50%;
+  right: -32%;
+  width: 125%;
+  height: 175%;
+  background: radial-gradient(ellipse at center, rgba(var(--teal-dark-rgb), 0.55), transparent 68%);
   animation: hero-drift-b 56s ease-in-out infinite alternate;
 }
 
@@ -186,7 +191,7 @@ section[id],
 /* --- Buttons --- */
 .btn-member {
   background: var(--teal) !important;
-  color: #04140f !important;
+  color: var(--on-teal) !important;
   font-weight: 600 !important;
   letter-spacing: 0.01em !important;
   border: none !important;
@@ -236,6 +241,40 @@ section[id],
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* --- Meetings list rows --- */
+.event-row {
+  border-left: 3px solid transparent;
+  transition:
+    background-color 0.2s ease,
+    border-left-color 0.2s ease;
+}
+.event-row:hover {
+  background: var(--color-surface-strong);
+}
+.event-row[data-active] {
+  background: rgba(var(--teal-rgb), 0.07);
+  border-left-color: var(--teal);
+}
+
+/* --- Slim scrollbar for internal scroll panels (e.g. meetings list) --- */
+.scroll-panel {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+.scroll-panel::-webkit-scrollbar {
+  width: 6px;
+}
+.scroll-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-panel::-webkit-scrollbar-thumb {
+  background-color: var(--border-strong);
+  border-radius: 9999px;
+}
+.scroll-panel::-webkit-scrollbar-thumb:hover {
+  background-color: var(--teal-dim);
 }
 
 /* --- Branded page-transition mark --- */

@@ -17,8 +17,9 @@ export const PageHeader: FC<PageHeaderProps> = ({ eyebrow, title, subtitle }) =>
         position: 'relative',
         overflow: 'hidden',
         borderBottom: '1px solid var(--border)',
-        paddingTop: 'clamp(56px, 9vh, 110px)',
-        paddingBottom: 'clamp(40px, 6vh, 72px)',
+        /* Floor clears the fixed navbar — the tightening happens below the title. */
+        paddingTop: 'clamp(94px, 9vh, 112px)',
+        paddingBottom: 'clamp(28px, 4vh, 48px)',
       }}
     >
       <Box
@@ -43,7 +44,7 @@ export const PageHeader: FC<PageHeaderProps> = ({ eyebrow, title, subtitle }) =>
             fw={700}
             fz={13}
             tt="uppercase"
-            style={{ letterSpacing: '0.18em', color: 'var(--teal)', marginBottom: 14 }}
+            style={{ letterSpacing: '0.18em', color: 'var(--teal)', marginBottom: 10 }}
           >
             {eyebrow}
           </Text>
@@ -51,13 +52,13 @@ export const PageHeader: FC<PageHeaderProps> = ({ eyebrow, title, subtitle }) =>
             component="h1"
             ff='"Source Sans 3", sans-serif'
             style={{
-              fontSize: 'clamp(36px, 6.5vw, 72px)',
+              fontSize: 'clamp(28px, 4.6vw, 58px)',
               fontWeight: 700,
-              lineHeight: 1,
+              lineHeight: 1.05,
               letterSpacing: '-0.03em',
               color: 'var(--color-text)',
               margin: 0,
-              maxWidth: 900,
+              maxWidth: 820,
             }}
           >
             {title}
@@ -66,10 +67,10 @@ export const PageHeader: FC<PageHeaderProps> = ({ eyebrow, title, subtitle }) =>
             <Text
               style={{
                 color: 'var(--color-subtext)',
-                fontSize: 'clamp(16px, 2.2vw, 20px)',
-                lineHeight: 1.6,
-                maxWidth: 680,
-                marginTop: 22,
+                fontSize: 'clamp(15px, 1.7vw, 18px)',
+                lineHeight: 1.55,
+                maxWidth: 620,
+                marginTop: 14,
               }}
             >
               {subtitle}

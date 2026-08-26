@@ -30,8 +30,8 @@ export const ApplyPage: FC = () => {
         subtitle="If you’re curious about AI, you already belong here."
       />
 
-      <Container size={920} px={24} py={{ base: 56, md: 88 }}>
-        <Stack gap={48}>
+      <Container size={920} px={24} py={{ base: 32, md: 48 }}>
+        <Stack gap={64}>
           <FadeInWhenVisible>
             <Stack gap={18} className="glow-card" style={{ padding: 'clamp(24px, 4vw, 40px)' }}>
               <Text

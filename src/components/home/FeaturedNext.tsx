@@ -50,7 +50,7 @@ export const FeaturedNext: FC<FeaturedNextProps> = ({ events }) => {
                   width: 7,
                   height: 7,
                   borderRadius: 99,
-                  background: '#04140f',
+                  background: 'var(--on-teal)',
                   display: 'inline-block',
                 }}
               />

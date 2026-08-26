@@ -27,7 +27,7 @@ export const ProjectFilterBar: FC<ProjectFilterBarProps> = ({ filters, active, o
               fontWeight: 600,
               fontFamily: '"Source Sans 3", sans-serif',
               textTransform: 'capitalize',
-              color: isActive ? '#04140f' : 'var(--color-subtext)',
+              color: isActive ? 'var(--on-teal)' : 'var(--color-subtext)',
               background: isActive ? 'var(--teal)' : 'var(--color-surface-strong)',
               border: `1px solid ${isActive ? 'var(--teal)' : 'var(--border)'}`,
               transition: 'all 0.2s ease',

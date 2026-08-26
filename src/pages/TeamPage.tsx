@@ -13,7 +13,7 @@ export const TeamPage: FC = () => {
         title="The people behind it."
         subtitle="A volunteer board and an active community of students from across the University of Bayreuth keep the association running."
       />
-      <Container size={1280} px={24} py={{ base: 56, md: 88 }}>
+      <Container size={1280} px={24} py={{ base: 32, md: 48 }}>
         <ErrorBoundary label="Team">
           <TeamGrid members={team} />
         </ErrorBoundary>

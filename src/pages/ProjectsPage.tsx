@@ -13,7 +13,7 @@ export const ProjectsPage: FC = () => {
         title="What we’ve built."
         subtitle="Research, tools, papers, and hackathon prototypes — made by members across semesters. Filter by category and hover a card for details."
       />
-      <Container size={1280} px={24} py={{ base: 56, md: 88 }}>
+      <Container size={1280} px={24} py={{ base: 32, md: 48 }}>
         <ErrorBoundary label="Projects">
           <ProjectGrid projects={projects} />
         </ErrorBoundary>

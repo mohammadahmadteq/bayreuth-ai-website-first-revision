@@ -20,14 +20,14 @@ export const PartnersPage: FC = () => {
         subtitle="We work with companies, research groups, and student initiatives who want to engage with the next generation of AI talent in Bayreuth."
       />
 
-      <Container size={1280} px={24} py={{ base: 56, md: 88 }}>
+      <Container size={1280} px={24} py={{ base: 32, md: 48 }}>
         <Stack gap={64}>
-          <Stack gap={28}>
+          <Stack gap={40}>
             <SectionHeading eyebrow="Why partner" title="What sponsors get" />
             <PartnerBenefitsList />
           </Stack>
 
-          <Stack gap={28}>
+          <Stack gap={40}>
             <SectionHeading eyebrow="Our network" title="Who we work with" />
             <ErrorBoundary label="Partners">
               <PartnerGrid partners={partners} />

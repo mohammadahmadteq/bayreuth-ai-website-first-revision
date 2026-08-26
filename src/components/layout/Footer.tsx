@@ -43,7 +43,7 @@ export const Footer: FC = () => {
                   placeItems: 'center',
                   fontFamily: '"Source Sans 3", sans-serif',
                   fontWeight: 700,
-                  color: '#04140f',
+                  color: 'var(--on-teal)',
                   fontSize: 14,
                 }}
               >
