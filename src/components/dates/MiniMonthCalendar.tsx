@@ -1,4 +1,4 @@
-import { type FC, useState } from 'react'
+import { type CSSProperties, type FC, useState } from 'react'
 import { Box, Group, Stack, Text, UnstyledButton } from '@mantine/core'
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react'
 import type { EventItem } from '../../types/content'
@@ -123,33 +123,27 @@ export const MiniMonthCalendar: FC<MiniMonthCalendarProps> = ({
           const isSelected = day === selectedDay
           const interactive = hasEvent && Boolean(onSelectDay)
 
-          return (
-            <Box
-              key={day}
-              component={interactive ? UnstyledButton : 'div'}
-              onClick={
-                interactive ? () => onSelectDay?.(new Date(year, monthIndex, day)) : undefined
-              }
-              aria-label={interactive ? `Events on ${day}` : undefined}
-              style={{
-                position: 'relative',
-                height: 38,
-                width: 38,
-                margin: '0 auto',
-                display: 'grid',
-                placeItems: 'center',
-                borderRadius: '50%',
-                fontFamily: '"Source Sans 3", sans-serif',
-                fontSize: 13,
-                fontWeight: isToday || isSelected ? 700 : 500,
-                cursor: interactive ? 'pointer' : 'default',
-                color: isToday ? 'var(--on-teal)' : 'var(--color-text)',
-                background: isToday ? 'var(--teal)' : 'transparent',
-                border: `1px solid ${isSelected && !isToday ? 'var(--teal)' : 'transparent'}`,
-                boxShadow: isSelected && isToday ? '0 0 0 3px rgba(var(--teal-rgb),0.25)' : 'none',
-                transition: 'background-color 0.18s ease, border-color 0.18s ease',
-              }}
-            >
+          const cellStyle: CSSProperties = {
+            position: 'relative',
+            height: 38,
+            width: 38,
+            margin: '0 auto',
+            display: 'grid',
+            placeItems: 'center',
+            borderRadius: '50%',
+            fontFamily: '"Source Sans 3", sans-serif',
+            fontSize: 13,
+            fontWeight: isToday || isSelected ? 700 : 500,
+            cursor: interactive ? 'pointer' : 'default',
+            color: isToday ? 'var(--on-teal)' : 'var(--color-text)',
+            background: isToday ? 'var(--teal)' : 'transparent',
+            border: `1px solid ${isSelected && !isToday ? 'var(--teal)' : 'transparent'}`,
+            boxShadow: isSelected && isToday ? '0 0 0 3px rgba(var(--teal-rgb),0.25)' : 'none',
+            transition: 'background-color 0.18s ease, border-color 0.18s ease',
+          }
+
+          const cellContent = (
+            <>
               {day}
               {hasEvent && (
                 <Box
@@ -163,6 +157,21 @@ export const MiniMonthCalendar: FC<MiniMonthCalendarProps> = ({
                   }}
                 />
               )}
+            </>
+          )
+
+          return interactive ? (
+            <UnstyledButton
+              key={day}
+              onClick={() => onSelectDay?.(new Date(year, monthIndex, day))}
+              aria-label={`Events on ${day}`}
+              style={cellStyle}
+            >
+              {cellContent}
+            </UnstyledButton>
+          ) : (
+            <Box key={day} style={cellStyle}>
+              {cellContent}
             </Box>
           )
         })}
