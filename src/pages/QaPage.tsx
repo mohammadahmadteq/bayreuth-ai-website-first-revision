@@ -56,11 +56,7 @@ export const QaPage: FC = () => {
                 >
                   Still wondering something? Come by and ask us in person.
                 </Text>
-                <JoinButton
-                  href={`mailto:${QA_EMAIL}`}
-                  size="lg"
-                  withArrow={false}
-                >
+                <JoinButton href={`mailto:${QA_EMAIL}`} size="lg" withArrow={false}>
                   Get in touch
                 </JoinButton>
               </Stack>

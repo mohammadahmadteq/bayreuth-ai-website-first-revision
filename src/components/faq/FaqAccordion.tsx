@@ -75,7 +75,8 @@ export const FaqAccordion: FC<FaqAccordionProps> = ({ items, defaultOpenId }) =>
                   background: isOpen ? 'var(--teal)' : 'transparent',
                   color: isOpen ? 'var(--on-teal)' : 'var(--teal)',
                   transform: isOpen ? 'rotate(45deg)' : 'none',
-                  transition: 'transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease',
+                  transition:
+                    'transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease',
                   flexShrink: 0,
                 }}
               >
@@ -92,7 +93,14 @@ export const FaqAccordion: FC<FaqAccordionProps> = ({ items, defaultOpenId }) =>
                   transition={{ duration: 0.25, ease: [0.2, 0, 0, 1] }}
                   style={{ overflow: 'hidden' }}
                 >
-                  <Box style={{ display: 'grid', gridTemplateColumns: '40px 1fr', gap: 14, paddingBottom: 26 }}>
+                  <Box
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: '40px 1fr',
+                      gap: 14,
+                      paddingBottom: 26,
+                    }}
+                  >
                     <span />
                     <Text
                       style={{
