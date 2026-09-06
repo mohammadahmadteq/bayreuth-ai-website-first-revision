@@ -17,6 +17,7 @@ const NAV_LINKS: NavLinkItem[] = [
   { to: '/meetings', label: 'Meetings' },
   { to: '/team', label: 'Team' },
   { to: '/projects', label: 'Projects' },
+  { to: '/qa', label: 'Q&A' },
 ]
 
 const linkStyle = (isActive: boolean) => ({
@@ -35,45 +36,6 @@ const linkStyle = (isActive: boolean) => ({
   transition: 'color 0.2s, box-shadow 0.2s',
   whiteSpace: 'nowrap' as const,
 })
-
-/** Q&A has no page yet — shown as a quiet "coming soon" label, not a link. */
-const QASoonLabel: FC<{ mobile?: boolean }> = ({ mobile }) => (
-  <Group
-    gap={6}
-    wrap="nowrap"
-    style={{
-      height: mobile ? 'auto' : 32,
-      padding: mobile ? '12px 0' : 0,
-      borderBottom: mobile ? '1px solid var(--border)' : 'none',
-    }}
-  >
-    <Text
-      style={{
-        fontSize: mobile ? 18 : 14,
-        fontWeight: 500,
-        fontFamily: '"Source Sans 3", sans-serif',
-        color: 'var(--color-subtext)',
-        opacity: 0.6,
-      }}
-    >
-      Q&amp;A
-    </Text>
-    <Text
-      style={{
-        fontSize: 10,
-        fontWeight: 600,
-        letterSpacing: '0.06em',
-        textTransform: 'uppercase',
-        color: 'var(--color-subtext)',
-        border: '1px solid var(--border)',
-        borderRadius: 4,
-        padding: '1px 5px',
-      }}
-    >
-      Soon
-    </Text>
-  </Group>
-)
 
 export const Navbar: FC = () => {
   const [opened, { toggle, close }] = useDisclosure(false)
@@ -148,7 +110,6 @@ export const Navbar: FC = () => {
               {label}
             </NavLink>
           ))}
-          <QASoonLabel />
         </Group>
 
         {/* Right cluster */}
@@ -208,7 +169,6 @@ export const Navbar: FC = () => {
               {label}
             </NavLink>
           ))}
-          <QASoonLabel mobile />
         </Stack>
 
         <JoinButton size="lg" className="" />

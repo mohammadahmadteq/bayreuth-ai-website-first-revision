@@ -40,17 +40,20 @@ export interface Project {
   date: string
 }
 
-export type ProgramFormat = 'reading-group' | 'workshop' | 'track'
-export type ProgramLevel = 'beginner' | 'intermediate' | 'advanced'
+export interface ResourceLink {
+  title: string
+  url: string
+  /** Where it lives, e.g. "YouTube", "GitHub", "arXiv", "Website". */
+  source: string
+  /** What it is, e.g. "Video", "Course", "Paper". Empty when the source name already says enough (e.g. "GitHub"). */
+  type: string
+}
 
-export interface Program {
+export interface ResourceCategory {
   id: string
   title: string
-  description: string
-  format: ProgramFormat
-  level: ProgramLevel
-  schedule: string
-  capacity?: number
+  subtitle?: string
+  resources: ResourceLink[]
 }
 
 export type PartnerTier = 'sponsor' | 'cooperation'
@@ -70,4 +73,10 @@ export interface Stat {
   value: number
   suffix?: string
   icon?: string
+}
+
+export interface FaqItem {
+  id: string
+  question: string
+  answer: string
 }

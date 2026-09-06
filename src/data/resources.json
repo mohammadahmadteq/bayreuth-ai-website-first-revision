@@ -1,0 +1,202 @@
+[
+  {
+    "id": "machine-learning",
+    "title": "Machine Learning",
+    "subtitle": "Tutorials & Courses",
+    "resources": [
+      {
+        "title": "ML Tutorials",
+        "url": "https://machinelearningmastery.com/",
+        "source": "Website",
+        "type": ""
+      },
+      {
+        "title": "Tutorial series on deep learning",
+        "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi",
+        "source": "YouTube",
+        "type": "Playlist"
+      },
+      {
+        "title": "Coding a neural network from scratch in 31 minutes",
+        "url": "https://www.youtube.com/watch?v=w8yWXqWQYmU&list=PLfzcn6Jp0f8shspGroxT4amLYR_hIV1ji&index=1",
+        "source": "YouTube",
+        "type": "Video"
+      },
+      {
+        "title": "Tutorials for building your own neural network",
+        "url": "https://github.com/codecrafters-io/build-your-own-x#build-your-own-neural-network",
+        "source": "GitHub",
+        "type": ""
+      },
+      {
+        "title": "Neural networks and gradient descent",
+        "url": "https://www.youtube.com/watch?v=R9OHn5ZF4Uo",
+        "source": "YouTube",
+        "type": "Video"
+      },
+      {
+        "title": "Diffusion models",
+        "url": "https://www.youtube.com/watch?v=1CIpzeNxIhU",
+        "source": "YouTube",
+        "type": "Video"
+      },
+      {
+        "title": "A high level explanation of how AI learns",
+        "url": "https://www.youtube.com/watch?v=R9OHn5ZF4Uo",
+        "source": "YouTube",
+        "type": "Video"
+      },
+      {
+        "title": "Linear algebra",
+        "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab",
+        "source": "YouTube",
+        "type": "Playlist"
+      }
+    ]
+  },
+  {
+    "id": "python",
+    "title": "Python",
+    "subtitle": "Beginner Courses",
+    "resources": [
+      {
+        "title": "Python for Everybody",
+        "url": "https://www.coursera.org/learn/python",
+        "source": "Coursera",
+        "type": "Course"
+      },
+      {
+        "title": "Crash Course on Python",
+        "url": "https://www.coursera.org/learn/python-crash-course",
+        "source": "Coursera",
+        "type": "Course"
+      },
+      {
+        "title": "AI Python for beginners",
+        "url": "https://www.coursera.org/learn/ai-python-for-beginners",
+        "source": "Coursera",
+        "type": "Course"
+      }
+    ]
+  },
+  {
+    "id": "books",
+    "title": "Books",
+    "resources": [
+      {
+        "title": "Machine Learning with Python Cookbook",
+        "url": "https://www.oreilly.com/library/view/machine-learning-with/9781491989371/",
+        "source": "O'Reilly",
+        "type": "Book"
+      },
+      {
+        "title": "Deep Learning mit Python und Keras",
+        "url": "https://www.amazon.de/-/en/Francois-Chollet/dp/3958458386",
+        "source": "Amazon",
+        "type": "Book"
+      },
+      {
+        "title": "Deep Learning by Ian Goodfellow",
+        "url": "https://www.deeplearningbook.org/",
+        "source": "MIT Press",
+        "type": "Book"
+      },
+      {
+        "title": "Probabilistic Machine Learning by Murphy",
+        "url": "https://probml.github.io/pml-book/book1.html",
+        "source": "MIT Press",
+        "type": "Book"
+      },
+      {
+        "title": "Deep dive into ML",
+        "url": "https://d2l.ai/index.html",
+        "source": "Website",
+        "type": "Book"
+      }
+    ]
+  },
+  {
+    "id": "technical-papers",
+    "title": "Technical Papers",
+    "resources": [
+      {
+        "title": "Transformers",
+        "url": "https://arxiv.org/abs/1706.03762",
+        "source": "arXiv",
+        "type": "Paper"
+      },
+      {
+        "title": "KAN Networks",
+        "url": "https://arxiv.org/abs/2404.19756",
+        "source": "arXiv",
+        "type": "Paper"
+      },
+      {
+        "title": "List of papers on LLM Interpretability",
+        "url": "https://www.neelnanda.io/mechanistic-interpretability/favourite-papers",
+        "source": "Website",
+        "type": ""
+      },
+      {
+        "title": "Transformers in Time Series",
+        "url": "https://github.com/qingsongedu/time-series-transformers-review",
+        "source": "GitHub",
+        "type": ""
+      }
+    ]
+  },
+  {
+    "id": "ai-ethics-regulations",
+    "title": "AI Ethics & Regulations",
+    "resources": [
+      {
+        "title": "Computerphile video explaining the \"Stop Button Problem\"",
+        "url": "https://www.youtube.com/watch?v=3TYT1QfdfsM",
+        "source": "YouTube",
+        "type": "Video"
+      },
+      {
+        "title": "Paper on the risks of LLMs",
+        "url": "https://dl.acm.org/doi/10.1145/3442188.3445922",
+        "source": "ACM",
+        "type": "Paper"
+      },
+      {
+        "title": "FDA guidelines",
+        "url": "https://www.fda.gov/medical-devices/software-medical-device-samd/good-machine-learning-practice-medical-device-development-guiding-principles",
+        "source": "FDA",
+        "type": "Guidelines"
+      }
+    ]
+  },
+  {
+    "id": "people",
+    "title": "People",
+    "resources": [
+      {
+        "title": "AI founder and influencer",
+        "url": "https://www.ykilcher.com/",
+        "source": "Website",
+        "type": ""
+      },
+      {
+        "title": "Youtuber",
+        "url": "https://www.youtube.com/@NicholasRenotte",
+        "source": "YouTube",
+        "type": "Channel"
+      }
+    ]
+  },
+  {
+    "id": "past-talks",
+    "title": "Past Talks",
+    "resources": [
+      {
+        "title": "Machine Learning in Data-Driven Marketing",
+        "url": "https://github.com/AndreasKarasenko/presentation_10-2024",
+        "source": "GitHub",
+        "type": ""
+      }
+    ]
+  }
+]

@@ -1,40 +1,35 @@
 import { type FC } from 'react'
-import { Container, Stack } from '@mantine/core'
+import { Container } from '@mantine/core'
 import { PageHeader } from '../components/layout/PageHeader'
-import { ProgramTrackCard } from '../components/resources/ProgramTrackCard'
-import { ReadingGroupList } from '../components/resources/ReadingGroupList'
-import { SectionHeading } from '../components/ui/SectionHeading'
-import { FadeInWhenVisible } from '../components/ui/FadeInWhenVisible'
+import { ResourceDirectory } from '../components/resources/ResourceDirectory'
 import { ErrorBoundary } from '../components/ErrorBoundary'
-import { programs } from '../data'
+import { useResourceDirectory } from '../hooks/useResourceDirectory'
+import { resourceCategories } from '../data'
 
 export const ResourcesPage: FC = () => {
+  const { query, setQuery, results, isSearching, openCategoryId, toggleCategory } =
+    useResourceDirectory(resourceCategories)
+
   return (
     <>
-      <PageHeader eyebrow="Learning Resources" title="Learn with us." />
+      <PageHeader
+        eyebrow="Resources"
+        title="Learn & Explore"
+        subtitle="Tutorials, courses, books, papers and other resources selected by the Bayreuth AI Association."
+      />
 
-      <Container size={760} px={24} py={{ base: 32, md: 48 }}>
-        <Stack gap={64}>
-          <Stack gap={40}>
-            <SectionHeading eyebrow="Programs" title="Tracks & workshops" />
-            <ErrorBoundary label="Programs">
-              <Stack gap={10}>
-                {programs.map((p, i) => (
-                  <FadeInWhenVisible key={p.id} delay={(i % 3) * 0.06}>
-                    <ProgramTrackCard program={p} />
-                  </FadeInWhenVisible>
-                ))}
-              </Stack>
-            </ErrorBoundary>
-          </Stack>
-
-          <Stack gap={40}>
-            <SectionHeading eyebrow="Curriculum" title="AI Safety Fundamentals — reading group" />
-            <ErrorBoundary label="Reading group">
-              <ReadingGroupList />
-            </ErrorBoundary>
-          </Stack>
-        </Stack>
+      <Container size={880} px={24} py={{ base: 32, md: 48 }}>
+        <ErrorBoundary label="Resources">
+          <ResourceDirectory
+            categories={resourceCategories}
+            query={query}
+            onQueryChange={setQuery}
+            results={results}
+            isSearching={isSearching}
+            openCategoryId={openCategoryId}
+            onToggleCategory={toggleCategory}
+          />
+        </ErrorBoundary>
       </Container>
     </>
   )

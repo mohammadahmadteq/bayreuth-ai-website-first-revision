@@ -15,6 +15,7 @@ const NAV = [
   { to: '/resources', label: 'Learning resources' },
   { to: '/projects', label: 'Projects' },
   { to: '/partners', label: 'Partners' },
+  { to: '/qa', label: 'Q&A' },
   { to: '/apply', label: 'Join Us' },
 ]
 
@@ -125,9 +126,6 @@ export const Footer: FC = () => {
                 {n.label}
               </Link>
             ))}
-            <Text style={{ color: 'var(--color-subtext)', fontSize: 14, opacity: 0.6 }}>
-              Q&amp;A (coming soon)
-            </Text>
           </Stack>
 
           <Stack gap={10}>

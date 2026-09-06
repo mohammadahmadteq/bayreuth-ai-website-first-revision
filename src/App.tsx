@@ -12,6 +12,7 @@ import { ResourcesPage } from './pages/ResourcesPage'
 import { ProjectsPage } from './pages/ProjectsPage'
 import { PartnersPage } from './pages/PartnersPage'
 import { ApplyPage } from './pages/ApplyPage'
+import { QaPage } from './pages/QaPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
 /** Scroll to top on every route change (unless reduced motion / hash nav). */
@@ -82,6 +83,14 @@ const AnimatedRoutes: FC = () => {
           element={
             <PageTransition>
               <ApplyPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/qa"
+          element={
+            <PageTransition>
+              <QaPage />
             </PageTransition>
           }
         />

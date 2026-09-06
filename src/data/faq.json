@@ -1,0 +1,27 @@
+[
+  {
+    "id": "faq-join",
+    "question": "How can I join the AI Association?",
+    "answer": "Come to one of our meetings and say hello. You can also use the Join Us button to get in touch first. There is no complicated application process, just show up when you are ready."
+  },
+  {
+    "id": "faq-student",
+    "question": "Do I need to be a student to join?",
+    "answer": "Our association is built by students at the University of Bayreuth. If you study here, you can get involved right away. If you are connected to the university in another way, send us a message and we can talk about what makes sense."
+  },
+  {
+    "id": "faq-experience",
+    "question": "Do I need AI experience to join?",
+    "answer": "Not at all. Some people come because they want to understand the basics, while others already build with AI. We learn from each other, and nobody is expected to know everything."
+  },
+  {
+    "id": "faq-meeting",
+    "question": "What happens at a typical meeting?",
+    "answer": "It depends on the evening. We might hear from a guest, try out a tool, work on a project, or simply discuss a question that caught our attention. There is always room to meet people and exchange ideas."
+  },
+  {
+    "id": "faq-project",
+    "question": "Can I bring my own project or idea?",
+    "answer": "Absolutely. Bring an early idea, a half-finished prototype, or a question you cannot solve alone. You may find someone who wants to explore it with you, or simply offer a useful perspective."
+  }
+]
