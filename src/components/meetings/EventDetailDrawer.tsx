@@ -11,7 +11,6 @@ interface EventDetailDrawerProps {
   onClose: () => void
 }
 
-/** Slide-over with the full detail of a single date, plus an .ics export. */
 export const EventDetailDrawer: FC<EventDetailDrawerProps> = ({ event, onClose }) => {
   const date = event ? new Date(event.date) : null
 

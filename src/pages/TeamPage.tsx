@@ -3,9 +3,10 @@ import { Container } from '@mantine/core'
 import { PageHeader } from '../components/layout/PageHeader'
 import { TeamGrid } from '../components/team/TeamGrid'
 import { ErrorBoundary } from '../components/ErrorBoundary'
-import { team } from '../data'
+import { useSiteContent } from '../hooks/useSiteContent'
 
 export const TeamPage: FC = () => {
+  const { team } = useSiteContent()
   return (
     <>
       <PageHeader

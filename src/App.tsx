@@ -15,7 +15,18 @@ import { ApplyPage } from './pages/ApplyPage'
 import { QaPage } from './pages/QaPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
-/** Scroll to top on every route change (unless reduced motion / hash nav). */
+const PAGE_ROUTES = [
+  { path: '/', Page: HomePage },
+  { path: '/meetings', Page: MeetingsPage },
+  { path: '/team', Page: TeamPage },
+  { path: '/resources', Page: ResourcesPage },
+  { path: '/projects', Page: ProjectsPage },
+  { path: '/partners', Page: PartnersPage },
+  { path: '/apply', Page: ApplyPage },
+  { path: '/qa', Page: QaPage },
+  { path: '*', Page: NotFoundPage },
+]
+
 const ScrollToTop: FC = () => {
   const { pathname } = useLocation()
   useEffect(() => {
@@ -29,79 +40,18 @@ const AnimatedRoutes: FC = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route
-          path="/"
-          element={
-            <PageTransition>
-              <HomePage />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/meetings"
-          element={
-            <PageTransition>
-              <MeetingsPage />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/team"
-          element={
-            <PageTransition>
-              <TeamPage />
-            </PageTransition>
-          }
-        />
+        {PAGE_ROUTES.map(({ path, Page }) => (
+          <Route
+            key={path}
+            path={path}
+            element={
+              <PageTransition>
+                <Page />
+              </PageTransition>
+            }
+          />
+        ))}
         <Route path="/dates" element={<Navigate to="/meetings" replace />} />
-        <Route
-          path="/resources"
-          element={
-            <PageTransition>
-              <ResourcesPage />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/projects"
-          element={
-            <PageTransition>
-              <ProjectsPage />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/partners"
-          element={
-            <PageTransition>
-              <PartnersPage />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/apply"
-          element={
-            <PageTransition>
-              <ApplyPage />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/qa"
-          element={
-            <PageTransition>
-              <QaPage />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="*"
-          element={
-            <PageTransition>
-              <NotFoundPage />
-            </PageTransition>
-          }
-        />
       </Routes>
     </AnimatePresence>
   )

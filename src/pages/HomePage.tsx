@@ -9,13 +9,15 @@ import { PhotoRail } from '../components/home/PhotoRail'
 import { PartnersStrip } from '../components/home/PartnersStrip'
 import { JoinSection } from '../components/home/JoinSection'
 import { ErrorBoundary } from '../components/ErrorBoundary'
-import { events, projects, partners } from '../data'
+import { projects } from '../data'
+import { useSiteContent } from '../hooks/useSiteContent'
 
 export const HomePage: FC = () => {
+  const { events, partners, photos } = useSiteContent()
   return (
     <>
       <ErrorBoundary label="Hero">
-        <Hero />
+        <Hero photoUrl={photos[0]?.imageUrl} />
       </ErrorBoundary>
 
       <Container size={1280} px={24}>
@@ -25,7 +27,7 @@ export const HomePage: FC = () => {
           </ErrorBoundary>
 
           <ErrorBoundary label="Community">
-            <PhotoRail />
+            <PhotoRail photos={photos} />
           </ErrorBoundary>
 
           <ErrorBoundary label="Open to everyone">

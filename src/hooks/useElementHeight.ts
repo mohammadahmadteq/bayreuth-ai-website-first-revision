@@ -1,6 +1,5 @@
 import { useLayoutEffect, useRef, useState, type RefObject } from 'react'
 
-/** Tracks an element's rendered height via ResizeObserver — used to match a sibling's height. */
 export function useElementHeight<T extends HTMLElement>(): [
   RefObject<T | null>,
   number | undefined,

@@ -1,6 +1,5 @@
 import { UnstyledButton, Group } from '@mantine/core'
 import { useLocale } from '../hooks/useLocale'
-import type { Locale } from '../services/i18n'
 
 interface LanguageSwitcherProps {
   compact?: boolean
@@ -23,7 +22,7 @@ export function LanguageSwitcher({ compact = false }: LanguageSwitcherProps) {
         return (
           <UnstyledButton
             key={code}
-            onClick={() => setLocale(code as Locale)}
+            onClick={() => setLocale(code)}
             aria-label={`Switch to ${code === 'en' ? 'English' : 'Deutsch'}`}
             aria-pressed={active}
             style={{

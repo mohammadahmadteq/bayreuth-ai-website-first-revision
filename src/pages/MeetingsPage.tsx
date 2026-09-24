@@ -11,19 +11,20 @@ import { FadeInWhenVisible } from '../components/ui/FadeInWhenVisible'
 import { ErrorBoundary } from '../components/ErrorBoundary'
 import { useEventFilter } from '../hooks/useEventFilter'
 import { useElementHeight } from '../hooks/useElementHeight'
-import { getNextEvent, sortEventsByDate } from '../lib/utils'
+import { getNextEvent } from '../lib/events'
 import type { EventItem } from '../types/content'
-import { events } from '../data'
+import { useSiteContent } from '../hooks/useSiteContent'
 
 export const MeetingsPage: FC = () => {
+  const { events } = useSiteContent()
   const isMobile = useMediaQuery('(max-width: 767px)')
   const { category, setCategory, timeframe, setTimeframe, filteredEvents } = useEventFilter(events)
   const [selected, setSelected] = useState<EventItem | null>(null)
   const [calendarRef, calendarHeight] = useElementHeight<HTMLDivElement>()
 
-  // Open the calendar on whichever month the list currently starts in.
+  // Anchor to the next event, or the latest event when all dates are past.
   const calendarMonth = useMemo(() => {
-    const anchor = getNextEvent(filteredEvents) ?? sortEventsByDate(filteredEvents)[0]
+    const anchor = getNextEvent(filteredEvents)
     return anchor ? new Date(anchor.date) : new Date()
   }, [filteredEvents])
 

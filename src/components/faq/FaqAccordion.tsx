@@ -10,7 +10,6 @@ interface FaqAccordionProps {
   defaultOpenId?: string
 }
 
-/** Numbered single-open accordion. Empty `items` renders nothing — the page decides the empty state. */
 export const FaqAccordion: FC<FaqAccordionProps> = ({ items, defaultOpenId }) => {
   const [openId, setOpenId] = useState<string | null>(defaultOpenId ?? items[0]?.id ?? null)
   const reduce = useReducedMotion()

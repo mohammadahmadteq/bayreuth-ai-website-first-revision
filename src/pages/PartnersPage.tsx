@@ -7,11 +7,12 @@ import { SectionHeading } from '../components/ui/SectionHeading'
 import { PartnerButton } from '../components/ui/PartnerButton'
 import { FadeInWhenVisible } from '../components/ui/FadeInWhenVisible'
 import { ErrorBoundary } from '../components/ErrorBoundary'
-import { partners } from '../data'
+import { useSiteContent } from '../hooks/useSiteContent'
 
 const PARTNER_EMAIL = 'bayreuth.ai@gmail.com'
 
 export const PartnersPage: FC = () => {
+  const { partners } = useSiteContent()
   return (
     <>
       <PageHeader
@@ -34,7 +35,6 @@ export const PartnersPage: FC = () => {
             </ErrorBoundary>
           </Stack>
 
-          {/* Strong closing CTA */}
           <FadeInWhenVisible>
             <Box
               style={{

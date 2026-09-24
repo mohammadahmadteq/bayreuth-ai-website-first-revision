@@ -8,12 +8,6 @@ interface PageTransitionProps {
 
 const DURATION = 0.4
 
-/**
- * Wraps a route's content for smooth enter/exit transitions via AnimatePresence.
- * A small, low-opacity logo mark cross-fades over the same duration as the
- * content transition — a subtle branded touch, not an added loading step.
- * Falls back to a static container when reduced motion is requested.
- */
 export const PageTransition: FC<PageTransitionProps> = ({ children }) => {
   const reduce = useReducedMotion()
 

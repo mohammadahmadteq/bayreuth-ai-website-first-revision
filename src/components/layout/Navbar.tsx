@@ -76,7 +76,6 @@ export const Navbar: FC = () => {
       }}
     >
       <Group justify="space-between" align="center" wrap="nowrap" style={{ width: '100%' }}>
-        {/* Brand */}
         <Link to="/" style={{ textDecoration: 'none' }}>
           <Group gap={10} wrap="nowrap">
             <Image
@@ -103,7 +102,6 @@ export const Navbar: FC = () => {
           </Group>
         </Link>
 
-        {/* Desktop nav links */}
         <Group gap={28} visibleFrom="lg">
           {NAV_LINKS.map(({ to, label, end }) => (
             <NavLink key={to} to={to} end={end} style={({ isActive }) => linkStyle(isActive)}>
@@ -112,7 +110,6 @@ export const Navbar: FC = () => {
           ))}
         </Group>
 
-        {/* Right cluster */}
         <Group gap={10} wrap="nowrap">
           <LanguageSwitcher compact />
 
@@ -131,7 +128,6 @@ export const Navbar: FC = () => {
         </Group>
       </Group>
 
-      {/* Mobile drawer */}
       <Drawer
         opened={opened}
         onClose={close}

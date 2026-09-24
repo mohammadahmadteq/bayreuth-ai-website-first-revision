@@ -65,7 +65,6 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
         }}
       />
 
-      {/* Always-visible footer */}
       <Stack gap={8} style={{ position: 'absolute', left: 0, right: 0, bottom: 0, padding: 20 }}>
         <Group gap={8}>
           <Badge variant="teal">{project.category}</Badge>
@@ -84,7 +83,6 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
           )}
         </Group>
 
-        {/* Hover-reveal detail */}
         <AnimatePresence initial={false}>
           {showOverlay && (
             <motion.div

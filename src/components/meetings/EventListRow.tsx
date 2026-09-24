@@ -10,7 +10,6 @@ interface EventListRowProps {
   onSelect: (event: EventItem) => void
 }
 
-/** One row of the meetings list: date block · title + meta · category · chevron. */
 export const EventListRow: FC<EventListRowProps> = ({ event, active, onSelect }) => {
   const date = new Date(event.date)
   const day = date.toLocaleDateString('en-GB', { day: '2-digit' })

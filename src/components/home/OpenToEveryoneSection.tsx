@@ -2,11 +2,6 @@ import { type FC } from 'react'
 import { Box, SimpleGrid, Stack, Text } from '@mantine/core'
 import { SectionHeading } from '../ui/SectionHeading'
 
-/**
- * "Open to everyone" — concise, credible framing for both tracks the
- * association serves. No per-major pill wall; just the two things a visitor
- * actually needs to hear.
- */
 export const OpenToEveryoneSection: FC = () => {
   return (
     <Box>

@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && tsc -p admin/tsconfig.json && vite build && vite build --config admin/vite.config.ts",
+    "dev:admin": "vite --config admin/vite.config.ts",
+    "verify:supabase": "node --env-file=.env.local scripts/verify-supabase.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
@@ -13,7 +15,8 @@
     "preview": "vite preview",
     "prepare": "husky",
     "i18n:extract": "lingui extract",
-    "i18n:compile": "lingui compile"
+    "i18n:compile": "lingui compile",
+    "test": "playwright test"
   },
   "dependencies": {
     "@lingui/core": "^6.2.0",

@@ -9,13 +9,16 @@ import './styles/globals.css'
 import './services/i18n' // side-effect: loads catalogs + activates initial locale
 import { theme } from './theme/theme'
 import App from './App'
+import { SiteContentProvider } from './services/siteContent'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <I18nProvider i18n={i18n}>
       <MantineProvider theme={theme} defaultColorScheme="light" forceColorScheme="light">
         <BrowserRouter basename={import.meta.env.BASE_URL}>
-          <App />
+          <SiteContentProvider>
+            <App />
+          </SiteContentProvider>
         </BrowserRouter>
       </MantineProvider>
     </I18nProvider>

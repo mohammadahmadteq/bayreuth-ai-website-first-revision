@@ -3,18 +3,15 @@ import { Link } from 'react-router-dom'
 import { Box, Group, Stack, Text } from '@mantine/core'
 import { IconCalendarEvent, IconClock, IconMapPin, IconArrowRight } from '@tabler/icons-react'
 import type { EventItem } from '../../types/content'
-import { getNextEvent, splitDate } from '../../lib/utils'
+import { splitDate } from '../../lib/dates'
 import { FadeInWhenVisible } from '../ui/FadeInWhenVisible'
 import { Badge } from '../ui/Badge'
 
 interface FeaturedNextProps {
-  events: EventItem[]
+  event: EventItem | undefined
 }
 
-/** Highlights the next chronological event, computed from events.json. */
-export const FeaturedNext: FC<FeaturedNextProps> = ({ events }) => {
-  const next = getNextEvent(events)
-
+export const FeaturedNext: FC<FeaturedNextProps> = ({ event: next }) => {
   if (!next) {
     return (
       <Box className="glow-card" style={{ padding: 32, textAlign: 'center' }}>
@@ -62,7 +59,6 @@ export const FeaturedNext: FC<FeaturedNextProps> = ({ events }) => {
         </Group>
 
         <Group align="center" gap={22} wrap="nowrap">
-          {/* Date block */}
           <Stack
             gap={0}
             align="center"

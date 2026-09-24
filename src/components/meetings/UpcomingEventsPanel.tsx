@@ -1,7 +1,7 @@
 import { type FC, type CSSProperties } from 'react'
 import { Box, Stack, Text } from '@mantine/core'
 import type { EventItem } from '../../types/content'
-import { sortEventsByDate } from '../../lib/utils'
+import { sortEventsByDate } from '../../lib/events'
 import { EventListRow } from './EventListRow'
 
 interface UpcomingEventsPanelProps {

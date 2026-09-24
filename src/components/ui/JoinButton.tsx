@@ -29,10 +29,6 @@ interface JoinButtonProps {
   className?: string
 }
 
-/**
- * "Join Us" — primary CTA. Solid brand-green fill, strongest weight.
- * Always visually and functionally distinct from PartnerButton.
- */
 export const JoinButton: FC<JoinButtonProps> = ({
   to = '/apply',
   href,

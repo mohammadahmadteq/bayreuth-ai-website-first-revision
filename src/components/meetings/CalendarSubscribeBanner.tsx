@@ -9,7 +9,6 @@ interface CalendarSubscribeBannerProps {
   events: EventItem[]
 }
 
-/** Full-width strip under the calendar: grab every date as one .ics file. */
 export const CalendarSubscribeBanner: FC<CalendarSubscribeBannerProps> = ({ events }) => (
   <Group
     className="glow-card"

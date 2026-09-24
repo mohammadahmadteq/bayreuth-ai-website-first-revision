@@ -47,7 +47,6 @@ function toVEvent(event: EventItem, stamp: string): string[] {
   ]
 }
 
-/** Build an iCalendar document for one or more events. */
 export function buildICS(events: EventItem[]): string {
   const now = new Date()
   const stamp = `${now.getUTCFullYear()}${pad(now.getUTCMonth() + 1)}${pad(now.getUTCDate())}T${pad(
@@ -65,7 +64,6 @@ export function buildICS(events: EventItem[]): string {
   ].join('\r\n')
 }
 
-/** Trigger a browser download of the given events as an .ics file. */
 export function downloadICS(events: EventItem[], filename: string): void {
   const blob = new Blob([buildICS(events)], { type: 'text/calendar;charset=utf-8' })
   const url = URL.createObjectURL(blob)

@@ -9,7 +9,6 @@ interface ProjectMiniCardProps {
   project: Project
 }
 
-/** Compact photo-forward card for project grids — image up top, details below. */
 export const ProjectMiniCard: FC<ProjectMiniCardProps> = ({ project }) => {
   const Wrapper = project.link ? 'a' : 'div'
   const wrapperProps = project.link

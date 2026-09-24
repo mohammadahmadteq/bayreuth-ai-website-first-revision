@@ -12,7 +12,7 @@ import { PartnerButton } from '../ui/PartnerButton'
 import { Badge } from '../ui/Badge'
 import { asset } from '../../lib/utils'
 
-export const Hero: FC = () => {
+export const Hero: FC<{ photoUrl?: string }> = ({ photoUrl }) => {
   const reduce = useReducedMotion()
   const isMobile = useMediaQuery('(max-width: 767px)')
 
@@ -146,9 +146,9 @@ export const Hero: FC = () => {
             <Suspense fallback={null}>
               <Logo3DCard
                 logoSrc={asset('/official/logo.svg')}
-                photoSrc={asset('/official/ai-members.jpeg')}
+                photoSrc={asset(photoUrl ?? '/official/logo.svg')}
                 alt="Bayreuth AI Association member badge"
-                photoAlt="a photo of the Bayreuth AI Association members"
+                photoAlt={photoUrl ? 'a photo of the Bayreuth AI Association' : 'Bayreuth AI logo'}
               />
             </Suspense>
           </Box>

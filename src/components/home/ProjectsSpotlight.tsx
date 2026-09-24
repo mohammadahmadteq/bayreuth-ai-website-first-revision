@@ -14,7 +14,6 @@ interface ProjectsSpotlightProps {
 
 const SPOTLIGHT_COUNT = 3
 
-/** Most recent projects first; layout adapts to however many exist. */
 export const ProjectsSpotlight: FC<ProjectsSpotlightProps> = ({ projects }) => {
   if (projects.length === 0) {
     return (

@@ -1,9 +1,7 @@
-/**
- * Shared TypeScript interfaces for all JSON content under `src/data/`.
- * No logic, no imports from other layers.
- */
-
 export type EventCategory = 'talk' | 'dinner' | 'workshop' | 'social'
+
+export type CategoryFilter = 'all' | EventCategory
+export type Timeframe = 'all' | 'upcoming' | 'month' | 'past'
 
 export interface EventItem {
   id: string
@@ -24,6 +22,12 @@ export interface TeamMember {
   imageUrl: string
   linkedin?: string
   isBoardMember: boolean
+}
+
+export interface AssociationPhoto {
+  id: string
+  imageUrl: string
+  alt: string
 }
 
 export type ProjectCategory = 'research' | 'hackathon' | 'paper' | 'tool'
@@ -79,4 +83,9 @@ export interface FaqItem {
   id: string
   question: string
   answer: string
+}
+
+export interface ResourceSearchResult extends ResourceLink {
+  categoryId: string
+  categoryTitle: string
 }

@@ -27,7 +27,6 @@ const ACTIVITIES = [
   },
 ]
 
-/** "What we do" — the association's core activities, presented lightweight. */
 export const MissionStrip: FC = () => {
   return (
     <Box>

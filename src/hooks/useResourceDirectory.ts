@@ -1,10 +1,5 @@
 import { useMemo, useState } from 'react'
-import type { ResourceCategory, ResourceLink } from '../types/content'
-
-export interface ResourceSearchResult extends ResourceLink {
-  categoryId: string
-  categoryTitle: string
-}
+import type { ResourceCategory, ResourceSearchResult } from '../types/content'
 
 interface UseResourceDirectoryResult {
   query: string
@@ -15,17 +10,16 @@ interface UseResourceDirectoryResult {
   toggleCategory: (id: string) => void
 }
 
-/** Search + single-open-accordion state for the resource directory, kept out of the UI layer. */
 export function useResourceDirectory(categories: ResourceCategory[]): UseResourceDirectoryResult {
   const [query, setQuery] = useState('')
   const [openCategoryId, setOpenCategoryId] = useState<string | null>(categories[0]?.id ?? null)
 
   const results = useMemo(() => {
-    const q = query.trim().toLowerCase()
-    if (!q) return []
+    const normalizedQuery = query.trim().toLowerCase()
+    if (!normalizedQuery) return []
     return categories.flatMap((category) =>
       category.resources
-        .filter((resource) => resource.title.toLowerCase().includes(q))
+        .filter((resource) => resource.title.toLowerCase().includes(normalizedQuery))
         .map((resource) => ({
           ...resource,
           categoryId: category.id,

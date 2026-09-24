@@ -28,11 +28,6 @@ function monthKey(d: Date): string {
   return `${d.getFullYear()}-${d.getMonth()}`
 }
 
-/**
- * Compact, self-built month grid — deliberately plain (no external calendar
- * library) so it reads as part of the site's own design system rather than an
- * embedded widget. Days carrying an event get a dot; today gets a filled disc.
- */
 export const MiniMonthCalendar: FC<MiniMonthCalendarProps> = ({
   events,
   month,

@@ -1,11 +1,6 @@
 import { type FC } from 'react'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 
-/**
- * Subtle parallax background for the hero — a structured grid plus two soft
- * glow orbs that drift on scroll. Decorative only (pointer-events: none),
- * static when reduced motion is requested.
- */
 export const HeroParallaxLayer: FC = () => {
   const reduce = useReducedMotion()
   const { scrollY } = useScroll()

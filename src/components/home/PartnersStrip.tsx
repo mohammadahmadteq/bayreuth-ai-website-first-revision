@@ -8,10 +8,6 @@ interface PartnersStripProps {
   partners: Partner[]
 }
 
-/**
- * Restrained partners strip — small heading, a row of logos, a quiet link.
- * Deliberately lower visual weight than the primary Join CTA.
- */
 export const PartnersStrip: FC<PartnersStripProps> = ({ partners }) => {
   if (partners.length === 0) return null
 

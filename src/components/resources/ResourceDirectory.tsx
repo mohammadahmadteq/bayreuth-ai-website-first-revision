@@ -1,8 +1,7 @@
 import { type FC } from 'react'
 import { Box, Stack, Text, TextInput } from '@mantine/core'
 import { IconSearch } from '@tabler/icons-react'
-import type { ResourceCategory } from '../../types/content'
-import type { ResourceSearchResult } from '../../hooks/useResourceDirectory'
+import type { ResourceCategory, ResourceSearchResult } from '../../types/content'
 import { CategoryAccordionRow } from './CategoryAccordionRow'
 import { ResourceLinkRow } from './ResourceLinkRow'
 

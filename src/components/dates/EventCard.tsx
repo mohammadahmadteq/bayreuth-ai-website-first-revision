@@ -3,7 +3,7 @@ import { Box, Group, Stack, Text, UnstyledButton } from '@mantine/core'
 import { IconClock, IconMapPin, IconChevronDown } from '@tabler/icons-react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import type { EventItem } from '../../types/content'
-import { splitDate } from '../../lib/utils'
+import { splitDate } from '../../lib/dates'
 import { Badge } from '../ui/Badge'
 
 interface EventCardProps {

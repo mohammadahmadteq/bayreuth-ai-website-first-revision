@@ -2,7 +2,7 @@ import { type FC } from 'react'
 import { Box, SimpleGrid, Stack } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import type { EventItem } from '../../types/content'
-import { getNextEvent, sortEventsByDate } from '../../lib/utils'
+import { getNextEvent, sortEventsByDate } from '../../lib/events'
 import { MiniMonthCalendar } from '../dates/MiniMonthCalendar'
 import { EventCard } from '../dates/EventCard'
 import { FeaturedNext } from './FeaturedNext'
@@ -13,16 +13,11 @@ interface EventsSectionProps {
   events: EventItem[]
 }
 
-/**
- * Desktop: compact month calendar next to the next-up highlight and any
- * further upcoming events. Mobile: the upcoming-events list only, no month
- * grid (per the brief — a full desktop calendar doesn't fit a narrow screen).
- */
 export const EventsSection: FC<EventsSectionProps> = ({ events }) => {
   const isMobile = useMediaQuery('(max-width: 767px)')
 
   const now = new Date()
-  const next = getNextEvent(events)
+  const next = getNextEvent(events, now)
   const rest = sortEventsByDate(events).filter(
     (e) => e.id !== next?.id && new Date(e.date).getTime() >= now.getTime(),
   )
@@ -30,7 +25,7 @@ export const EventsSection: FC<EventsSectionProps> = ({ events }) => {
 
   const upcomingList = (
     <Stack gap={16}>
-      <FeaturedNext events={events} />
+      <FeaturedNext event={next} />
       {rest.map((e, i) => (
         <FadeInWhenVisible key={e.id} delay={i * 0.06}>
           <EventCard event={e} />

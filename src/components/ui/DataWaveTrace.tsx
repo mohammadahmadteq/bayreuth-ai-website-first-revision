@@ -12,7 +12,6 @@ interface DataWaveTraceProps {
   className?: string
 }
 
-/** Decorative jagged data waveform, full-width, with a dot that sweeps it and lights up green. */
 export const DataWaveTrace: FC<DataWaveTraceProps> = ({ className }) => {
   const reduce = useReducedMotion()
 

@@ -1,6 +1,6 @@
 import { type FC } from 'react'
 import { Group, Select, Text, UnstyledButton } from '@mantine/core'
-import type { CategoryFilter, Timeframe } from '../../hooks/useEventFilter'
+import type { CategoryFilter, Timeframe } from '../../types/content'
 
 const CATEGORIES: Array<{ value: CategoryFilter; label: string }> = [
   { value: 'all', label: 'All' },

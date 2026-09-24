@@ -26,10 +26,6 @@ interface PartnerButtonProps {
   className?: string
 }
 
-/**
- * "Become a Partner" — secondary CTA. Outline / ghost style, lower visual
- * weight. Deliberately distinct from the primary JoinButton.
- */
 export const PartnerButton: FC<PartnerButtonProps> = ({
   to = '/partners',
   href,

@@ -1,10 +1,3 @@
-/**
- * Single typed entry point for all local JSON content.
- *
- * The site reads ONLY from these files — editing the `.json` files updates the
- * site directly, no component code changes required. Importing through this
- * module gives every consumer a typed view of the raw JSON.
- */
 import type {
   EventItem,
   TeamMember,
@@ -24,9 +17,9 @@ import faqRaw from './faq.json'
 import resourcesRaw from './resources.json'
 
 export const events: EventItem[] = eventsRaw as EventItem[]
-export const team: TeamMember[] = teamRaw as TeamMember[]
+export const team: TeamMember[] = teamRaw
 export const projects: Project[] = projectsRaw as Project[]
 export const partners: Partner[] = partnersRaw as Partner[]
-export const stats: Stat[] = statsRaw as Stat[]
-export const faq: FaqItem[] = faqRaw as FaqItem[]
-export const resourceCategories: ResourceCategory[] = resourcesRaw as ResourceCategory[]
+export const stats: Stat[] = statsRaw
+export const faq: FaqItem[] = faqRaw
+export const resourceCategories: ResourceCategory[] = resourcesRaw

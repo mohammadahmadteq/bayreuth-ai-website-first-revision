@@ -10,10 +10,6 @@ interface FadeInWhenVisibleProps {
   className?: string
 }
 
-/**
- * Reusable scroll-reveal wrapper. Fades + slides its children in once when
- * they enter the viewport. Respects prefers-reduced-motion (renders statically).
- */
 export const FadeInWhenVisible: FC<FadeInWhenVisibleProps> = ({
   children,
   delay = 0,

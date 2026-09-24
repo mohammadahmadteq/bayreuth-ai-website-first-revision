@@ -5,11 +5,6 @@ import { messages as deMessages } from '../locales/de/messages.po'
 export const SUPPORTED_LOCALES = ['en', 'de'] as const
 export type Locale = (typeof SUPPORTED_LOCALES)[number]
 
-export const LOCALE_LABELS: Record<Locale, string> = {
-  en: 'English',
-  de: 'Deutsch',
-}
-
 const STORAGE_KEY = 'bayreuth-ai-locale'
 
 i18n.load({ en: enMessages, de: deMessages })
@@ -33,7 +28,7 @@ export function activateLocale(locale: Locale): void {
   try {
     localStorage.setItem(STORAGE_KEY, locale)
   } catch {
-    // ignore
+    // Locale switching still works when browser storage is unavailable.
   }
   if (typeof document !== 'undefined') {
     document.documentElement.lang = locale

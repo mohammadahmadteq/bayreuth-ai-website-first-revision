@@ -8,7 +8,6 @@ interface PageHeaderProps {
   subtitle?: ReactNode
 }
 
-/** Consistent top-of-page header for inner routes, with a structured grid backdrop. */
 export const PageHeader: FC<PageHeaderProps> = ({ eyebrow, title, subtitle }) => {
   const reduce = useReducedMotion()
   return (

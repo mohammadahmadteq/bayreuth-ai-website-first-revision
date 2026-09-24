@@ -3,25 +3,11 @@ import { Box, SimpleGrid, Stack } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import { SectionHeading } from '../ui/SectionHeading'
 import { asset } from '../../lib/utils'
+import type { AssociationPhoto } from '../../types/content'
 
-const SUPPORTING_PHOTOS = [
-  { src: '/official/rm-profile.jpeg', alt: 'Renato Mio, Bayreuth AI Association member' },
-  { src: '/official/pascal-fechner.jpg', alt: 'Pascal Fechner, Bayreuth AI Association member' },
-  { src: '/official/feli-profile.jpeg', alt: 'Felicitas Feick, Bayreuth AI Association member' },
-  {
-    src: '/official/nico-hoellerich.jpg',
-    alt: 'Nico Hoellerich, Bayreuth AI Association member',
-  },
-]
-
-/**
- * Community — a large real photo of the association plus a small supporting
- * cluster, in an asymmetric two-column layout. Replaces the auto-scrolling
- * thumbnail marquee so real images get real space rather than reading as
- * decoration.
- */
-export const PhotoRail: FC = () => {
+export const PhotoRail: FC<{ photos: AssociationPhoto[] }> = ({ photos }) => {
   const isMobile = useMediaQuery('(max-width: 767px)')
+  if (photos.length === 0) return null
 
   return (
     <Stack gap={28}>
@@ -47,17 +33,17 @@ export const PhotoRail: FC = () => {
           }}
         >
           <img
-            src={asset('/official/ai-members.jpeg')}
-            alt="Bayreuth AI Association members together"
+            src={asset(photos[0].imageUrl)}
+            alt={photos[0].alt}
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
         </Box>
 
         <SimpleGrid cols={2} spacing={16}>
-          {SUPPORTING_PHOTOS.map((photo) => (
+          {photos.slice(1).map((photo) => (
             <Box
-              key={photo.src}
+              key={photo.id}
               style={{
                 position: 'relative',
                 borderRadius: 10,
@@ -67,7 +53,7 @@ export const PhotoRail: FC = () => {
               }}
             >
               <img
-                src={asset(photo.src)}
+                src={asset(photo.imageUrl)}
                 alt={photo.alt}
                 loading="lazy"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
