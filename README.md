@@ -28,6 +28,8 @@ Browser tests start a local server on port 5173, or reuse one already running ou
 
 ## Supabase and admin portal
 
+For GitHub Pages, add repository Actions variables named `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` under **Settings → Secrets and variables → Actions → Variables**. The deployment workflow supplies them when building both apps. Local `.env.local` files are ignored by Git and are not available to GitHub Actions. After changing a variable, run the deployment workflow again to rebuild the site.
+
 Copy `.env.example` to `.env.local` and set the project URL and publishable key. The supplied project values are already in the local, ignored `.env.local`. `VITE_` variables are used by the browser apps; the `SUPABASE_` variables are used by the Node verification script. Both use the same **publishable** key. Access is enforced by Supabase row level security, so a secret or service role key must never be placed in either browser app.
 
 The public site and the admin portal are separate Vite apps. Run `bun run dev` for the public site and `bun run dev:admin` for the portal. Production builds place the portal in `dist/admin/`, at `/bayreuth-ai-website-first-revision/admin/` under the current GitHub Pages path. The portal does not add a route or navigation item to the public React app.

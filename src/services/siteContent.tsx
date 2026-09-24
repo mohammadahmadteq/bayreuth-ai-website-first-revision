@@ -10,6 +10,7 @@ export function SiteContentProvider({ children }: { children: ReactNode }) {
   const [team, setTeam] = useState(initialTeam)
   const [photos, setPhotos] = useState(initialPhotos)
   const [error, setError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   const refresh = useCallback(async () => {
     if (!supabase) return
@@ -70,11 +71,25 @@ export function SiteContentProvider({ children }: { children: ReactNode }) {
   }, [])
 
   useEffect(() => {
-    void Promise.resolve().then(refresh)
+    let active = true
+    void Promise.resolve()
+      .then(refresh)
+      .catch((failure: unknown) => {
+        if (active)
+          setError(failure instanceof Error ? failure.message : 'Content could not be loaded')
+      })
+      .finally(() => {
+        if (active) setIsLoading(false)
+      })
+    return () => {
+      active = false
+    }
   }, [refresh])
 
   return (
-    <SiteContentContext.Provider value={{ events, partners, team, photos, error, refresh }}>
+    <SiteContentContext.Provider
+      value={{ events, partners, team, photos, error, isLoading, refresh }}
+    >
       {children}
     </SiteContentContext.Provider>
   )

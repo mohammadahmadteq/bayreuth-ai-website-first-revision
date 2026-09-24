@@ -10,6 +10,7 @@ import './services/i18n' // side-effect: loads catalogs + activates initial loca
 import { theme } from './theme/theme'
 import App from './App'
 import { SiteContentProvider } from './services/siteContent'
+import { WebsiteLoader } from './components/layout/WebsiteLoader'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -17,7 +18,9 @@ createRoot(document.getElementById('root')!).render(
       <MantineProvider theme={theme} defaultColorScheme="light" forceColorScheme="light">
         <BrowserRouter basename={import.meta.env.BASE_URL}>
           <SiteContentProvider>
-            <App />
+            <WebsiteLoader>
+              <App />
+            </WebsiteLoader>
           </SiteContentProvider>
         </BrowserRouter>
       </MantineProvider>

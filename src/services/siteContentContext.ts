@@ -7,6 +7,7 @@ export interface SiteContent {
   team: TeamMember[]
   photos: AssociationPhoto[]
   error: string | null
+  isLoading: boolean
   refresh: () => Promise<void>
 }
 
