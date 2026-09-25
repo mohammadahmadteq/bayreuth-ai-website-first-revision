@@ -8,6 +8,9 @@ import {
   IconMail,
 } from '@tabler/icons-react'
 import { WHATSAPP_URL } from '../../lib/utils'
+import { useSiteContent } from '../../hooks/useSiteContent'
+import { getUpcomingEvents } from '../../lib/events'
+import { formatEventDate } from '../../lib/dates'
 
 const NAV = [
   { to: '/meetings', label: 'Meetings' },
@@ -20,6 +23,8 @@ const NAV = [
 ]
 
 export const Footer: FC = () => {
+  const { events } = useSiteContent()
+  const nextEvent = getUpcomingEvents(events)[0]
   return (
     <Box
       component="footer"
@@ -136,17 +141,15 @@ export const Footer: FC = () => {
               tt="uppercase"
               style={{ letterSpacing: '0.14em', color: 'var(--teal)' }}
             >
-              Find Us
+              Next event
             </Text>
             <Text style={{ color: 'var(--color-subtext)', fontSize: 14, lineHeight: 1.7 }}>
-              Room S122, GW I
-              <br />
-              University of Bayreuth
-              <br />
-              Universitätsstraße 30, 95447 Bayreuth
+              {nextEvent?.location ?? 'University of Bayreuth'}
             </Text>
             <Text style={{ color: 'var(--color-subtext)', fontSize: 14 }}>
-              Meetings every other Thursday, 18:00
+              {nextEvent
+                ? `${formatEventDate(nextEvent.date)} · ${nextEvent.time}`
+                : 'New dates coming soon'}
             </Text>
           </Stack>
         </SimpleGrid>

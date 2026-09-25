@@ -7,7 +7,9 @@ test('home page renders the association content', async ({ page }) => {
     page.getByRole('navigation').getByRole('img', { name: 'Bayreuth AI Association', exact: true }),
   ).toBeVisible()
   await expect(page.getByRole('heading', { name: /Exploring AI\. Together\./ })).toBeVisible()
-  await expect(page.getByText('University of Bayreuth · S122, GW I')).toBeVisible()
+  await expect(
+    page.getByText('Room S122, GW I - University of Bayreuth', { exact: true }).first(),
+  ).toBeVisible()
   await expect(page.getByText('People, projects, and moments from the association.')).toBeVisible()
   await expect(
     page.getByRole('img', { name: 'Bayreuth AI Association members together' }),

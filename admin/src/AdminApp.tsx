@@ -212,7 +212,7 @@ export function AdminApp() {
     else {
       setEditingId(null)
       setForm(emptyForm(section))
-      setMessage('Saved. The public website will show this entry on refresh.')
+      setMessage('Saved. The public website updates automatically.')
       try {
         await loadRows(section)
       } catch (loadError) {

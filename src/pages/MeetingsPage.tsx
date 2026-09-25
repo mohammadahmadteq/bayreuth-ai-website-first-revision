@@ -19,7 +19,9 @@ export const MeetingsPage: FC = () => {
   const { events } = useSiteContent()
   const isMobile = useMediaQuery('(max-width: 767px)')
   const { category, setCategory, timeframe, setTimeframe, filteredEvents } = useEventFilter(events)
-  const [selected, setSelected] = useState<EventItem | null>(null)
+  const [selectedId, setSelectedId] = useState<string | null>(null)
+  const selected = events.find((event) => event.id === selectedId) ?? null
+  const setSelected = (event: EventItem | null) => setSelectedId(event?.id ?? null)
   const [calendarRef, calendarHeight] = useElementHeight<HTMLDivElement>()
 
   // Anchor to the next event, or the latest event when all dates are past.

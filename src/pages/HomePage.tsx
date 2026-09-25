@@ -11,13 +11,15 @@ import { JoinSection } from '../components/home/JoinSection'
 import { ErrorBoundary } from '../components/ErrorBoundary'
 import { projects } from '../data'
 import { useSiteContent } from '../hooks/useSiteContent'
+import { getUpcomingEvents } from '../lib/events'
 
 export const HomePage: FC = () => {
   const { events, partners, photos } = useSiteContent()
+  const nextEvent = getUpcomingEvents(events)[0]
   return (
     <>
       <ErrorBoundary label="Hero">
-        <Hero photoUrl={photos[0]?.imageUrl} />
+        <Hero photoUrl={photos[0]?.imageUrl} photoAlt={photos[0]?.alt} nextEvent={nextEvent} />
       </ErrorBoundary>
 
       <Container size={1280} px={24}>
@@ -43,7 +45,7 @@ export const HomePage: FC = () => {
           </ErrorBoundary>
 
           <ErrorBoundary label="Join">
-            <JoinSection />
+            <JoinSection nextEvent={nextEvent} />
           </ErrorBoundary>
 
           <ErrorBoundary label="Partners">

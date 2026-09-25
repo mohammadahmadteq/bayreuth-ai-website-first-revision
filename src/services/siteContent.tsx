@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import { events as initialEvents, partners as initialPartners, team as initialTeam } from '../data'
 import { initialPhotos } from '../data/photos'
 import { supabase } from '../lib/supabase'
@@ -11,15 +11,19 @@ export function SiteContentProvider({ children }: { children: ReactNode }) {
   const [photos, setPhotos] = useState(initialPhotos)
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const refreshVersion = useRef(0)
 
   const refresh = useCallback(async () => {
     if (!supabase) return
+    const version = ++refreshVersion.current
     const [eventResult, partnerResult, teamResult, photoResult] = await Promise.all([
       supabase.from('events').select('*').order('sort_order'),
       supabase.from('partners').select('*').order('sort_order'),
       supabase.from('team_members').select('*').order('sort_order'),
       supabase.from('association_photos').select('*').order('sort_order'),
     ])
+    // An older response must not overwrite a refresh triggered by a newer edit.
+    if (version !== refreshVersion.current) return
     const failure = [eventResult, partnerResult, teamResult, photoResult].find(
       (result) => result.error,
     )
@@ -83,6 +87,49 @@ export function SiteContentProvider({ children }: { children: ReactNode }) {
       })
     return () => {
       active = false
+    }
+  }, [refresh])
+
+  useEffect(() => {
+    const client = supabase
+    if (!client) return
+    let active = true
+    let debounce: number | undefined
+
+    const sync = () => {
+      if (!active || document.visibilityState !== 'visible') return
+      void refresh().catch((failure: unknown) => {
+        if (active)
+          setError(failure instanceof Error ? failure.message : 'Content could not be loaded')
+      })
+    }
+    const scheduleSync = () => {
+      window.clearTimeout(debounce)
+      debounce = window.setTimeout(sync, 150)
+    }
+
+    const channel = client.channel('public-site-content')
+    for (const table of ['partners', 'team_members', 'events', 'association_photos']) {
+      channel.on('postgres_changes', { event: '*', schema: 'public', table }, scheduleSync)
+    }
+    channel.subscribe((status) => {
+      // Also catch edits made while the connection was being established or restored.
+      if (status === 'SUBSCRIBED') scheduleSync()
+    })
+    window.addEventListener('focus', scheduleSync)
+    window.addEventListener('online', scheduleSync)
+    document.addEventListener('visibilitychange', scheduleSync)
+    // A visible tab still catches up if its WebSocket connection is unavailable.
+    const fallback = window.setInterval(sync, 60000)
+
+    return () => {
+      active = false
+      window.clearTimeout(debounce)
+      window.clearInterval(fallback)
+      window.removeEventListener('focus', scheduleSync)
+      window.removeEventListener('online', scheduleSync)
+      document.removeEventListener('visibilitychange', scheduleSync)
+      void client.removeChannel(channel)
     }
   }, [refresh])
 

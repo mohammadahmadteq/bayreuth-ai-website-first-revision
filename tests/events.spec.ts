@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { filterEvents, getNextEvent, sortEventsByDate } from '../src/lib/events'
+import { filterEvents, getNextEvent, getUpcomingEvents, sortEventsByDate } from '../src/lib/events'
 import type { EventItem } from '../src/types/content'
 
 const past: EventItem = {
@@ -32,6 +32,13 @@ test('event filters combine category with timeframe', () => {
   expect(filterEvents(events, 'all', 'month', now)).toEqual([next])
   expect(filterEvents(events, 'workshop', 'upcoming', now)).toEqual([later])
   expect(filterEvents(events, 'talk', 'past', now)).toEqual([])
+})
+
+test('homepage upcoming events exclude past dates and retain events happening today', () => {
+  expect(getUpcomingEvents([past], now)).toEqual([])
+  expect(getUpcomingEvents([], now)).toEqual([])
+  expect(getUpcomingEvents(events, new Date(2026, 9, 15, 12))).toEqual([next, later])
+  expect(filterEvents(events, 'all', 'past', new Date(2026, 9, 15, 12))).toEqual([past])
 })
 
 test('meetings filters, calendar selection and downloads work together', async ({ page }) => {

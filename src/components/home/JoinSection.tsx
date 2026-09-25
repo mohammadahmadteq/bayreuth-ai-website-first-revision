@@ -4,14 +4,20 @@ import { IconBrandWhatsapp, IconCalendarTime } from '@tabler/icons-react'
 import { JoinButton } from '../ui/JoinButton'
 import { SectionHeading } from '../ui/SectionHeading'
 import { WHATSAPP_URL } from '../../lib/utils'
+import { formatEventDate } from '../../lib/dates'
+import type { EventItem } from '../../types/content'
 
-export const JoinSection: FC = () => {
+export const JoinSection: FC<{ nextEvent?: EventItem }> = ({ nextEvent }) => {
   return (
     <Stack gap={28} id="join">
       <SectionHeading
         eyebrow="Join in"
-        title="Join the WhatsApp group, then come to a Thursday meeting."
-        subtitle="Meetings run every other Thursday, 18:00–19:30, in room S122, GW I."
+        title="Join the WhatsApp group, then come to our next event."
+        subtitle={
+          nextEvent
+            ? `${nextEvent.title} · ${formatEventDate(nextEvent.date)} · ${nextEvent.time}`
+            : 'Join the group to hear when our next event is announced.'
+        }
       />
 
       <Box
@@ -52,7 +58,9 @@ export const JoinSection: FC = () => {
           <Group gap={8} justify="center">
             <IconCalendarTime size={16} color="var(--color-subtext)" />
             <Text fz={16} style={{ color: 'var(--color-subtext)' }}>
-              Next up: every other Thursday, 18:00 · Room S122, GW I
+              {nextEvent
+                ? `Next up: ${formatEventDate(nextEvent.date)} · ${nextEvent.time} · ${nextEvent.location}`
+                : 'No upcoming events scheduled yet — check back soon.'}
             </Text>
           </Group>
         </Stack>

@@ -36,7 +36,7 @@ The public site and the admin portal are separate Vite apps. Run `bun run dev` f
 
 To activate the first admin, open the portal and create an account with `bayreuth.ai@gmail.com`, then confirm the email and sign in. The database grants admin membership automatically only after that address is confirmed. If an account for that email already exists, sign in with its password. Other signed-in accounts cannot edit content or upload images. Supabase Auth must have email/password signups and confirmation email delivery enabled for new accounts. If the confirmation link redirects somewhere else, return to the admin URL and sign in after confirming.
 
-The portal can add, edit, and delete partners, team members, events, and association photos. Image fields accept a URL or an upload of a JPEG, PNG, WebP, or GIF under 5 MB. New uploads go to the public `site-images` bucket. The initial database rows refer to the existing `/official/` assets, so those assets remain available in the public site build. New content appears on the public site after refresh.
+The portal can add, edit, and delete partners, team members, events, and association photos. Image fields accept a URL or an upload of a JPEG, PNG, WebP, or GIF under 5 MB. New uploads go to the public `site-images` bucket. The initial database rows refer to the existing `/official/` assets, so those assets remain available in the public site build. All public pages share one content provider and subscribe to Supabase Realtime changes. Visible pages also refresh on focus, reconnection, and every minute as a fallback. The homepage hero, join section, event cards, and site footer use the same next upcoming event as the Meetings page.
 
 SQL migrations live in `supabase/migrations/`. The project has been seeded with the records from `src/data/` and the existing photo rail. The older event dated 9 July 2026 is retained as a past event; the future entry remains upcoming.
 
@@ -76,7 +76,7 @@ Keep disposal next to resource creation. Texture loads that finish after disposa
 
 ## Behavior to preserve
 
-Event helpers return sorted copies and accept an explicit clock for deterministic tests. `getNextEvent` falls back to the most recent event when every date is past. Filtering retains the existing date-only comparison rules; event time strings are used separately for calendar export.
+Event helpers return sorted copies and accept an explicit clock for deterministic tests. `getNextEvent` falls back to the most recent event for calendar anchoring. `getUpcomingEvents` has no past-event fallback and drives the homepage and footer. Date-only events remain upcoming through their calendar day; event time strings are used separately for calendar export.
 
 Use `asset()` for public files so URLs work with the production subpath configured in `vite.config.ts`. Keep the member and partner calls to action visually distinct. Respect reduced-motion preferences and preserve photo fallback when WebGL is unavailable.
 

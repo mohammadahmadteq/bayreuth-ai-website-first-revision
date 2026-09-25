@@ -11,8 +11,14 @@ import { JoinButton } from '../ui/JoinButton'
 import { PartnerButton } from '../ui/PartnerButton'
 import { Badge } from '../ui/Badge'
 import { asset } from '../../lib/utils'
+import { formatEventDate } from '../../lib/dates'
+import type { EventItem } from '../../types/content'
 
-export const Hero: FC<{ photoUrl?: string }> = ({ photoUrl }) => {
+export const Hero: FC<{ photoUrl?: string; photoAlt?: string; nextEvent?: EventItem }> = ({
+  photoUrl,
+  photoAlt,
+  nextEvent,
+}) => {
   const reduce = useReducedMotion()
   const isMobile = useMediaQuery('(max-width: 767px)')
 
@@ -115,11 +121,15 @@ export const Hero: FC<{ photoUrl?: string }> = ({ photoUrl }) => {
               >
                 <Group gap={6} wrap="nowrap">
                   <IconMapPin size={16} />
-                  <span>University of Bayreuth · S122, GW I</span>
+                  <span>{nextEvent?.location ?? 'University of Bayreuth'}</span>
                 </Group>
                 <Group gap={6} wrap="nowrap">
                   <IconCalendarTime size={16} />
-                  <span>Thursdays · 18:00</span>
+                  <span>
+                    {nextEvent
+                      ? `${formatEventDate(nextEvent.date)} · ${nextEvent.time}`
+                      : 'New dates coming soon'}
+                  </span>
                 </Group>
               </Group>
             </motion.div>
@@ -148,7 +158,7 @@ export const Hero: FC<{ photoUrl?: string }> = ({ photoUrl }) => {
                 logoSrc={asset('/official/logo.svg')}
                 photoSrc={asset(photoUrl ?? '/official/logo.svg')}
                 alt="Bayreuth AI Association member badge"
-                photoAlt={photoUrl ? 'a photo of the Bayreuth AI Association' : 'Bayreuth AI logo'}
+                photoAlt={photoAlt ?? 'Bayreuth AI logo'}
               />
             </Suspense>
           </Box>

@@ -2,7 +2,8 @@ import { type FC } from 'react'
 import { Box, SimpleGrid, Stack } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import type { EventItem } from '../../types/content'
-import { getNextEvent, sortEventsByDate } from '../../lib/events'
+import { getUpcomingEvents } from '../../lib/events'
+import { parseEventDate } from '../../lib/dates'
 import { MiniMonthCalendar } from '../dates/MiniMonthCalendar'
 import { EventCard } from '../dates/EventCard'
 import { FeaturedNext } from './FeaturedNext'
@@ -17,11 +18,8 @@ export const EventsSection: FC<EventsSectionProps> = ({ events }) => {
   const isMobile = useMediaQuery('(max-width: 767px)')
 
   const now = new Date()
-  const next = getNextEvent(events, now)
-  const rest = sortEventsByDate(events).filter(
-    (e) => e.id !== next?.id && new Date(e.date).getTime() >= now.getTime(),
-  )
-  const calendarMonth = next ? new Date(next.date) : now
+  const [next, ...rest] = getUpcomingEvents(events, now)
+  const calendarMonth = next ? parseEventDate(next.date) : now
 
   const upcomingList = (
     <Stack gap={16}>
