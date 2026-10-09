@@ -16,19 +16,27 @@
     "isBoardMember": true
   },
   {
-    "id": "tm-felipe-calgaro",
-    "name": "Felipe Calgaro",
+    "id": "tm-pascal-lange",
+    "name": "Pascal Lange",
+    "role": "Treasurer",
+    "bio": "Interests: AI in education, intelligent user interfaces, statistics, and information visualization.",
+    "imageUrl": "/official/team_pascal_l.jpg",
+    "isBoardMember": true
+  },
+  {
+    "id": "tm-nico-hoellerich",
+    "name": "Nico Höllerich",
     "role": "Core Team",
-    "bio": "",
-    "imageUrl": "/official/team_felipe.jpg",
+    "bio": "Interests: Human-AI and human-robot collaboration, intention recognition, foundation models, optimization, and algorithm design.",
+    "imageUrl": "/official/team_nico.jpg",
     "isBoardMember": false
   },
   {
-    "id": "tm-jamil-shihada",
-    "name": "Jamil Shihada",
+    "id": "tm-mohammad-ahmad",
+    "name": "Mohammad Ahmad",
     "role": "Core Team",
     "bio": "",
-    "imageUrl": "/official/team_jamil.jpg",
+    "imageUrl": "/official/team_mohammad.jpg",
     "isBoardMember": false
   },
   {
@@ -48,27 +56,11 @@
     "isBoardMember": false
   },
   {
-    "id": "tm-mohammad-ahmad",
-    "name": "Mohammad Ahmad",
+    "id": "tm-jamil-shihada",
+    "name": "Jamil Shihada",
     "role": "Core Team",
     "bio": "",
-    "imageUrl": "/official/team_mohammad.jpg",
-    "isBoardMember": false
-  },
-  {
-    "id": "tm-nico-hoellerich",
-    "name": "Nico Höllerich",
-    "role": "Core Team",
-    "bio": "Interests: Human-AI and human-robot collaboration, intention recognition, foundation models, optimization, and algorithm design.",
-    "imageUrl": "/official/nico-hoellerich.jpg",
-    "isBoardMember": false
-  },
-  {
-    "id": "tm-pascal-lange",
-    "name": "Pascal Lange",
-    "role": "Core Team",
-    "bio": "Interests: AI in education, intelligent user interfaces, statistics, and information visualization.",
-    "imageUrl": "/official/pascal-lange.png",
+    "imageUrl": "/official/team_jamil.jpg",
     "isBoardMember": false
   },
   {
@@ -77,6 +69,14 @@
     "role": "Core Team",
     "bio": "",
     "imageUrl": "/official/team_tizian.jpg",
+    "isBoardMember": false
+  },
+  {
+    "id": "tm-felipe-calgaro",
+    "name": "Felipe Calgaro",
+    "role": "Core Team",
+    "bio": "",
+    "imageUrl": "/official/team_felipe.jpg",
     "isBoardMember": false
   },
   {

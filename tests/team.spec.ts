@@ -41,20 +41,33 @@ test('team sections follow board precedence and otherwise keep content order', (
   expect(members).toEqual(original)
 })
 
-test('team page lists the board first and alumni last', async ({ page }) => {
+test('team page lists the board, the core team in content order, then alumni', async ({ page }) => {
   await page.goto('/team')
   const main = page.locator('main')
   await expect(main.getByRole('heading', { level: 2 })).toHaveText(['Board', 'Core Team', 'Alumni'])
-  await expect(main.getByText('President', { exact: true })).toBeVisible()
-  await expect(main.getByText('Vice President', { exact: true })).toBeVisible()
+  for (const position of ['President', 'Vice President', 'Treasurer']) {
+    await expect(main.getByText(position, { exact: true })).toBeVisible()
+  }
 
   const names = await main
     .getByRole('img', { name: /^Portrait of / })
     .evaluateAll((images) =>
       images.map((image) => image.getAttribute('alt')?.replace('Portrait of ', '')),
     )
-  expect(names.slice(0, 2)).toEqual(['Pascal Fechner', 'Renato Mio'])
-  expect(names.slice(-2)).toEqual(['Andreas Karasenko', 'Felicitas Feick'])
+  expect(names).toEqual([
+    'Pascal Fechner',
+    'Renato Mio',
+    'Pascal Lange',
+    'Nico Höllerich',
+    'Mohammad Ahmad',
+    'Laura Hafner',
+    'Mina Mohammed',
+    'Jamil Shihada',
+    'Tizian Küffner',
+    'Felipe Calgaro',
+    'Andreas Karasenko',
+    'Felicitas Feick',
+  ])
 })
 
 test('only established positions get the board badge', () => {
