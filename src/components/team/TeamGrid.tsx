@@ -1,6 +1,7 @@
 import { type FC } from 'react'
 import { SimpleGrid, Stack, Text } from '@mantine/core'
 import type { TeamMember } from '../../types/content'
+import { groupTeam } from '../../lib/team'
 import { TeamMemberCard } from './TeamMemberCard'
 import { FadeInWhenVisible } from '../ui/FadeInWhenVisible'
 
@@ -13,6 +14,8 @@ const Group: FC<{ title: string; members: TeamMember[] }> = ({ title, members })
   return (
     <Stack gap={24}>
       <Text
+        component="h2"
+        m={0}
         ff='"Source Sans 3", sans-serif'
         fw={700}
         fz={13}
@@ -41,13 +44,13 @@ export const TeamGrid: FC<TeamGridProps> = ({ members }) => {
     )
   }
 
-  const board = members.filter((m) => m.isBoardMember)
-  const general = members.filter((m) => !m.isBoardMember)
+  const { board, core, former } = groupTeam(members)
 
   return (
     <Stack gap={64}>
       <Group title="Board" members={board} />
-      <Group title="Team & Active Members" members={general} />
+      <Group title="Core Team" members={core} />
+      <Group title="Alumni" members={former} />
     </Stack>
   )
 }

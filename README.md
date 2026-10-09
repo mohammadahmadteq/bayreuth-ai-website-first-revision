@@ -51,6 +51,7 @@ SQL migrations live in `supabase/migrations/`. The project has been seeded with 
 | `src/types/content.ts`                         | Content and filter contracts shared across layers     |
 | `src/data/`                                    | JSON content and typed exports                        |
 | `src/lib/events.ts`                            | Event ordering, selection, and filtering              |
+| `src/lib/team.ts`                              | Team page sections and their order                    |
 | `src/lib/dates.ts`                             | Display formatting for dates                          |
 | `src/lib/ics.ts`                               | Calendar export and download                          |
 | `src/services/i18n.ts`                         | Translation catalog activation and locale persistence |
@@ -63,6 +64,8 @@ Add a page to `PAGE_ROUTES` in `src/App.tsx`; every entry receives the same tran
 ## Behavior to preserve
 
 Event helpers return sorted copies and accept an explicit clock for deterministic tests. `getNextEvent` falls back to the most recent event for calendar anchoring. `getUpcomingEvents` has no past-event fallback and drives the homepage and footer. Date-only events remain upcoming through their calendar day; event time strings are used separately for calendar export.
+
+The Team page is grouped from fields the admin portal already edits. A role starting with "Former" or "Alumni" places a member under Alumni, whatever their board flag. Other members with the board flag form the Board, led by President, Vice President, and Treasurer, which also get a highlighted badge. Everyone else is Core Team. Core Team and Alumni are alphabetical because the portal cannot reorder rows.
 
 Use `asset()` for public files so URLs work with the production subpath configured in `vite.config.ts`. Keep the member and partner calls to action visually distinct. Respect reduced-motion preferences.
 
