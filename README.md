@@ -53,7 +53,6 @@ SQL migrations live in `supabase/migrations/`. The project has been seeded with 
 | `src/lib/events.ts`                            | Event ordering, selection, and filtering              |
 | `src/lib/dates.ts`                             | Display formatting for dates                          |
 | `src/lib/ics.ts`                               | Calendar export and download                          |
-| `src/lib/badge/`                               | Interactive badge rendering, independent of React     |
 | `src/services/i18n.ts`                         | Translation catalog activation and locale persistence |
 | `src/styles/globals.css`, `src/theme/theme.ts` | Shared design tokens, styles, and theme               |
 
@@ -61,24 +60,11 @@ Edit dynamic content in the separate admin portal. `src/data/*.json` supplies fa
 
 Add a page to `PAGE_ROUTES` in `src/App.tsx`; every entry receives the same transition wrapper. Navigation menus are curated separately. `/dates` remains an alias for `/meetings`.
 
-## Interactive badge
-
-`Logo3DCard` owns the markup and photo fallback. `useBadgeScene` connects it to the renderer and cleans up when its inputs change or the component unmounts.
-
-- `mountBadge.ts` owns the renderer, resize/visibility observers, animation loop, and teardown.
-- `scene.ts` creates card geometry, materials, lighting, and asynchronously loaded textures.
-- `lanyard.ts` owns the strap and its geometry.
-- `motion.ts` owns pointer listeners and drag, tilt, and flip state.
-- `textures.ts` draws the badge artwork in named steps.
-- `constants.ts` contains shared dimensions and interaction thresholds, with units in names where needed.
-
-Keep disposal next to resource creation. Texture loads that finish after disposal must release their textures. The component remains lazy-loaded by `Hero` so Three.js stays in its own bundle.
-
 ## Behavior to preserve
 
 Event helpers return sorted copies and accept an explicit clock for deterministic tests. `getNextEvent` falls back to the most recent event for calendar anchoring. `getUpcomingEvents` has no past-event fallback and drives the homepage and footer. Date-only events remain upcoming through their calendar day; event time strings are used separately for calendar export.
 
-Use `asset()` for public files so URLs work with the production subpath configured in `vite.config.ts`. Keep the member and partner calls to action visually distinct. Respect reduced-motion preferences and preserve photo fallback when WebGL is unavailable.
+Use `asset()` for public files so URLs work with the production subpath configured in `vite.config.ts`. Keep the member and partner calls to action visually distinct. Respect reduced-motion preferences.
 
 Translation catalogs live in `src/locales/{en,de}/messages.po`. Translatable expressions must be evaluated within components that subscribe to locale changes. Some existing copy and JSON content are English-only.
 
