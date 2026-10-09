@@ -3,6 +3,8 @@ import { Box, Stack, Text, ActionIcon } from '@mantine/core'
 import { IconBrandLinkedin } from '@tabler/icons-react'
 import type { TeamMember } from '../../types/content'
 import { asset } from '../../lib/utils'
+import { isEstablishedPosition } from '../../lib/team'
+import { Badge } from '../ui/Badge'
 
 interface TeamMemberCardProps {
   member: TeamMember
@@ -39,12 +41,21 @@ export const TeamMemberCard: FC<TeamMemberCardProps> = ({ member }) => {
         >
           {member.name}
         </Text>
-        <Text fz={13} fw={600} style={{ color: 'var(--teal)' }}>
-          {member.role}
-        </Text>
-        <Text fz={16} style={{ color: 'var(--color-subtext)', lineHeight: 1.55 }}>
-          {member.bio}
-        </Text>
+        {isEstablishedPosition(member.role) ? (
+          // Wrapped so the pill keeps its own width inside the stretching Stack.
+          <Box>
+            <Badge variant="accent">{member.role}</Badge>
+          </Box>
+        ) : (
+          <Text fz={13} fw={600} style={{ color: 'var(--teal)' }}>
+            {member.role}
+          </Text>
+        )}
+        {member.bio && (
+          <Text fz={16} style={{ color: 'var(--color-subtext)', lineHeight: 1.55 }}>
+            {member.bio}
+          </Text>
+        )}
         {member.linkedin && (
           <ActionIcon
             component="a"
