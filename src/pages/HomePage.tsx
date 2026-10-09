@@ -19,7 +19,7 @@ export const HomePage: FC = () => {
   return (
     <>
       <ErrorBoundary label="Hero">
-        <Hero photoUrl={photos[0]?.imageUrl} photoAlt={photos[0]?.alt} nextEvent={nextEvent} />
+        <Hero nextEvent={nextEvent} />
       </ErrorBoundary>
 
       <Container size={1280} px={24}>

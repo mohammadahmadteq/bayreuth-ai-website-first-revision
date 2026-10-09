@@ -7,6 +7,11 @@ test('home page renders the association content', async ({ page }) => {
     page.getByRole('navigation').getByRole('img', { name: 'Bayreuth AI Association', exact: true }),
   ).toBeVisible()
   await expect(page.getByRole('heading', { name: /Exploring AI\. Together\./ })).toBeVisible()
+  const heroPhoto = page.getByRole('img', { name: /^Group photo of Bayreuth AI Association/ })
+  await expect(heroPhoto).toBeVisible()
+  await expect
+    .poll(() => heroPhoto.evaluate((img) => (img as HTMLImageElement).naturalWidth))
+    .toBeGreaterThan(0)
   await expect(
     page.getByText('Room S122, GW I - University of Bayreuth', { exact: true }).first(),
   ).toBeVisible()

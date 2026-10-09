@@ -1,12 +1,9 @@
-import { type FC, Suspense, lazy } from 'react'
+import { type FC } from 'react'
 import { Box, Group, Stack, Text } from '@mantine/core'
 import { IconCalendarTime, IconMapPin } from '@tabler/icons-react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { useMediaQuery } from '@mantine/hooks'
 import { HeroParallaxLayer } from './HeroParallaxLayer'
-
-// Lazy so three.js stays out of the main bundle
-const Logo3DCard = lazy(() => import('./Logo3DCard').then((m) => ({ default: m.Logo3DCard })))
 import { JoinButton } from '../ui/JoinButton'
 import { PartnerButton } from '../ui/PartnerButton'
 import { Badge } from '../ui/Badge'
@@ -14,11 +11,7 @@ import { asset } from '../../lib/utils'
 import { formatEventDate } from '../../lib/dates'
 import type { EventItem } from '../../types/content'
 
-export const Hero: FC<{ photoUrl?: string; photoAlt?: string; nextEvent?: EventItem }> = ({
-  photoUrl,
-  photoAlt,
-  nextEvent,
-}) => {
+export const Hero: FC<{ nextEvent?: EventItem }> = ({ nextEvent }) => {
   const reduce = useReducedMotion()
   const isMobile = useMediaQuery('(max-width: 767px)')
 
@@ -56,8 +49,7 @@ export const Hero: FC<{ photoUrl?: string; photoAlt?: string; nextEvent?: EventI
           display: 'grid',
           gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1.15fr) minmax(0, 0.85fr)',
           gap: 'clamp(40px, 4vw, 64px)',
-          // Stretch so the badge column matches the text column's height and
-          // the two bottom edges land on the same line.
+          // Stretch so the text column can spread its content over the full row.
           alignItems: isMobile ? 'center' : 'stretch',
           minHeight: isMobile ? undefined : 'min(66vh, 600px)',
         }}
@@ -140,28 +132,26 @@ export const Hero: FC<{ photoUrl?: string; photoAlt?: string; nextEvent?: EventI
           initial={{ opacity: 0, scale: reduce ? 1 : 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: reduce ? 0 : 0.25, ease: [0.2, 0, 0, 1] }}
-          style={{ position: 'relative', justifySelf: 'center', width: '100%', height: '100%' }}
+          // Centred rather than stretched: filling the taller text row would crop
+          // the people at both ends of the group off the photo.
+          style={{ alignSelf: 'center', width: '100%' }}
         >
-          <Box
+          <img
+            src={asset('/official/ai-assoc-group.jpg')}
+            alt="Group photo of Bayreuth AI Association members on the campus steps"
+            width={1400}
+            height={1256}
+            // Largest element above the fold, so fetch it ahead of other images.
+            fetchPriority="high"
             style={{
-              position: 'relative',
+              display: 'block',
               width: '100%',
-              // Fills the stretched grid row on desktop; explicit on mobile
-              // where the badge stacks under the text.
-              height: isMobile ? 'min(70vh, 540px)' : '100%',
-              minHeight: isMobile ? undefined : 460,
-              margin: '0 auto',
+              height: 'auto',
+              borderRadius: 20,
+              border: '1px solid rgba(var(--teal-rgb), 0.4)',
+              boxShadow: '0 0 36px rgba(var(--teal-rgb), 0.25)',
             }}
-          >
-            <Suspense fallback={null}>
-              <Logo3DCard
-                logoSrc={asset('/official/logo.svg')}
-                photoSrc={asset(photoUrl ?? '/official/logo.svg')}
-                alt="Bayreuth AI Association member badge"
-                photoAlt={photoAlt ?? 'Bayreuth AI logo'}
-              />
-            </Suspense>
-          </Box>
+          />
         </motion.div>
       </Box>
     </Box>

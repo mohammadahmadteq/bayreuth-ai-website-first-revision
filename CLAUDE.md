@@ -1,6 +1,6 @@
 # Project guide
 
-See [README.md](README.md) for commands, module ownership, and the interactive badge lifecycle.
+See [README.md](README.md) for commands and module ownership.
 
 ## Conventions
 
@@ -20,7 +20,6 @@ See [README.md](README.md) for commands, module ownership, and the interactive b
 - Preserve mobile, tablet, and desktop layouts. Prefer fluid spacing and typography.
 - Respect reduced-motion preferences. Preserve existing section error boundaries and empty states.
 - Resolve public asset paths with `asset()` to support the production subpath.
-- Keep the badge lazy-loaded in `Hero`. Its renderer is split across `src/lib/badge/`; React lifecycle integration lives in `src/hooks/useBadgeScene.ts`.
 
 ## Internationalization
 
