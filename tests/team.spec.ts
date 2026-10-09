@@ -31,6 +31,22 @@ test('team sections follow board precedence, then names, without mutating input'
   expect(members).toEqual(original)
 })
 
+test('team page lists the board first and alumni last', async ({ page }) => {
+  await page.goto('/team')
+  const main = page.locator('main')
+  await expect(main.getByRole('heading', { level: 2 })).toHaveText(['Board', 'Core Team', 'Alumni'])
+  await expect(main.getByText('President', { exact: true })).toBeVisible()
+  await expect(main.getByText('Vice President', { exact: true })).toBeVisible()
+
+  const names = await main
+    .getByRole('img', { name: /^Portrait of / })
+    .evaluateAll((images) =>
+      images.map((image) => image.getAttribute('alt')?.replace('Portrait of ', '')),
+    )
+  expect(names.slice(0, 2)).toEqual(['Pascal Fechner', 'Renato Mio'])
+  expect(names.slice(-2)).toEqual(['Andreas Karasenko', 'Felicitas Feick'])
+})
+
 test('only established positions get the board badge', () => {
   expect(isEstablishedPosition(' vice president ')).toBe(true)
   expect(isEstablishedPosition('Treasurer')).toBe(true)
