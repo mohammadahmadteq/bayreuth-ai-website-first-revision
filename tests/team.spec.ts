@@ -11,22 +11,32 @@ const member = (name: string, role: string, isBoardMember = false): TeamMember =
   isBoardMember,
 })
 
-test('team sections follow board precedence, then names, without mutating input', () => {
-  const vicePresident = member('Renato Mio', 'Vice President', true)
-  const president = member('Pascal Fechner', 'President', true)
+test('team sections follow board precedence and otherwise keep content order', () => {
   const secretary = member('Ada Example', 'Secretary', true)
+  const vicePresident = member('Renato Mio', 'Vice President', true)
+  const treasurer = member('Pascal Lange', 'Treasurer', true)
+  const president = member('Pascal Fechner', 'President', true)
   const tizian = member('Tizian Küffner', 'Core Team')
   const jamil = member('Jamil Shihada', 'Core Team')
   // A board flag left on a former member must not pull them back onto the board.
   const felicitas = member('Felicitas Feick', 'Former Board Member', true)
   const andreas = member('Andreas Karasenko', 'Alumni')
-  const members = [vicePresident, felicitas, tizian, secretary, president, andreas, jamil]
+  const members = [
+    secretary,
+    vicePresident,
+    felicitas,
+    tizian,
+    treasurer,
+    president,
+    andreas,
+    jamil,
+  ]
   const original = [...members]
 
   expect(groupTeam(members)).toEqual({
-    board: [president, vicePresident, secretary],
-    core: [jamil, tizian],
-    former: [andreas, felicitas],
+    board: [president, vicePresident, treasurer, secretary],
+    core: [tizian, jamil],
+    former: [felicitas, andreas],
   })
   expect(members).toEqual(original)
 })
