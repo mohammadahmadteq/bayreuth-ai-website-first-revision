@@ -11,11 +11,7 @@ export const TeamPage: FC = () => {
   const { team } = useSiteContent()
   return (
     <>
-      <PageHeader
-        eyebrow="Team"
-        title="The people behind it."
-        subtitle="A volunteer board and an active community of students from across the University of Bayreuth keep the association running."
-      />
+      <PageHeader eyebrow="Team" title="The people behind it." />
       <Container size={1280} px={24} py={{ base: 32, md: 48 }}>
         <Stack gap={64}>
           <ErrorBoundary label="Team">
