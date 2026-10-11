@@ -8,7 +8,7 @@ export const OpenToEveryoneSection: FC = () => {
       <SectionHeading
         eyebrow="Open to everyone"
         title="Any background. Any level."
-        subtitle="AI touches every discipline — so does our community. Business, law, economics, philosophy, computer science, and everything between."
+        subtitle="No matter you are new to AI or experienced, there is a place for you here."
       />
 
       <SimpleGrid cols={{ base: 1, md: 2 }} spacing={32} mt={40}>

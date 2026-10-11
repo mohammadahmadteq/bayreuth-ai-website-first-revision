@@ -11,10 +11,7 @@ export const PhotoRail: FC<{ photos: AssociationPhoto[] }> = ({ photos }) => {
 
   return (
     <Stack gap={28}>
-      <SectionHeading
-        eyebrow="Community"
-        title="People, projects, and moments from the association."
-      />
+      <SectionHeading eyebrow="Community" title="Everything begins with curiosity." />
 
       <Box
         style={{
