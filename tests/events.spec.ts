@@ -44,17 +44,19 @@ test('homepage upcoming events exclude past dates and retain events happening to
 test('meetings filters, calendar selection and downloads work together', async ({ page }) => {
   await page.clock.setFixedTime(new Date('2026-09-24T12:00:00Z'))
   await page.goto('/meetings')
-  await expect(page.getByText('Showing 2 of 2 dates')).toBeVisible()
+  await expect(page.getByText('Showing 10 of 10 dates')).toBeVisible()
   await page.getByRole('button', { name: 'Talks', exact: true }).click()
-  await expect(page.getByText('Showing 1 of 2 dates')).toBeVisible()
+  await expect(page.getByText('Showing 4 of 10 dates')).toBeVisible()
   await expect(page.getByText('October 2026', { exact: true })).toBeVisible()
-  await page.getByRole('button', { name: 'Events on 15', exact: true }).click()
-  await expect(page.getByRole('heading', { name: 'Regular AI Association meeting' })).toBeVisible()
+  await page.getByRole('button', { name: 'Events on 29', exact: true }).click()
+  await expect(
+    page.getByRole('heading', { name: 'A Tricky Relationship: AI & Safety' }),
+  ).toBeVisible()
   const downloadPromise = page.waitForEvent('download')
   await page.getByRole('dialog').getByRole('button', { name: 'Add to calendar' }).click()
-  expect((await downloadPromise).suggestedFilename()).toBe('evt-regular-thursday-meeting.ics')
+  expect((await downloadPromise).suggestedFilename()).toBe('evt-2026-10-29-ai-safety.ics')
   await page.keyboard.press('Escape')
-  await page.getByRole('button', { name: 'Workshops', exact: true }).click()
+  await page.getByRole('button', { name: 'Dinners', exact: true }).click()
   await expect(page.getByText('No dates match this filter yet — check back soon.')).toBeVisible()
 })
 

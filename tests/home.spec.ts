@@ -1,6 +1,8 @@
 import { expect, test } from '@playwright/test'
 
 test('home page renders the association content', async ({ page }) => {
+  // Fixed between the Mensaabend and the kick-off, so the next event is stable.
+  await page.clock.setFixedTime(new Date('2026-10-13T12:00:00Z'))
   await page.goto('/')
 
   await expect(
@@ -13,7 +15,7 @@ test('home page renders the association content', async ({ page }) => {
     .poll(() => heroPhoto.evaluate((img) => (img as HTMLImageElement).naturalWidth))
     .toBeGreaterThan(0)
   await expect(
-    page.getByText('Room S122, GW I - University of Bayreuth', { exact: true }).first(),
+    page.getByText('Room S93, GW I - University of Bayreuth', { exact: true }).first(),
   ).toBeVisible()
   await expect(page.getByText('Everything begins with curiosity.')).toBeVisible()
   await expect(

@@ -10,13 +10,93 @@
     "isFeatured": true
   },
   {
-    "id": "evt-regular-thursday-meeting",
-    "title": "Regular AI Association meeting",
-    "description": "During the lecture period, the association meets every other Thursday for exchange, projects, and practical AI discussion.",
+    "id": "evt-2026-10-12-mensaabend",
+    "title": "AI Association at the Mensaabend",
+    "description": "",
+    "date": "2026-10-12",
+    "time": "19:00-22:00",
+    "location": "Hauptmensa - University of Bayreuth",
+    "category": "social",
+    "isFeatured": false
+  },
+  {
+    "id": "evt-2026-10-15-kick-off",
+    "title": "Kick-off meeting for the WS26-27",
+    "description": "",
     "date": "2026-10-15",
     "time": "18:00-19:30",
-    "location": "Room S122, GW I - University of Bayreuth",
+    "location": "Room S93, GW I - University of Bayreuth",
+    "category": "social",
+    "isFeatured": true
+  },
+  {
+    "id": "evt-2026-10-29-ai-safety",
+    "title": "A Tricky Relationship: AI & Safety - by Prof. Lena Kästner",
+    "description": "",
+    "date": "2026-10-29",
+    "time": "18:00-19:30",
+    "location": "Room S93, GW I - University of Bayreuth",
     "category": "talk",
+    "isFeatured": false
+  },
+  {
+    "id": "evt-2026-11-03-bg-kulmbach",
+    "title": "Workshop with BG Kulmbach",
+    "description": "",
+    "date": "2026-11-03",
+    "time": "16:30-18:30",
+    "location": "Open Innovation Lab, ZAPF building (Nürnberger Str. 38)",
+    "category": "workshop",
+    "isFeatured": false
+  },
+  {
+    "id": "evt-2026-11-12-software-tools",
+    "title": "Software tools for the new programmer: IDEs and Github - by Mohammad Ahmad",
+    "description": "",
+    "date": "2026-11-12",
+    "time": "18:00-19:30",
+    "location": "Room S93, GW I - University of Bayreuth",
+    "category": "talk",
+    "isFeatured": false
+  },
+  {
+    "id": "evt-2026-11-26-startup-ai",
+    "title": "Building a startup in the age of AI - by Dr. Natalie Ott, CEO from Adalovis",
+    "description": "",
+    "date": "2026-11-26",
+    "time": "18:00-19:30",
+    "location": "Room S93, GW I - University of Bayreuth",
+    "category": "talk",
+    "isFeatured": false
+  },
+  {
+    "id": "evt-2026-12-10-skill-sharing",
+    "title": "Skill sharing and projects",
+    "description": "",
+    "date": "2026-12-10",
+    "time": "18:00-19:30",
+    "location": "Room S93, GW I - University of Bayreuth",
+    "category": "workshop",
+    "isFeatured": false
+  },
+  {
+    "id": "evt-2027-01-21-tools-for-thought",
+    "title": "Tools for Thought: AI in Support of Human Thinking - by Prof. Dr. Daniel Buschek",
+    "description": "",
+    "date": "2027-01-21",
+    "time": "18:00-19:30",
+    "location": "Room S93, GW I - University of Bayreuth",
+    "category": "talk",
+    "isFeatured": false
+  },
+  {
+    "id": "evt-2027-02-04-skill-sharing",
+    "title": "Skill sharing and projects",
+    "description": "",
+    "date": "2027-02-04",
+    "time": "18:00-19:30",
+    "location": "Room S93, GW I - University of Bayreuth",
+    "category": "workshop",
     "isFeatured": false
   }
 ]
