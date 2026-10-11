@@ -8,22 +8,22 @@ const ACTIVITIES = [
   {
     icon: IconCode,
     title: 'Projects',
-    body: 'Hands-on builds, research, and hackathon prototypes.',
+    body: 'Turn Ideas into reality through hands on AI projects and collaboration.',
   },
   {
     icon: IconPresentation,
     title: 'Talks & Workshops',
-    body: 'Sessions on tools, papers, and applied techniques.',
+    body: 'Discover new AI tools, explore real world applications and learn from experts.',
   },
   {
     icon: IconMessageCircle2,
     title: 'Discussions',
-    body: 'Open exchange on where AI is heading and why it matters.',
+    body: 'Exchange ideas, ask questions and explore the future of AI together.',
   },
   {
     icon: IconUsersGroup,
     title: 'Community',
-    body: 'A standing group of students who meet regularly.',
+    body: 'Connect with students from different backgrounds who share a curiosity for AI.',
   },
 ]
 

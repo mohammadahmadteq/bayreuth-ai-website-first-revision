@@ -57,7 +57,7 @@ SQL migrations live in `supabase/migrations/`. The project has been seeded with 
 | `src/services/i18n.ts`                         | Translation catalog activation and locale persistence |
 | `src/styles/globals.css`, `src/theme/theme.ts` | Shared design tokens, styles, and theme               |
 
-Edit dynamic content in the separate admin portal. `src/data/*.json` supplies fallback content for unconfigured or unavailable Supabase projects. Do not put service calls in presentation components or import UI into hooks and helpers.
+Edit dynamic content in the separate admin portal. `src/data/*.json` supplies fallback content for unconfigured or unavailable Supabase projects. The exception is `src/data/founders.json`: the Team page's founding members list is fixed history, so it lives only in the repository. Do not put service calls in presentation components or import UI into hooks and helpers.
 
 Add a page to `PAGE_ROUTES` in `src/App.tsx`; every entry receives the same transition wrapper. Navigation menus are curated separately. `/dates` remains an alias for `/meetings`.
 
@@ -65,7 +65,7 @@ Add a page to `PAGE_ROUTES` in `src/App.tsx`; every entry receives the same tran
 
 Event helpers return sorted copies and accept an explicit clock for deterministic tests. `getNextEvent` falls back to the most recent event for calendar anchoring. `getUpcomingEvents` has no past-event fallback and drives the homepage and footer. Date-only events remain upcoming through their calendar day; event time strings are used separately for calendar export.
 
-The Team page is grouped from fields the admin portal already edits. A role starting with "Former" or "Alumni" places a member under Alumni, whatever their board flag. Other members with the board flag form the Board, led by President, Vice President, and Treasurer, which also get a highlighted badge. Everyone else is Core Team. Core Team and Alumni keep the content order: `sort_order` in Supabase, array order in `src/data/team.json`. The portal cannot change `sort_order` yet, so reordering the live team needs SQL.
+The Team page is grouped from fields the admin portal already edits. A role starting with "Former" or "Alumni" places a member under Former organisers, whatever their board flag. Other members with the board flag form the Board, led by President, Vice President, and Treasurer, which also get a highlighted badge. Everyone else is Core Team. Core Team and Former organisers keep the content order: `sort_order` in Supabase, array order in `src/data/team.json`. The portal cannot change `sort_order` yet, so reordering the live team needs SQL.
 
 Use `asset()` for public files so URLs work with the production subpath configured in `vite.config.ts`. Keep the member and partner calls to action visually distinct. Respect reduced-motion preferences.
 

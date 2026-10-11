@@ -71,8 +71,8 @@ export const Footer: FC = () => {
                 maxWidth: 320,
               }}
             >
-              A student initiative at the University of Bayreuth — exploring, building, and
-              discussing AI together. Serious, but warm.
+              A student-led initiative at the University of Bayreuth bringing together everyone
+              who’s passionate about artificial intelligence.
             </Text>
             <Group gap={10} mt={4}>
               <a
