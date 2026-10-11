@@ -15,6 +15,7 @@ import partnersRaw from './partners.json'
 import statsRaw from './stats.json'
 import faqRaw from './faq.json'
 import resourcesRaw from './resources.json'
+import foundersRaw from './founders.json'
 
 export const events: EventItem[] = eventsRaw as EventItem[]
 export const team: TeamMember[] = teamRaw
@@ -23,3 +24,4 @@ export const partners: Partner[] = partnersRaw as Partner[]
 export const stats: Stat[] = statsRaw
 export const faq: FaqItem[] = faqRaw
 export const resourceCategories: ResourceCategory[] = resourcesRaw
+export const founders: string[] = foundersRaw

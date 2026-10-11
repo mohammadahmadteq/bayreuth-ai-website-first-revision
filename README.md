@@ -57,7 +57,7 @@ SQL migrations live in `supabase/migrations/`. The project has been seeded with 
 | `src/services/i18n.ts`                         | Translation catalog activation and locale persistence |
 | `src/styles/globals.css`, `src/theme/theme.ts` | Shared design tokens, styles, and theme               |
 
-Edit dynamic content in the separate admin portal. `src/data/*.json` supplies fallback content for unconfigured or unavailable Supabase projects. Do not put service calls in presentation components or import UI into hooks and helpers.
+Edit dynamic content in the separate admin portal. `src/data/*.json` supplies fallback content for unconfigured or unavailable Supabase projects. The exception is `src/data/founders.json`: the Team page's founding members list is fixed history, so it lives only in the repository. Do not put service calls in presentation components or import UI into hooks and helpers.
 
 Add a page to `PAGE_ROUTES` in `src/App.tsx`; every entry receives the same transition wrapper. Navigation menus are curated separately. `/dates` remains an alias for `/meetings`.
 

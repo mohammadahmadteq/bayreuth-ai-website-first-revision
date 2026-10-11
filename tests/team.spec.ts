@@ -50,6 +50,7 @@ test('team page lists the board, the core team in content order, then former org
     'Board',
     'Core Team',
     'Former organisers',
+    'Founding members',
   ])
   for (const position of ['President', 'Vice President', 'Treasurer']) {
     await expect(main.getByText(position, { exact: true })).toBeVisible()
@@ -73,6 +74,22 @@ test('team page lists the board, the core team in content order, then former org
     'Felipe Calgaro',
     'Andreas Karasenko',
     'Felicitas Feick',
+  ])
+})
+
+test('team page ends with the founding members list', async ({ page }) => {
+  await page.goto('/team')
+  const founders = page.locator('main').getByRole('list', { name: 'Founding members' })
+  await expect(founders.getByRole('listitem')).toHaveText([
+    'Pascal Fechner',
+    'Renato Mio',
+    'Pascal Lange',
+    'Nico Höllerich',
+    'Felicitas Feick',
+    'Andreas Karasenko',
+    'Frederik Hornung',
+    'Laura Hafner',
+    'Christian Hahn',
   ])
 })
 
