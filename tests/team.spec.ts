@@ -41,10 +41,16 @@ test('team sections follow board precedence and otherwise keep content order', (
   expect(members).toEqual(original)
 })
 
-test('team page lists the board, the core team in content order, then alumni', async ({ page }) => {
+test('team page lists the board, the core team in content order, then former organisers', async ({
+  page,
+}) => {
   await page.goto('/team')
   const main = page.locator('main')
-  await expect(main.getByRole('heading', { level: 2 })).toHaveText(['Board', 'Core Team', 'Alumni'])
+  await expect(main.getByRole('heading', { level: 2 })).toHaveText([
+    'Board',
+    'Core Team',
+    'Former organisers',
+  ])
   for (const position of ['President', 'Vice President', 'Treasurer']) {
     await expect(main.getByText(position, { exact: true })).toBeVisible()
   }

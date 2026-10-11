@@ -50,7 +50,7 @@ export const TeamGrid: FC<TeamGridProps> = ({ members }) => {
     <Stack gap={64}>
       <Group title="Board" members={board} />
       <Group title="Core Team" members={core} />
-      <Group title="Alumni" members={former} />
+      <Group title="Former organisers" members={former} />
     </Stack>
   )
 }
