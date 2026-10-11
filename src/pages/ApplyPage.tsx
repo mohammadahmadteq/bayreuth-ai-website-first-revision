@@ -150,7 +150,7 @@ export const ApplyPage: FC = () => {
                 <Group gap={8} justify="center">
                   <IconCalendarHeart size={16} color="var(--color-subtext)" />
                   <Text fz={14} style={{ color: 'var(--color-subtext)' }}>
-                    Next meeting: every other Thursday, 18:00 · Room S122, GW I
+                    Next meeting: every other Thursday, 18:00 · Room S93, GW I
                   </Text>
                 </Group>
               </Stack>

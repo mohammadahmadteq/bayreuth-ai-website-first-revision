@@ -8,12 +8,12 @@ const ACTIVITIES = [
   {
     icon: IconCode,
     title: 'Projects',
-    body: 'Turn Ideas into reality through hands on AI projects and collaboration.',
+    body: 'Turn ideas into reality through hands-on AI projects and collaboration.',
   },
   {
     icon: IconPresentation,
     title: 'Talks & Workshops',
-    body: 'Discover new AI tools, explore real world applications and learn from experts.',
+    body: 'Discover new AI tools, explore real-world applications and learn from experts.',
   },
   {
     icon: IconMessageCircle2,
