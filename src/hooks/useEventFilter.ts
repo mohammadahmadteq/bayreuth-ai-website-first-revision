@@ -12,7 +12,7 @@ interface UseEventFilterResult {
 
 export function useEventFilter(events: EventItem[]): UseEventFilterResult {
   const [category, setCategory] = useState<CategoryFilter>('all')
-  const [timeframe, setTimeframe] = useState<Timeframe>('all')
+  const [timeframe, setTimeframe] = useState<Timeframe>('upcoming')
 
   const filteredEvents = useMemo(
     () => filterEvents(events, category, timeframe, new Date()),

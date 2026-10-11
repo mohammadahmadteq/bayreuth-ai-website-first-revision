@@ -12,8 +12,15 @@ import { ErrorBoundary } from '../components/ErrorBoundary'
 import { useEventFilter } from '../hooks/useEventFilter'
 import { useElementHeight } from '../hooks/useElementHeight'
 import { getNextEvent } from '../lib/events'
-import type { EventItem } from '../types/content'
+import type { EventItem, Timeframe } from '../types/content'
 import { useSiteContent } from '../hooks/useSiteContent'
+
+const LIST_TITLES: Record<Timeframe, string> = {
+  all: 'All dates',
+  upcoming: 'Upcoming dates',
+  month: 'This month',
+  past: 'Past dates',
+}
 
 export const MeetingsPage: FC = () => {
   const { events } = useSiteContent()
@@ -30,7 +37,7 @@ export const MeetingsPage: FC = () => {
     return anchor ? new Date(anchor.date) : new Date()
   }, [filteredEvents])
 
-  const listTitle = timeframe === 'past' ? 'Past dates' : 'Upcoming dates'
+  const listTitle = LIST_TITLES[timeframe]
 
   const selectDayEvent = (date: Date) => {
     const match = filteredEvents.find(
