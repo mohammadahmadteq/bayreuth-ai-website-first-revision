@@ -44,9 +44,9 @@ test('homepage upcoming events exclude past dates and retain events happening to
 test('meetings filters, calendar selection and downloads work together', async ({ page }) => {
   await page.clock.setFixedTime(new Date('2026-09-24T12:00:00Z'))
   await page.goto('/meetings')
-  await expect(page.getByText('Showing 10 of 10 dates')).toBeVisible()
+  await expect(page.getByText('Showing 9 of 9 dates')).toBeVisible()
   await page.getByRole('button', { name: 'Talks', exact: true }).click()
-  await expect(page.getByText('Showing 4 of 10 dates')).toBeVisible()
+  await expect(page.getByText('Showing 4 of 9 dates')).toBeVisible()
   await expect(page.getByText('October 2026', { exact: true })).toBeVisible()
   await page.getByRole('button', { name: 'Events on 29', exact: true }).click()
   await expect(

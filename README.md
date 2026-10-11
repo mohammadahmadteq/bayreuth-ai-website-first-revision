@@ -38,7 +38,7 @@ To activate the first admin, open the portal and create an account with `bayreut
 
 The portal can add, edit, and delete partners, team members, events, and association photos. Image fields accept a URL or an upload of a JPEG, PNG, WebP, or GIF under 5 MB. New uploads go to the public `site-images` bucket. The initial database rows refer to the existing `/official/` assets, so those assets remain available in the public site build. All public pages share one content provider and subscribe to Supabase Realtime changes. Visible pages also refresh on focus, reconnection, and every minute as a fallback. The homepage hero, join section, event cards, and site footer use the same next upcoming event as the Meetings page.
 
-SQL migrations live in `supabase/migrations/`. The project has been seeded with the records from `src/data/` and the existing photo rail. The older event dated 9 July 2026 is retained as a past event; the future entry remains upcoming.
+SQL migrations live in `supabase/migrations/`. The project has been seeded with the records from `src/data/` and the existing photo rail.
 
 ## Where changes belong
 
