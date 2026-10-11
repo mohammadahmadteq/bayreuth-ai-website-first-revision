@@ -109,13 +109,14 @@ section[id],
 }
 
 /* Two oversized, very low-alpha blobs drifting on a long loop. Transform +
-   opacity only so the whole thing stays GPU-composited. */
+   opacity only, and deliberately no blur filter: re-blurring layers this
+   large on every animation frame held the hero at about 9 fps, and the
+   radial gradients already fade out softly on their own. */
 .hero-gradient-bg::before,
 .hero-gradient-bg::after {
   content: '';
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
   will-change: transform, opacity;
 }
 
