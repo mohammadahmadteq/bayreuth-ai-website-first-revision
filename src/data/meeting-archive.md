@@ -51,7 +51,7 @@ The part after " — " is optional. `bun run test` checks that every bullet stil
 - **May 20, 2025:** Regular meeting
 - **May 31, 2025:** Social time! AI Association goes to Nürnberg
 - **June 24, 2025:** Regular community meeting
-- **July 22, 2025:** Final meeting for the Sommersemester
+- **July 22, 2025:** Final meeting for the Summer semester
 - **October 13, 2025:** Mensa Abend event
 - **October 16, 2025:** Kick-off meeting for the WS25-26
 - **October 30, 2025:** Skill sharing & coding
