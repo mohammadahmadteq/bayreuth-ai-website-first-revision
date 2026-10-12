@@ -11,6 +11,11 @@ export function formatEventDate(iso: string): string {
   })
 }
 
+/** "7 May", for lists that are already grouped by year. */
+export function formatDayMonth(iso: string): string {
+  return parseEventDate(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' })
+}
+
 export function splitDate(iso: string, locale = 'en-GB'): { month: string; day: string } {
   const d = parseEventDate(iso)
   if (Number.isNaN(d.getTime())) return { month: '', day: iso }

@@ -14,6 +14,24 @@ export interface EventItem {
   isFeatured: boolean
 }
 
+/** A past meeting from src/data/meeting-archive.md. */
+export interface ArchiveEntry {
+  date: string // yyyy-mm-dd
+  title: string
+  speaker?: string
+}
+
+export interface ArchiveYear {
+  year: number
+  entries: ArchiveEntry[]
+}
+
+/** One tab of the archive, such as the guest talks. */
+export interface ArchiveTrack {
+  title: string
+  years: ArchiveYear[]
+}
+
 export interface TeamMember {
   id: string
   name: string

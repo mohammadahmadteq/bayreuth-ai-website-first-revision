@@ -6,6 +6,7 @@ import { EventFilterBar } from '../components/meetings/EventFilterBar'
 import { UpcomingEventsPanel } from '../components/meetings/UpcomingEventsPanel'
 import { EventDetailDrawer } from '../components/meetings/EventDetailDrawer'
 import { CalendarSubscribeBanner } from '../components/meetings/CalendarSubscribeBanner'
+import { MeetingArchive } from '../components/meetings/MeetingArchive'
 import { MiniMonthCalendar } from '../components/dates/MiniMonthCalendar'
 import { FadeInWhenVisible } from '../components/ui/FadeInWhenVisible'
 import { ErrorBoundary } from '../components/ErrorBoundary'
@@ -14,6 +15,7 @@ import { useElementHeight } from '../hooks/useElementHeight'
 import { getNextEvent } from '../lib/events'
 import type { EventItem, Timeframe } from '../types/content'
 import { useSiteContent } from '../hooks/useSiteContent'
+import { meetingArchive } from '../data'
 
 const LIST_TITLES: Record<Timeframe, string> = {
   all: 'All dates',
@@ -95,6 +97,12 @@ export const MeetingsPage: FC = () => {
               <CalendarSubscribeBanner events={events} />
             </FadeInWhenVisible>
           </Stack>
+        </ErrorBoundary>
+      </Container>
+
+      <Container size={1120} px={24} pt={{ base: 32, md: 48 }} pb={{ base: 56, md: 80 }}>
+        <ErrorBoundary label="Meeting archive">
+          <MeetingArchive tracks={meetingArchive} />
         </ErrorBoundary>
       </Container>
 

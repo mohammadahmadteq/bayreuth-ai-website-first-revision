@@ -627,6 +627,126 @@ section[id],
   }
 }
 
+/* --- Meeting archive (Meetings page): a column per year, dots joined by a line --- */
+/* The tabs match the event filter pills above them. */
+.archive-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.archive-tab {
+  padding: 9px 20px;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--color-subtext);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.archive-tab[data-active] {
+  border-color: var(--teal);
+  background: var(--teal);
+  color: var(--on-teal);
+}
+
+.archive-tab:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* auto-fill keeps the columns the same width in both tabs. */
+.archive-years {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 36px 28px;
+  align-items: start;
+}
+
+.archive-year__label {
+  display: inline-block;
+  margin: 0 0 18px;
+  padding: 3px 14px;
+  border-radius: 8px;
+  background: var(--teal);
+  color: var(--on-teal);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.archive-year__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Each entry draws its own dot and the line down to the next dot. The dot is
+   centred on the 20px date line. */
+.archive-year__list li {
+  position: relative;
+  padding: 0 0 22px 26px;
+}
+
+.archive-year__list li:last-child {
+  padding-bottom: 0;
+}
+
+.archive-year__list li::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--teal);
+  border-radius: 50%;
+  background: var(--color-bg);
+}
+
+.archive-year__list li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  bottom: -4px;
+  left: 5px;
+  width: 2px;
+  background: rgba(var(--teal-rgb), 0.3);
+}
+
+.archive-year__list time {
+  display: block;
+  color: var(--teal);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.archive-entry__title {
+  margin: 2px 0 0;
+  color: var(--color-text);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.archive-entry__speaker {
+  margin: 2px 0 0;
+  color: var(--teal-dark);
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.45;
+}
+
 /* --- Accessibility: honor reduced-motion everywhere --- */
 @media (prefers-reduced-motion: reduce) {
   html {
