@@ -1,64 +1,77 @@
-import { type FC } from 'react'
-import { Box, SimpleGrid, Stack } from '@mantine/core'
-import { useMediaQuery } from '@mantine/hooks'
+import { type CSSProperties, type FC, useState } from 'react'
+import { Modal, Stack } from '@mantine/core'
 import { SectionHeading } from '../ui/SectionHeading'
 import { asset } from '../../lib/utils'
+import { photoThumbnail } from '../../lib/photos'
 import type { AssociationPhoto } from '../../types/content'
 
+// How long one photo takes to scroll past; the loop length scales with the count.
+const SECONDS_PER_PHOTO = 6
+
 export const PhotoRail: FC<{ photos: AssociationPhoto[] }> = ({ photos }) => {
-  const isMobile = useMediaQuery('(max-width: 767px)')
+  const [enlarged, setEnlarged] = useState<AssociationPhoto | null>(null)
   if (photos.length === 0) return null
+
+  // The set is rendered twice so the loop can wrap seamlessly; the copy is
+  // hidden from assistive technology and keyboard focus.
+  const renderSet = (isCopy: boolean) => (
+    <ul className="community-strip__set" aria-hidden={isCopy || undefined} inert={isCopy}>
+      {photos.map((photo) => (
+        <li key={photo.id} className="community-strip__item">
+          <button
+            type="button"
+            aria-label={`Open photo: ${photo.alt}`}
+            onClick={() => setEnlarged(photo)}
+          >
+            <img
+              src={asset(photoThumbnail(photo.imageUrl))}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <span className="community-strip__caption">{photo.alt}</span>
+          </button>
+        </li>
+      ))}
+    </ul>
+  )
 
   return (
     <Stack gap={28}>
-      <SectionHeading eyebrow="Community" title="Everything begins with curiosity." />
+      <SectionHeading eyebrow="Community" title="Moments from our meetings, socials and events." />
 
-      <Box
-        style={{
-          display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 3fr) minmax(0, 2fr)',
-          gap: 16,
-        }}
+      <div
+        className={`community-strip${enlarged ? ' is-paused' : ''}`}
+        style={{ '--strip-duration': `${photos.length * SECONDS_PER_PHOTO}s` } as CSSProperties}
       >
-        <Box
-          style={{
-            position: 'relative',
-            borderRadius: 10,
-            overflow: 'hidden',
-            border: '1px solid var(--border)',
-            aspectRatio: '4 / 3',
-          }}
-        >
-          <img
-            src={asset(photos[0].imageUrl)}
-            alt={photos[0].alt}
-            loading="lazy"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-          />
-        </Box>
+        <div className="community-strip__track">
+          {renderSet(false)}
+          {renderSet(true)}
+        </div>
+      </div>
 
-        <SimpleGrid cols={2} spacing={16}>
-          {photos.slice(1).map((photo) => (
-            <Box
-              key={photo.id}
-              style={{
-                position: 'relative',
-                borderRadius: 10,
-                overflow: 'hidden',
-                border: '1px solid var(--border)',
-                aspectRatio: '1 / 1',
-              }}
-            >
-              <img
-                src={asset(photo.imageUrl)}
-                alt={photo.alt}
-                loading="lazy"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-              />
-            </Box>
-          ))}
-        </SimpleGrid>
-      </Box>
+      <Modal
+        opened={enlarged !== null}
+        onClose={() => setEnlarged(null)}
+        title={enlarged?.alt}
+        size="auto"
+        centered
+      >
+        {enlarged && (
+          <img
+            src={asset(enlarged.imageUrl)}
+            alt={enlarged.alt}
+            style={{
+              display: 'block',
+              maxWidth: 'min(1600px, 88vw)',
+              maxHeight: '75vh',
+              width: 'auto',
+              height: 'auto',
+              borderRadius: 8,
+            }}
+          />
+        )}
+      </Modal>
     </Stack>
   )
 }

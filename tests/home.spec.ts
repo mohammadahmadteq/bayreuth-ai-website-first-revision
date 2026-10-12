@@ -17,10 +17,9 @@ test('home page renders the association content', async ({ page }) => {
   await expect(
     page.getByText('Room S93, GW I - University of Bayreuth', { exact: true }).first(),
   ).toBeVisible()
-  await expect(page.getByText('Everything begins with curiosity.')).toBeVisible()
-  await expect(
-    page.getByRole('img', { name: 'Bayreuth AI Association members together' }),
-  ).toBeVisible()
+  await expect(page.getByText('Moments from our meetings, socials and events.')).toBeVisible()
+  // The strip renders its photos twice for the loop; only one set is exposed.
+  await expect(page.getByRole('button', { name: /^Open photo:/ })).toHaveCount(11)
   await expect(page.getByRole('link', { name: 'Join Us on WhatsApp' })).toHaveAttribute(
     'href',
     /^https:\/\/chat\.whatsapp\.com\//,
