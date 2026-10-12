@@ -6,7 +6,7 @@ import { I18nProvider } from '@lingui/react'
 import { i18n } from '@lingui/core'
 import '@mantine/core/styles.css'
 import './styles/globals.css'
-import './services/i18n' // side-effect: loads catalogs + activates initial locale
+import './services/i18n' // side-effect: activates the English catalog
 import { theme } from './theme/theme'
 import App from './App'
 import { SiteContentProvider } from './services/siteContent'

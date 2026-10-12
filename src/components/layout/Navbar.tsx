@@ -2,7 +2,6 @@ import { type FC, useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Box, Group, Text, Burger, Drawer, Stack, Image } from '@mantine/core'
 import { useDisclosure, useMediaQuery } from '@mantine/hooks'
-import { LanguageSwitcher } from '../LanguageSwitcher'
 import { JoinButton } from '../ui/JoinButton'
 import { asset } from '../../lib/utils'
 
@@ -111,8 +110,6 @@ export const Navbar: FC = () => {
         </Group>
 
         <Group gap={10} wrap="nowrap">
-          <LanguageSwitcher compact />
-
           <Box visibleFrom="lg">
             <JoinButton size="sm" withArrow={false} />
           </Box>

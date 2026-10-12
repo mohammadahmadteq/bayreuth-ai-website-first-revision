@@ -2,7 +2,7 @@ import { formatter } from '@lingui/format-po'
 
 /** @type {import('@lingui/conf').LinguiConfig} */
 export default {
-  locales: ['en', 'de'],
+  locales: ['en'],
   sourceLocale: 'en',
   catalogs: [
     {

@@ -23,9 +23,9 @@ See [README.md](README.md) for commands and module ownership.
 
 ## Internationalization
 
-Use `Trans` from `@lingui/react/macro` for JSX and `t` from `@lingui/core/macro` for translated values. Evaluate translated arrays inside a component subscribed through `useLingui()` so they update when the locale changes. Catalogs are under `src/locales/`.
+The site is English-only and has no language switcher. Write copy as plain English strings. Lingui is still installed with an English catalog in `src/locales/en/`, so text can be marked for translation later with `Trans` from `@lingui/react/macro` and `t` from `@lingui/core/macro`.
 
-After changing translated strings, run `bun run i18n:extract` and update the German catalog. To add a locale, update `lingui.config.js`, the catalogs and supported locales in `src/services/i18n.ts`, and the language switcher's label.
+To add a language: add it to `lingui.config.js`, run `bun run i18n:extract` and translate its catalog, activate it in `src/services/i18n.ts`, and add a switcher.
 
 ## Validation
 

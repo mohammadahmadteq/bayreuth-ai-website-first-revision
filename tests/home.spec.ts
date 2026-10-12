@@ -54,17 +54,14 @@ test('mobile navigation closes after routing', async ({ page, isMobile }) => {
   await expect(page.getByLabel('Menu', { exact: true })).not.toBeVisible()
 })
 
-test('language preference survives a reload', async ({ page }) => {
-  await page.goto('/')
-  await page.getByRole('button', { name: 'Switch to Deutsch' }).click()
-  await expect(page.locator('html')).toHaveAttribute('lang', 'de')
-  await page.reload()
-  await expect(page.getByRole('button', { name: 'Switch to Deutsch' })).toHaveAttribute(
-    'aria-pressed',
-    'true',
-  )
-  await page.getByRole('button', { name: 'Switch to English' }).click()
-  await expect(page.locator('html')).toHaveAttribute('lang', 'en')
+test.describe('with a German browser', () => {
+  test.use({ locale: 'de-DE' })
+
+  test('the site stays in English', async ({ page }) => {
+    await page.goto('/')
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en')
+    await expect(page.getByRole('button', { name: /^Switch to/ })).toHaveCount(0)
+  })
 })
 
 test('legacy dates route redirects and unknown routes recover', async ({ page }) => {
