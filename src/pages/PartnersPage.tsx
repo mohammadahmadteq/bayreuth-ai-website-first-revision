@@ -17,14 +17,14 @@ export const PartnersPage: FC = () => {
     <>
       <PageHeader
         eyebrow="Partners"
-        title="Build the future with us."
-        subtitle="We work with companies, research groups, and student initiatives who want to engage with the next generation of AI talent in Bayreuth."
+        title="Work with us."
+        subtitle="Researchers and companies such as NeuroForge, Schaeffler and LivingLogic have given talks at our meetings, and TMT Business Solutions hosted us for a company visit. If you’d like to meet students interested in AI, get in touch."
       />
 
       <Container size={1280} px={24} py={{ base: 32, md: 48 }}>
         <Stack gap={64}>
           <Stack gap={40}>
-            <SectionHeading eyebrow="Why partner" title="What sponsors get" />
+            <SectionHeading eyebrow="Why partner" title="How we can work together" />
             <PartnerBenefitsList />
           </Stack>
 
@@ -68,8 +68,7 @@ export const PartnersPage: FC = () => {
                     maxWidth: 560,
                   }}
                 >
-                  Tell us what you’re looking for — talent, visibility, or a collaboration — and
-                  we’ll find a format that fits. We’d love to hear from you.
+                  Tell us what you have in mind and we’ll work out a format together.
                 </Text>
                 <PartnerButton
                   size="lg"

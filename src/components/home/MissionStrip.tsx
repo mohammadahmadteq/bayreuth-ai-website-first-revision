@@ -30,7 +30,7 @@ const ACTIVITIES = [
 export const MissionStrip: FC = () => {
   return (
     <Box>
-      <SectionHeading eyebrow="What we do" title="Projects, talks, discussions, community." />
+      <SectionHeading eyebrow="What we do" title="Talks, coding projects and socials." />
 
       <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing={32} mt={40}>
         {ACTIVITIES.map((a, i) => (

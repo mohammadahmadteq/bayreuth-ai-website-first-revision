@@ -34,11 +34,7 @@ export const EventsSection: FC<EventsSectionProps> = ({ events }) => {
 
   return (
     <Box>
-      <SectionHeading
-        eyebrow="Events & calendar"
-        title="What's coming up."
-        subtitle="Meetings, talks, and workshops — updated each semester."
-      />
+      <SectionHeading eyebrow="Events & calendar" title="What's coming up." />
 
       {isMobile ? (
         <Box mt={40}>{upcomingList}</Box>

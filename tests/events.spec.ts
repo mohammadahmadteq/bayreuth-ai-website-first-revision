@@ -60,6 +60,15 @@ test('meetings filters, calendar selection and downloads work together', async (
   await expect(page.getByText('No dates match this filter yet — check back soon.')).toBeVisible()
 })
 
+test('meetings show only upcoming dates by default', async ({ page }) => {
+  // After the Mensaabend (12 Oct) and the kick-off (15 Oct) have passed.
+  await page.clock.setFixedTime(new Date('2026-10-20T12:00:00Z'))
+  await page.goto('/meetings')
+  await expect(page.getByText('Upcoming dates', { exact: true })).toBeVisible()
+  await expect(page.getByText('Showing 7 of 9 dates')).toBeVisible()
+  await expect(page.getByText('AI Association at the Mensaabend')).toHaveCount(0)
+})
+
 test('resource search returns results and restores the category view', async ({ page }) => {
   await page.goto('/resources')
   const search = page.getByRole('textbox', { name: 'Search resources' })

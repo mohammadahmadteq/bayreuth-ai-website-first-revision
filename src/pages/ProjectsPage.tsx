@@ -11,7 +11,7 @@ export const ProjectsPage: FC = () => {
       <PageHeader
         eyebrow="Projects"
         title="What we’ve built."
-        subtitle="Research, tools, papers, and hackathon prototypes — made by members across semesters. Filter by category and hover a card for details."
+        subtitle="Hands-on projects where members learn machine learning together on real-world data."
       />
       <Container size={1280} px={24} py={{ base: 32, md: 48 }}>
         <ErrorBoundary label="Projects">

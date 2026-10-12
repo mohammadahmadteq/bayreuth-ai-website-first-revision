@@ -7,7 +7,7 @@ export const OpenToEveryoneSection: FC = () => {
     <Box>
       <SectionHeading
         eyebrow="Open to everyone"
-        title="Any background. Any level."
+        title="Open to every background and level."
         subtitle="Whether you are new to AI or experienced, there is a place for you here."
       />
 
@@ -22,8 +22,8 @@ export const OpenToEveryoneSection: FC = () => {
             New to AI
           </Text>
           <Text style={{ color: 'var(--color-subtext)', fontSize: 15, lineHeight: 1.65 }}>
-            No programming, maths, or AI background required to join. Come as you are, ask
-            questions, and learn alongside people who started the same way.
+            You don’t need any programming, maths or AI background to join. Ask questions and learn
+            with people who started out the same way.
           </Text>
         </Stack>
 
@@ -37,8 +37,8 @@ export const OpenToEveryoneSection: FC = () => {
             Already experienced
           </Text>
           <Text style={{ color: 'var(--color-subtext)', fontSize: 15, lineHeight: 1.65 }}>
-            Contribute to real projects, review code, experiment with models, and work with other
-            technically strong members on things worth building.
+            Join a coding project, share what you know at a skill-sharing evening, or give a talk
+            yourself.
           </Text>
         </Stack>
       </SimpleGrid>

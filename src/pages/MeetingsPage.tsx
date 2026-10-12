@@ -6,14 +6,23 @@ import { EventFilterBar } from '../components/meetings/EventFilterBar'
 import { UpcomingEventsPanel } from '../components/meetings/UpcomingEventsPanel'
 import { EventDetailDrawer } from '../components/meetings/EventDetailDrawer'
 import { CalendarSubscribeBanner } from '../components/meetings/CalendarSubscribeBanner'
+import { MeetingArchive } from '../components/meetings/MeetingArchive'
 import { MiniMonthCalendar } from '../components/dates/MiniMonthCalendar'
 import { FadeInWhenVisible } from '../components/ui/FadeInWhenVisible'
 import { ErrorBoundary } from '../components/ErrorBoundary'
 import { useEventFilter } from '../hooks/useEventFilter'
 import { useElementHeight } from '../hooks/useElementHeight'
 import { getNextEvent } from '../lib/events'
-import type { EventItem } from '../types/content'
+import type { EventItem, Timeframe } from '../types/content'
 import { useSiteContent } from '../hooks/useSiteContent'
+import { meetingArchive } from '../data'
+
+const LIST_TITLES: Record<Timeframe, string> = {
+  all: 'All dates',
+  upcoming: 'Upcoming dates',
+  month: 'This month',
+  past: 'Past dates',
+}
 
 export const MeetingsPage: FC = () => {
   const { events } = useSiteContent()
@@ -30,7 +39,7 @@ export const MeetingsPage: FC = () => {
     return anchor ? new Date(anchor.date) : new Date()
   }, [filteredEvents])
 
-  const listTitle = timeframe === 'past' ? 'Past dates' : 'Upcoming dates'
+  const listTitle = LIST_TITLES[timeframe]
 
   const selectDayEvent = (date: Date) => {
     const match = filteredEvents.find(
@@ -44,7 +53,7 @@ export const MeetingsPage: FC = () => {
       <PageHeader
         eyebrow="Meetings"
         title="Meetings"
-        subtitle="All upcoming meetings and events at a glance."
+        subtitle="During the lecture period we meet every other Thursday, 18:00 to 19:30 in GW I. Each meeting starts with 15 to 20 minutes on recent AI news; after that it’s a talk, a workshop or time on our projects."
       />
 
       <Container size={1120} px={24} py={{ base: 28, md: 40 }}>
@@ -88,6 +97,12 @@ export const MeetingsPage: FC = () => {
               <CalendarSubscribeBanner events={events} />
             </FadeInWhenVisible>
           </Stack>
+        </ErrorBoundary>
+      </Container>
+
+      <Container size={1120} px={24} pt={{ base: 32, md: 48 }} pb={{ base: 56, md: 80 }}>
+        <ErrorBoundary label="Meeting archive">
+          <MeetingArchive tracks={meetingArchive} />
         </ErrorBoundary>
       </Container>
 

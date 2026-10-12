@@ -14,7 +14,7 @@ export const ResourcesPage: FC = () => {
     <>
       <PageHeader
         eyebrow="Resources"
-        title="Learn & Explore"
+        title="Learning resources"
         subtitle="Tutorials, courses, books, papers and other resources selected by the Bayreuth AI Association."
       />
 

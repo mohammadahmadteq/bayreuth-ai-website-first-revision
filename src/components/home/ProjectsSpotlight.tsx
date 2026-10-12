@@ -18,7 +18,7 @@ export const ProjectsSpotlight: FC<ProjectsSpotlightProps> = ({ projects }) => {
   if (projects.length === 0) {
     return (
       <Box>
-        <SectionHeading eyebrow="Projects" title="Ideas, shipped." />
+        <SectionHeading eyebrow="Projects" title="What we’ve worked on." />
         <Text
           mt={24}
           className="glow-card"
@@ -30,16 +30,16 @@ export const ProjectsSpotlight: FC<ProjectsSpotlightProps> = ({ projects }) => {
     )
   }
 
-  const featured = [...projects]
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, SPOTLIGHT_COUNT)
+  // Undated projects count as the oldest.
+  const time = (project: Project) => (project.date ? new Date(project.date).getTime() : 0)
+  const featured = [...projects].sort((a, b) => time(b) - time(a)).slice(0, SPOTLIGHT_COUNT)
 
   return (
     <Box>
       <SectionHeading
         eyebrow="Projects"
-        title="Ideas, shipped."
-        subtitle="We turn AI ideas into working projects — from demand forecasting to data pipelines and beyond."
+        title="What we’ve worked on."
+        subtitle="We learn machine learning by working on real data together. So far that has meant forecasting our Mensa’s dishes demand and the cafeteria’s coffee sales."
       />
 
       <Box mt={28}>

@@ -28,13 +28,26 @@ export const ProjectMiniCard: FC<ProjectMiniCardProps> = ({ project }) => {
         height: '100%',
       }}
     >
-      <Box style={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden' }}>
-        <img
-          src={asset(project.imageUrl)}
-          alt={project.title}
-          loading="lazy"
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        />
+      <Box
+        style={{
+          position: 'relative',
+          aspectRatio: '4 / 3',
+          overflow: 'hidden',
+          display: 'grid',
+          placeItems: 'center',
+          background: project.imageUrl ? undefined : 'rgba(var(--teal-rgb), 0.08)',
+        }}
+      >
+        {project.imageUrl ? (
+          <img
+            src={asset(project.imageUrl)}
+            alt={project.imageAlt ?? project.title}
+            loading="lazy"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        ) : (
+          <img src={asset('/official/logo.svg')} alt="" style={{ width: '30%', opacity: 0.85 }} />
+        )}
         <Box style={{ position: 'absolute', top: 10, left: 10 }}>
           <Badge variant="teal">{project.category}</Badge>
         </Box>

@@ -1,24 +1,32 @@
 import { type FC } from 'react'
-import { Box, Container, Group, List, Stack, Text, ThemeIcon } from '@mantine/core'
+import { Anchor, Box, Container, Group, List, Stack, Text, ThemeIcon } from '@mantine/core'
 import { IconCheck, IconMail, IconCalendarHeart } from '@tabler/icons-react'
 import { PageHeader } from '../components/layout/PageHeader'
 import { JoinButton } from '../components/ui/JoinButton'
 import { FadeInWhenVisible } from '../components/ui/FadeInWhenVisible'
+import { MAILING_LIST_URL, WHATSAPP_URL } from '../lib/utils'
 
 const APPLY_EMAIL = 'bayreuth.ai@gmail.com'
 
+const INLINE_LINK = {
+  color: 'var(--teal)',
+  fontWeight: 600,
+  textDecoration: 'underline',
+  textUnderlineOffset: 3,
+}
+
 const REASONS = [
-  'Work on real AI projects with a supportive, interdisciplinary team.',
-  'Learn through tracks, workshops, and reading groups at every level.',
+  'Work on AI projects with students from other disciplines.',
+  'Hear guest talks from researchers and companies, and join our workshops.',
   'Meet students from across the university who share your curiosity.',
-  'Build a portfolio, find collaborators, and get mentorship.',
+  'Find people to build projects with.',
 ]
 
 const EXPECTATIONS = [
-  'Show up when you can — there’s no attendance quota.',
+  'Come when you can. There’s no attendance requirement.',
   'Be kind, curious, and open to people from other backgrounds.',
   'No prior AI, maths, or coding experience required.',
-  'Membership is free for University of Bayreuth students.',
+  'Membership is 12 euros per calendar year, with discounts depending on your circumstances.',
 ]
 
 export const ApplyPage: FC = () => {
@@ -27,7 +35,7 @@ export const ApplyPage: FC = () => {
       <PageHeader
         eyebrow="Join Us"
         title="Join the association."
-        subtitle="If you’re curious about AI, you already belong here."
+        subtitle="No matter your background, if you’re excited about AI, there’s a place for you in our community."
       />
 
       <Container size={920} px={24} py={{ base: 32, md: 48 }}>
@@ -123,7 +131,7 @@ export const ApplyPage: FC = () => {
                   fz="clamp(24px, 4.5vw, 38px)"
                   style={{ color: 'var(--color-text)' }}
                 >
-                  Ready when you are.
+                  The easiest first step is to come to a meeting.
                 </Text>
                 <Text
                   style={{
@@ -133,8 +141,25 @@ export const ApplyPage: FC = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  The easiest first step is simply to come to a meeting. Or send us a quick message
-                  and we’ll add you to the mailing list and Discord.
+                  You can also join our{' '}
+                  <Anchor
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={INLINE_LINK}
+                  >
+                    WhatsApp group
+                  </Anchor>{' '}
+                  or sign up for the{' '}
+                  <Anchor
+                    href={MAILING_LIST_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={INLINE_LINK}
+                  >
+                    mailing list
+                  </Anchor>
+                  .
                 </Text>
                 <Group gap={14} justify="center">
                   <JoinButton

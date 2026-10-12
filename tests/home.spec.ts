@@ -17,10 +17,9 @@ test('home page renders the association content', async ({ page }) => {
   await expect(
     page.getByText('Room S93, GW I - University of Bayreuth', { exact: true }).first(),
   ).toBeVisible()
-  await expect(page.getByText('Everything begins with curiosity.')).toBeVisible()
-  await expect(
-    page.getByRole('img', { name: 'Bayreuth AI Association members together' }),
-  ).toBeVisible()
+  await expect(page.getByText('Moments from our meetings, socials and events.')).toBeVisible()
+  // The strip renders its photos twice for the loop; only one set is exposed.
+  await expect(page.getByRole('button', { name: /^Open photo:/ })).toHaveCount(11)
   await expect(page.getByRole('link', { name: 'Join Us on WhatsApp' })).toHaveAttribute(
     'href',
     /^https:\/\/chat\.whatsapp\.com\//,
@@ -54,17 +53,14 @@ test('mobile navigation closes after routing', async ({ page, isMobile }) => {
   await expect(page.getByLabel('Menu', { exact: true })).not.toBeVisible()
 })
 
-test('language preference survives a reload', async ({ page }) => {
-  await page.goto('/')
-  await page.getByRole('button', { name: 'Switch to Deutsch' }).click()
-  await expect(page.locator('html')).toHaveAttribute('lang', 'de')
-  await page.reload()
-  await expect(page.getByRole('button', { name: 'Switch to Deutsch' })).toHaveAttribute(
-    'aria-pressed',
-    'true',
-  )
-  await page.getByRole('button', { name: 'Switch to English' }).click()
-  await expect(page.locator('html')).toHaveAttribute('lang', 'en')
+test.describe('with a German browser', () => {
+  test.use({ locale: 'de-DE' })
+
+  test('the site stays in English', async ({ page }) => {
+    await page.goto('/')
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en')
+    await expect(page.getByRole('button', { name: /^Switch to/ })).toHaveCount(0)
+  })
 })
 
 test('legacy dates route redirects and unknown routes recover', async ({ page }) => {

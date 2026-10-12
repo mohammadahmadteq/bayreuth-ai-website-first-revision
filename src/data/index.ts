@@ -1,4 +1,5 @@
 import type {
+  ArchiveTrack,
   EventItem,
   TeamMember,
   Project,
@@ -7,7 +8,9 @@ import type {
   FaqItem,
   ResourceCategory,
 } from '../types/content'
+import { parseMeetingArchive } from '../lib/meetingArchive'
 
+import meetingArchiveMarkdown from './meeting-archive.md?raw'
 import eventsRaw from './events.json'
 import teamRaw from './team.json'
 import projectsRaw from './projects.json'
@@ -25,3 +28,12 @@ export const stats: Stat[] = statsRaw
 export const faq: FaqItem[] = faqRaw
 export const resourceCategories: ResourceCategory[] = resourcesRaw
 export const founders: string[] = foundersRaw
+
+// Like the founders list, the archive is fixed history kept only in the
+// repository. The tests fail on lines it cannot read; in development they are
+// also logged here, so a typo shows up while editing.
+const parsedArchive = parseMeetingArchive(meetingArchiveMarkdown)
+if (import.meta.env.DEV && parsedArchive.problems.length > 0) {
+  console.warn('meeting-archive.md:', parsedArchive.problems)
+}
+export const meetingArchive: ArchiveTrack[] = parsedArchive.tracks

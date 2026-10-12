@@ -52,12 +52,13 @@ SQL migrations live in `supabase/migrations/`. The project has been seeded with 
 | `src/data/`                                    | JSON content and typed exports                        |
 | `src/lib/events.ts`                            | Event ordering, selection, and filtering              |
 | `src/lib/team.ts`                              | Team page sections and their order                    |
+| `src/lib/meetingArchive.ts`                    | Reads the meeting archive into tracks and years       |
 | `src/lib/dates.ts`                             | Display formatting for dates                          |
 | `src/lib/ics.ts`                               | Calendar export and download                          |
-| `src/services/i18n.ts`                         | Translation catalog activation and locale persistence |
+| `src/services/i18n.ts`                         | Activates the English message catalog                 |
 | `src/styles/globals.css`, `src/theme/theme.ts` | Shared design tokens, styles, and theme               |
 
-Edit dynamic content in the separate admin portal. `src/data/*.json` supplies fallback content for unconfigured or unavailable Supabase projects. The exception is `src/data/founders.json`: the Team page's founding members list is fixed history, so it lives only in the repository. Do not put service calls in presentation components or import UI into hooks and helpers.
+Edit dynamic content in the separate admin portal. `src/data/*.json` supplies fallback content for unconfigured or unavailable Supabase projects. The exception is `src/data/founders.json`: the Team page's founding members list is fixed history, so it lives only in the repository. The same goes for `src/data/meeting-archive.md`, the "What has happened so far" timeline on the Meetings page. Add a bullet there after each meeting; the comment at the top of the file shows the format, and `bun run test` fails on any line it cannot read. Do not put service calls in presentation components or import UI into hooks and helpers.
 
 Add a page to `PAGE_ROUTES` in `src/App.tsx`; every entry receives the same transition wrapper. Navigation menus are curated separately. `/dates` remains an alias for `/meetings`.
 
@@ -69,6 +70,6 @@ The Team page is grouped from fields the admin portal already edits. A role star
 
 Use `asset()` for public files so URLs work with the production subpath configured in `vite.config.ts`. Keep the member and partner calls to action visually distinct. Respect reduced-motion preferences.
 
-Translation catalogs live in `src/locales/{en,de}/messages.po`. Translatable expressions must be evaluated within components that subscribe to locale changes. Some existing copy and JSON content are English-only.
+The site is English-only, with no language switcher. Lingui remains installed with an English catalog in `src/locales/en/messages.po`, so text can be marked for translation later; CLAUDE.md lists the steps for adding a language.
 
 Comments should explain constraints or reasons that the code cannot express, such as browser compatibility and resource ownership. Avoid narrating markup or duplicating values from the theme.

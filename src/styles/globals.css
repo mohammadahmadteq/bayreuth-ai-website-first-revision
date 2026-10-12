@@ -109,13 +109,14 @@ section[id],
 }
 
 /* Two oversized, very low-alpha blobs drifting on a long loop. Transform +
-   opacity only so the whole thing stays GPU-composited. */
+   opacity only, and deliberately no blur filter: re-blurring layers this
+   large on every animation frame held the hero at about 9 fps, and the
+   radial gradients already fade out softly on their own. */
 .hero-gradient-bg::before,
 .hero-gradient-bg::after {
   content: '';
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
   will-change: transform, opacity;
 }
 
@@ -531,6 +532,219 @@ section[id],
   animation:
     wave-dot-move 7.5s linear infinite,
     wave-dot-color 7.5s linear infinite;
+}
+
+/* --- Community photo strip (home): one row of photos looping sideways --- */
+/* clip, not hidden: focusing a photo must not scroll the strip and break the loop. */
+.community-strip {
+  overflow-x: clip;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+/* The track holds the photo set twice; moving it by half its width lands on an
+   identical frame. Transform only, so the loop stays on the compositor. */
+.community-strip__track {
+  display: flex;
+  width: max-content;
+  animation: community-strip-scroll var(--strip-duration, 60s) linear infinite;
+  will-change: transform;
+}
+
+.community-strip:hover .community-strip__track,
+.community-strip:focus-within .community-strip__track,
+.community-strip.is-paused .community-strip__track {
+  animation-play-state: paused;
+}
+
+/* The trailing padding equals the gap, so the seam between the two sets matches. */
+.community-strip__set {
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 0 16px 0 0;
+  list-style: none;
+}
+
+.community-strip__item button {
+  position: relative;
+  display: block;
+  height: clamp(170px, 22vw, 250px);
+  aspect-ratio: 3 / 2;
+  padding: 0;
+  overflow: hidden;
+  cursor: zoom-in;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--color-surface-strong);
+}
+
+.community-strip__item button:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.community-strip__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.community-strip__caption {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  max-width: calc(100% - 20px);
+  padding: 5px 9px;
+  border-radius: 6px;
+  background: rgba(5, 8, 10, 0.72);
+  color: #f7f7fb;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: left;
+}
+
+@keyframes community-strip-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Without motion the strip becomes a still row people can scroll themselves. */
+@media (prefers-reduced-motion: reduce) {
+  .community-strip {
+    overflow-x: auto;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .community-strip__track {
+    animation: none;
+  }
+  .community-strip__set[aria-hidden='true'] {
+    display: none;
+  }
+}
+
+/* --- Meeting archive (Meetings page): a column per year, dots joined by a line --- */
+/* The tabs match the event filter pills above them. */
+.archive-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.archive-tab {
+  padding: 9px 20px;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--color-subtext);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.archive-tab[data-active] {
+  border-color: var(--teal);
+  background: var(--teal);
+  color: var(--on-teal);
+}
+
+.archive-tab:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* auto-fill keeps the columns the same width in both tabs. */
+.archive-years {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 36px 28px;
+  align-items: start;
+}
+
+.archive-year__label {
+  display: inline-block;
+  margin: 0 0 18px;
+  padding: 3px 14px;
+  border-radius: 8px;
+  background: var(--teal);
+  color: var(--on-teal);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.archive-year__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Each entry draws its own dot and the line down to the next dot. The dot is
+   centred on the 20px date line. */
+.archive-year__list li {
+  position: relative;
+  padding: 0 0 22px 26px;
+}
+
+.archive-year__list li:last-child {
+  padding-bottom: 0;
+}
+
+.archive-year__list li::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--teal);
+  border-radius: 50%;
+  background: var(--color-bg);
+}
+
+.archive-year__list li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  bottom: -4px;
+  left: 5px;
+  width: 2px;
+  background: rgba(var(--teal-rgb), 0.3);
+}
+
+.archive-year__list time {
+  display: block;
+  color: var(--teal);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.archive-entry__title {
+  margin: 2px 0 0;
+  color: var(--color-text);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.archive-entry__speaker {
+  margin: 2px 0 0;
+  color: var(--teal-dark);
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.45;
 }
 
 /* --- Accessibility: honor reduced-motion everywhere --- */

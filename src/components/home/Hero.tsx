@@ -93,8 +93,8 @@ export const Hero: FC<{ nextEvent?: EventItem }> = ({ nextEvent }) => {
                   textAlign: isMobile ? 'center' : 'left',
                 }}
               >
-                Bayreuth&apos;s student-run AI community — hands-on projects, talks, and open
-                exchange.
+                A place where curiosity meets collaboration. We explore AI through hands-on projects
+                and practical applications.
               </Text>
             </motion.div>
 

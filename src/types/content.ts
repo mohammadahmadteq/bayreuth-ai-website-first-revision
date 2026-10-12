@@ -14,6 +14,24 @@ export interface EventItem {
   isFeatured: boolean
 }
 
+/** A past meeting from src/data/meeting-archive.md. */
+export interface ArchiveEntry {
+  date: string // yyyy-mm-dd
+  title: string
+  speaker?: string
+}
+
+export interface ArchiveYear {
+  year: number
+  entries: ArchiveEntry[]
+}
+
+/** One tab of the archive, such as the guest talks. */
+export interface ArchiveTrack {
+  title: string
+  years: ArchiveYear[]
+}
+
 export interface TeamMember {
   id: string
   name: string
@@ -31,6 +49,12 @@ export interface AssociationPhoto {
 }
 
 export type ProjectCategory = 'research' | 'hackathon' | 'paper' | 'tool'
+export type ProjectStatus = 'in-progress' | 'concluded'
+
+export interface PressLink {
+  label: string
+  url: string
+}
 
 export interface Project {
   id: string
@@ -38,10 +62,14 @@ export interface Project {
   description: string
   tags: string[]
   category: ProjectCategory
-  imageUrl: string
+  status?: ProjectStatus
+  imageUrl?: string
+  imageAlt?: string
   link?: string
+  /** Contributors, in the order they are credited. */
   authors: string[]
-  date: string
+  press?: PressLink[]
+  date?: string
 }
 
 export interface ResourceLink {

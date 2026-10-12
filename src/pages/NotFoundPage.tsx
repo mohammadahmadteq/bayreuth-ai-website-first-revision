@@ -24,7 +24,7 @@ export const NotFoundPage: FC = () => {
         <Text
           style={{ color: 'var(--color-subtext)', fontSize: 16, maxWidth: 440, lineHeight: 1.6 }}
         >
-          The link may be broken or the page may have moved. Let’s get you back on track.
+          The link may be broken or the page may have moved.
         </Text>
         <JoinButton to="/" withArrow={false}>
           Back to Home
