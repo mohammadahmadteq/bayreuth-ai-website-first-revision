@@ -30,9 +30,9 @@ export const ProjectsSpotlight: FC<ProjectsSpotlightProps> = ({ projects }) => {
     )
   }
 
-  const featured = [...projects]
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, SPOTLIGHT_COUNT)
+  // Undated projects count as the oldest.
+  const time = (project: Project) => (project.date ? new Date(project.date).getTime() : 0)
+  const featured = [...projects].sort((a, b) => time(b) - time(a)).slice(0, SPOTLIGHT_COUNT)
 
   return (
     <Box>

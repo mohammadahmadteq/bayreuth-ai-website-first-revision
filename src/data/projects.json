@@ -2,12 +2,64 @@
   {
     "id": "prj-ml4mensa",
     "title": "ML4Mensa",
-    "description": "A student project using machine learning to predict Mensa demand patterns and explore practical campus data applications.",
+    "description": "In this project, members of the AI Association collaboratively explored how machine learning methods can be applied to real-world tabular data. Using anonymised historical cafeteria transaction data provided by the university services, team members learned and applied techniques for data preprocessing, feature engineering, the comparison and evaluation of different machine learning models, and the interpretation of model behaviour and limitations.",
     "tags": ["Machine Learning", "Campus Data", "Forecasting"],
     "category": "tool",
+    "status": "in-progress",
     "imageUrl": "/official/ml4mensa.png",
+    "imageAlt": "Main dishes demand predicted using TabPFN, compared to the ground truth",
     "link": "https://www.ai-association.uni-bayreuth.de/en/Projects/index.html",
-    "authors": ["Bayreuth AI Association"],
+    "authors": [
+      "Pascal Fechner",
+      "Nico Höllerich",
+      "Renato Mio",
+      "Felicitas Feick",
+      "Pascal Lange",
+      "Mohammad Ahmad"
+    ],
+    "press": [
+      {
+        "label": "Bayreuther Tagblatt (German)",
+        "url": "https://www.bayreuther-tagblatt.de/bayreuth-2/ki-in-der-bayreuther-mensa/"
+      },
+      {
+        "label": "Kurier (German)",
+        "url": "https://www.kurier.de/inhalt.an-bayreuther-uni-ki-rechnet-an-der-mensa-die-essen-aus.9a64171f-0ad6-481a-9eb8-6f016e88c68f.html"
+      },
+      {
+        "label": "inFranken.de (German)",
+        "url": "https://www.infranken.de/lk/bayreuth/ki-in-der-mensa-der-uni-bayreuth-was-es-damit-auf-sich-hat-art-6087541"
+      },
+      {
+        "label": "University press release (English)",
+        "url": "https://www.uni-bayreuth.de/en/press-release/more-ai-less-food-waste"
+      },
+      {
+        "label": "University press release (German)",
+        "url": "https://www.uni-bayreuth.de/pressemitteilung/ki-gegen-food-waste"
+      }
+    ],
     "date": "2026-04-29"
+  },
+  {
+    "id": "prj-coffee-forecasting",
+    "title": "Coffee consumption forecasting",
+    "description": "This project focused on learning sequential modelling techniques using time series data. Based on historical sales data of hot beverages from the university cafeteria, members jointly investigated how time-dependent data can be structured for machine learning, the use of recurrent neural networks (such as LSTM models), and how different modelling assumptions influence predictions.",
+    "tags": ["Time Series", "LSTM", "Forecasting"],
+    "category": "research",
+    "status": "concluded",
+    "authors": [
+      "Ivan Khrop",
+      "Pascal Fechner",
+      "Andreas Karasenko",
+      "Felicitas Feick",
+      "Renato Mio",
+      "Gianluca Pani Casanova",
+      "Franz Erhard",
+      "Henri Berntgen",
+      "Frederik Hornung",
+      "Nico Höllerich",
+      "Tom Zeilmann"
+    ]
   }
 ]

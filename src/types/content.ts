@@ -31,6 +31,12 @@ export interface AssociationPhoto {
 }
 
 export type ProjectCategory = 'research' | 'hackathon' | 'paper' | 'tool'
+export type ProjectStatus = 'in-progress' | 'concluded'
+
+export interface PressLink {
+  label: string
+  url: string
+}
 
 export interface Project {
   id: string
@@ -38,10 +44,14 @@ export interface Project {
   description: string
   tags: string[]
   category: ProjectCategory
-  imageUrl: string
+  status?: ProjectStatus
+  imageUrl?: string
+  imageAlt?: string
   link?: string
+  /** Contributors, in the order they are credited. */
   authors: string[]
-  date: string
+  press?: PressLink[]
+  date?: string
 }
 
 export interface ResourceLink {
