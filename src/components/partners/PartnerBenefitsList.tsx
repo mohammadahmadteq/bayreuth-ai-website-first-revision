@@ -1,47 +1,47 @@
 import { type FC } from 'react'
 import { Group, SimpleGrid, Stack, Text } from '@mantine/core'
 import {
-  IconUsersGroup,
-  IconSpeakerphone,
+  IconBuilding,
+  IconDatabase,
   IconPresentation,
-  IconBriefcase,
+  IconUsersGroup,
   type TablerIcon,
 } from '@tabler/icons-react'
 import { FadeInWhenVisible } from '../ui/FadeInWhenVisible'
 
-interface Benefit {
+interface Way {
   icon: TablerIcon
   title: string
   body: string
 }
 
-const BENEFITS: Benefit[] = [
-  {
-    icon: IconUsersGroup,
-    title: 'Access to a talent pool',
-    body: 'Connect with motivated, interdisciplinary students for internships, theses, and hires.',
-  },
-  {
-    icon: IconSpeakerphone,
-    title: 'Branding at events',
-    body: 'Your logo and presence at talks, workshops, and our annual hackathon.',
-  },
+const WAYS: Way[] = [
   {
     icon: IconPresentation,
-    title: 'Co-hosted workshops',
-    body: 'Run a session on your tech stack or research and engage directly with members.',
+    title: 'Give a talk',
+    body: 'Speak at one of our Thursday meetings.',
   },
   {
-    icon: IconBriefcase,
-    title: 'Real-world projects',
-    body: 'Bring a problem to our project teams and see student-built prototypes in a semester.',
+    icon: IconBuilding,
+    title: 'Host a company visit',
+    body: 'Show our members around your company.',
+  },
+  {
+    icon: IconDatabase,
+    title: 'Suggest a project',
+    body: 'Bring a dataset or a problem for one of our projects.',
+  },
+  {
+    icon: IconUsersGroup,
+    title: 'Meet students',
+    body: 'Get to know members looking for internships or thesis topics.',
   },
 ]
 
 export const PartnerBenefitsList: FC = () => {
   return (
     <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={20}>
-      {BENEFITS.map((b, i) => (
+      {WAYS.map((b, i) => (
         <FadeInWhenVisible key={b.title} delay={(i % 2) * 0.08}>
           <Group
             gap={16}
