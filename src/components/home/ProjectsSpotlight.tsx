@@ -18,7 +18,7 @@ export const ProjectsSpotlight: FC<ProjectsSpotlightProps> = ({ projects }) => {
   if (projects.length === 0) {
     return (
       <Box>
-        <SectionHeading eyebrow="Projects" title="Ideas, shipped." />
+        <SectionHeading eyebrow="Projects" title="What we’ve worked on." />
         <Text
           mt={24}
           className="glow-card"
@@ -38,8 +38,8 @@ export const ProjectsSpotlight: FC<ProjectsSpotlightProps> = ({ projects }) => {
     <Box>
       <SectionHeading
         eyebrow="Projects"
-        title="Ideas, shipped."
-        subtitle="We turn AI ideas into working projects — from demand forecasting to data pipelines and beyond."
+        title="What we’ve worked on."
+        subtitle="We learn machine learning by working on real data together. So far that has meant forecasting our Mensa’s dishes demand and the cafeteria’s coffee sales."
       />
 
       <Box mt={28}>

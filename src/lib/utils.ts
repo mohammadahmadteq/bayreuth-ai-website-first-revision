@@ -1,4 +1,5 @@
 export const WHATSAPP_URL = 'https://chat.whatsapp.com/CYZelJF7rDYFkEuz94n86j'
+export const MAILING_LIST_URL = 'https://forms.gle/HXHhftKo1G2MZFp49'
 
 // Prefix public assets so they also resolve under the production subpath.
 export function asset(path: string): string {

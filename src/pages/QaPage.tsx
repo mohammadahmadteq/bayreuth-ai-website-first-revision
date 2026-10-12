@@ -15,8 +15,8 @@ export const QaPage: FC = () => {
     <>
       <PageHeader
         eyebrow="Q&A"
-        title="Questions? Ask away."
-        subtitle="Everything you might want to know before coming along. The short version: you are welcome here."
+        title="Questions before your first meeting?"
+        subtitle="If your question isn’t here, bring it along on a Thursday."
       />
 
       <Container size={760} px={24} py={{ base: 32, md: 48 }}>
@@ -24,7 +24,6 @@ export const QaPage: FC = () => {
           <SectionHeading
             eyebrow="Good to know"
             title="A few things people ask before their first meeting."
-            subtitle="Click a question to open the answer. If yours is missing, bring it along — we are always happy to talk."
           />
 
           <ErrorBoundary label="Questions">

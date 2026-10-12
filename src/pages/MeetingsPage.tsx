@@ -51,7 +51,7 @@ export const MeetingsPage: FC = () => {
       <PageHeader
         eyebrow="Meetings"
         title="Meetings"
-        subtitle="All upcoming meetings and events at a glance."
+        subtitle="During the lecture period we meet every other Thursday, 18:00 to 19:30 in GW I. Each meeting starts with 15 to 20 minutes on recent AI news; after that it’s a talk, a workshop or time on our projects."
       />
 
       <Container size={1120} px={24} py={{ base: 28, md: 40 }}>

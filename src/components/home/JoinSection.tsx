@@ -46,7 +46,7 @@ export const JoinSection: FC<{ nextEvent?: EventItem }> = ({ nextEvent }) => {
                 maxWidth: 520,
               }}
             >
-              Beginners and builders alike — open, practical, interdisciplinary.
+              There’s no application process. Just come along when you’re ready.
             </Text>
           </Stack>
 

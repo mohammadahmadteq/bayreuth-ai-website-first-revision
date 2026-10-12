@@ -38,7 +38,7 @@ export const CalendarSubscribeBanner: FC<CalendarSubscribeBannerProps> = ({ even
           Stay up to date
         </Text>
         <Text fz={14} style={{ color: 'var(--color-subtext)', lineHeight: 1.5 }}>
-          Add our dates to your calendar and never miss an event.
+          Download all dates as a calendar file.
         </Text>
       </Stack>
     </Group>
