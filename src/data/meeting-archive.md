@@ -19,6 +19,7 @@ The part after " — " is optional. `bun run test` checks that every bullet stil
 - **July 02, 2024:** Scikit-learn "on steroids" (GPU accelerated trees) — Andreas Karasenko
 - **July 16, 2024:** Transfer Learning Concepts and Strategies — Pascal Fechner
 - **October 25, 2024:** Machine Learning in Data Driven Marketing — Andreas Karasenko (part of the Lecture Series on AI & Society)
+- **November 26, 2024:** Bridging the trust gap: Applied research towards (more) reliable ML — Dr. Dominik Riedelbauch
 
 ## 🗓️ 2025
 
@@ -42,11 +43,15 @@ The part after " — " is optional. `bun run test` checks that every bullet stil
 
 - **October 29, 2024:** Kick-off meeting for WS24/25
 - **November 12, 2024:** Exploration and analysis of the "Mensa" dataset
-- **December 10, 2024:** Special Session: Prompt Engineering & LLM Hacks
+- **December 10, 2024:** ML approaches on the Mensa dataset
 - **December 17, 2024:** Winterdorf Social Outing
 
 ## 🗓️ 2025
 
+- **January 07, 2025:** ML to predict trends in time series data
+- **January 21, 2025:** Putting everything together
+- **March 04, 2025:** Next tasks planning - Mensa model (online)
+- **April 29, 2025:** Kick-off meeting for SS2025
 - **May 13, 2025:** Regular community discussion
 - **May 20, 2025:** Regular meeting
 - **May 31, 2025:** Social time! AI Association goes to Nürnberg
@@ -68,3 +73,6 @@ The part after " — " is optional. `bun run test` checks that every bullet stil
 - **May 06, 2026:** AI Stammtisch - May Edition
 - **May 28, 2026:** Setting up an AI coding agent & building a website
 - **June 03, 2026:** AI Stammtisch - June Edition
+- **July 08, 2026:** AI Stammtisch - July Edition
+- **July 09, 2026:** Final meeting for the Summer semester
+- **September 06, 2026:** AI Social: Picnic at the Hofgarten
