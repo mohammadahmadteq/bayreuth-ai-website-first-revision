@@ -26,6 +26,24 @@ test('home page renders the association content', async ({ page }) => {
   )
 })
 
+test('the font is served by the site itself, not by Google', async ({ page }) => {
+  const googleRequests: string[] = []
+  page.on('request', (request) => {
+    if (/fonts\.(googleapis|gstatic)\.com/.test(request.url())) googleRequests.push(request.url())
+  })
+  await page.goto('/')
+  await expect
+    .poll(() =>
+      page.evaluate(() =>
+        [...document.fonts].some(
+          (face) => face.family.replace(/"/g, '') === 'Source Sans 3' && face.status === 'loaded',
+        ),
+      ),
+    )
+    .toBe(true)
+  expect(googleRequests).toEqual([])
+})
+
 test('primary navigation works on desktop and mobile', async ({ page, isMobile }) => {
   await page.goto('/')
   await page.locator('main').getByRole('link', { name: 'Join Us', exact: true }).first().click()
