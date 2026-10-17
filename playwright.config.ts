@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test'
+import { MEMBERSHIP_TEST_ENDPOINT } from './tests/membership-endpoint'
 
 export default defineConfig({
   testDir: './tests',
@@ -8,6 +9,8 @@ export default defineConfig({
     command: 'npm run dev -- --host 127.0.0.1 --port 5173 --strictPort',
     url: 'http://127.0.0.1:5173',
     reuseExistingServer: !process.env.CI,
+    // A dev server started by hand needs the same variable for the membership tests.
+    env: { VITE_MEMBERSHIP_FORM_URL: MEMBERSHIP_TEST_ENDPOINT },
   },
   retries: 0,
   use: {

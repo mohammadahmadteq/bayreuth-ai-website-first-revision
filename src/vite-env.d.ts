@@ -8,6 +8,8 @@ declare module '*.po' {
 interface ImportMetaEnv {
   readonly VITE_SUPABASE_URL?: string
   readonly VITE_SUPABASE_PUBLISHABLE_KEY?: string
+  /** Where membership applications are posted; unset means online applications are closed. */
+  readonly VITE_MEMBERSHIP_FORM_URL?: string
 }
 
 interface ImportMeta {

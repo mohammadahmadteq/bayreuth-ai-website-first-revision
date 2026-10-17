@@ -33,6 +33,8 @@ jobs:
         env:
           VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
           VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.VITE_SUPABASE_PUBLISHABLE_KEY }}
+          # Optional: empty keeps online membership applications closed.
+          VITE_MEMBERSHIP_FORM_URL: ${{ vars.VITE_MEMBERSHIP_FORM_URL }}
         run: |
           if [ -z "$VITE_SUPABASE_URL" ] || [ -z "$VITE_SUPABASE_PUBLISHABLE_KEY" ]; then
             echo "Set VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY in Settings > Secrets and variables > Actions > Variables."

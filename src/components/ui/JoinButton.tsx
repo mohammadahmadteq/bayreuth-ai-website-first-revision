@@ -23,6 +23,9 @@ interface JoinButtonProps {
   href?: string
   /** Action handler. Renders a <button> instead of a link — takes precedence over `to`/`href`. */
   onClick?: () => void
+  /** Renders a form's submit <button>; takes precedence over `to`/`href`. */
+  submit?: boolean
+  disabled?: boolean
   size?: Size
   withArrow?: boolean
   children?: ReactNode
@@ -33,6 +36,8 @@ export const JoinButton: FC<JoinButtonProps> = ({
   to = '/apply',
   href,
   onClick,
+  submit = false,
+  disabled,
   size = 'md',
   withArrow = true,
   children,
@@ -61,9 +66,14 @@ export const JoinButton: FC<JoinButtonProps> = ({
     </>
   )
 
-  if (onClick) {
+  if (onClick || submit) {
     return (
-      <MotionButton type="button" onClick={onClick} {...shared}>
+      <MotionButton
+        type={submit ? 'submit' : 'button'}
+        onClick={onClick}
+        disabled={disabled}
+        {...shared}
+      >
         {content}
       </MotionButton>
     )
