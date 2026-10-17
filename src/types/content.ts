@@ -117,3 +117,166 @@ export interface ResourceSearchResult extends ResourceLink {
   categoryId: string
   categoryTitle: string
 }
+
+// --- Membership application ---------------------------------------------------
+
+export type MembershipLanguage = 'en' | 'de'
+
+export type MembershipType =
+  | 'full'
+  | 'supporting-individual'
+  | 'supporting-legal'
+  | 'alumni'
+  | 'corresponding'
+
+/** The form's fields as the applicant fills them in. */
+export interface MembershipFormValues {
+  firstName: string
+  surname: string
+  /** Only for supporting members that are legal entities. */
+  organisation: string
+  street: string
+  postalCity: string
+  country: string
+  email: string
+  membershipType: MembershipType | ''
+  /** Euros as typed, with a decimal point or comma; supporting members only. */
+  chosenFee: string
+  feeReduction: boolean
+  feeReductionRequest: string
+  emailList: boolean
+  whatsapp: boolean
+  mobile: string
+  declarationAccepted: boolean
+  privacyNoted: boolean
+  adultConfirmed: boolean
+  confirmationName: string
+  /** Hidden from people, so anything typed here marks the submission as spam. */
+  website: string
+}
+
+export type MembershipField = keyof MembershipFormValues
+
+export type MembershipErrorCode =
+  | 'required'
+  | 'tooLong'
+  | 'email'
+  | 'amount'
+  | 'minimum'
+  | 'phone'
+  | 'unchecked'
+
+export type MembershipErrors = Partial<Record<MembershipField, MembershipErrorCode>>
+
+/** What is sent to the board. The submission time is added by the receiving server. */
+export interface MembershipApplication {
+  language: MembershipLanguage
+  firstName: string
+  surname: string
+  organisation?: string
+  street: string
+  postalCity: string
+  country?: string
+  email: string
+  membershipType: MembershipType
+  chosenFee?: number // euros per year
+  feeReduction: boolean
+  feeReductionRequest?: string
+  emailList: boolean
+  whatsapp: boolean
+  mobile?: string
+  declarationAccepted: boolean
+  privacyNoted: boolean
+  adultConfirmed: boolean
+  confirmationName: string
+  website: string
+}
+
+export type MembershipSubmitStatus =
+  | 'idle'
+  | 'sending'
+  | 'sent'
+  | 'unavailable'
+  | 'failed'
+  | 'rateLimited'
+
+/** Every text on the membership page, in one language. */
+export interface MembershipFormText {
+  languageName: string
+  eyebrow: string
+  title: string
+  intro: string
+  sections: {
+    personal: string
+    type: string
+    fee: string
+    communication: string
+    declarations: string
+    privacy: string
+    confirmation: string
+  }
+  fields: {
+    firstName: string
+    surname: string
+    organisation: string
+    street: string
+    postalCity: string
+    country: string
+    email: string
+    emailHint: string
+    chosenFee: string
+    feeReductionRequest: string
+    feeReductionHint: string
+    mobile: string
+    mobileHint: string
+    confirmationName: string
+  }
+  membershipTypes: Record<MembershipType, { label: string; description?: string }>
+  organisationHint: string
+  feeParagraphs: string[]
+  feeReduction: string
+  bankDetails: string[]
+  directDebit: string
+  communicationIntro: string
+  emailList: string
+  whatsapp: string
+  declaration: string
+  /** Split around the words that will link to the privacy notice once it is published. */
+  privacyText: { before: string; link: string; after: string }
+  privacyNoted: string
+  adultConfirmed: string
+  minorsNote: string
+  submit: string
+  sending: string
+  errors: {
+    required: string
+    tooLong: string
+    email: string
+    membershipType: string
+    amount: string
+    minimum: (euros: number) => string
+    phone: string
+    declaration: string
+    privacy: string
+    adult: string
+  }
+  status: {
+    unavailable: string
+    checkFields: string
+    failed: string
+    rateLimited: string
+  }
+  confirmation: {
+    title: string
+    sent: string
+    admission: string
+    payment: string
+    withdraw: string
+  }
+  paper: {
+    title: string
+    text: string
+    word: string
+    pdf: string
+  }
+}
