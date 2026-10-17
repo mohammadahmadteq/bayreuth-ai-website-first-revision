@@ -33,6 +33,13 @@ const EXPECTATIONS = [
   'Membership is 12 euros per calendar year, with discounts depending on your circumstances.',
 ]
 
+// The first two come from § 4 of the statutes; project credit is the association's practice.
+const MEMBER_BENEFITS = [
+  'Vote, speak and put forward motions at the general meeting.',
+  'Ask the board for a confirmation of your involvement or a letter of recommendation.',
+  'Get credit for your contributions to our projects.',
+]
+
 export const ApplyPage: FC = () => {
   // Same source as the home page and footer, so they all name the same next date.
   const { events } = useSiteContent()
@@ -120,8 +127,55 @@ export const ApplyPage: FC = () => {
             </Stack>
           </FadeInWhenVisible>
 
-          {/* TODO: replace this mailto block with an embedded application form
-              (e.g. Tally / Typeform / Google Form) once the association picks a tool. */}
+          <FadeInWhenVisible delay={0.12}>
+            <Stack
+              gap={14}
+              align="flex-start"
+              className="glow-card"
+              style={{ padding: 'clamp(24px, 4vw, 40px)' }}
+            >
+              <Text
+                ff='"Source Sans 3", sans-serif'
+                fw={700}
+                fz={24}
+                style={{ color: 'var(--color-text)' }}
+              >
+                Becoming an official member
+              </Text>
+              <Text style={{ color: 'var(--color-subtext)', fontSize: 15, lineHeight: 1.6 }}>
+                Our meetings and events are open to everyone. They’re generally free, and you don’t
+                need to sign up. If you take part regularly, you can also become an official member
+                of the association. As a full member, you can:
+              </Text>
+              <List
+                spacing="sm"
+                icon={
+                  <ThemeIcon
+                    size={22}
+                    radius="xl"
+                    style={{
+                      background: 'rgba(var(--teal-rgb),0.15)',
+                      border: '1px solid rgba(var(--teal-rgb),0.3)',
+                    }}
+                  >
+                    <IconCheck size={14} color="var(--teal)" />
+                  </ThemeIcon>
+                }
+              >
+                {MEMBER_BENEFITS.map((benefit) => (
+                  <List.Item key={benefit}>
+                    <Text component="span" style={{ color: 'var(--color-subtext)', fontSize: 15 }}>
+                      {benefit}
+                    </Text>
+                  </List.Item>
+                ))}
+              </List>
+              <JoinButton to="/membership" size="sm">
+                Apply for membership
+              </JoinButton>
+            </Stack>
+          </FadeInWhenVisible>
+
           <FadeInWhenVisible delay={0.16}>
             <Box
               style={{

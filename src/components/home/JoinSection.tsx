@@ -1,4 +1,5 @@
 import { type FC } from 'react'
+import { Link } from 'react-router-dom'
 import { Box, Group, Stack, Text } from '@mantine/core'
 import { IconBrandWhatsapp, IconCalendarTime } from '@tabler/icons-react'
 import { JoinButton } from '../ui/JoinButton'
@@ -46,7 +47,13 @@ export const JoinSection: FC<{ nextEvent?: EventItem }> = ({ nextEvent }) => {
                 maxWidth: 520,
               }}
             >
-              There’s no application process. Just come along when you’re ready.
+              Our meetings and events are open to everyone. They’re generally free and you don’t
+              need to sign up, so just come along when you’re ready. If you take part regularly, you
+              can also{' '}
+              <Link to="/apply" className="inline-link">
+                become an official member
+              </Link>
+              .
             </Text>
           </Stack>
 

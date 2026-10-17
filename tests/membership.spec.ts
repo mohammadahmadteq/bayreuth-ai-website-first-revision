@@ -149,6 +149,14 @@ test.describe('membership application page', () => {
     ).toHaveCount(0)
   })
 
+  test('the Join Us page links to the application', async ({ page }) => {
+    await page.goto('/apply')
+    await expect(page.getByText('Becoming an official member')).toBeVisible()
+    await page.getByRole('link', { name: 'Apply for membership' }).click()
+    await expect(page).toHaveURL(/\/membership$/)
+    await expect(page.getByRole('heading', { name: 'Membership application' })).toBeVisible()
+  })
+
   test('switching to German translates the form and its errors', async ({ page }) => {
     await page.getByRole('button', { name: 'Deutsch' }).click()
     await expect(page.getByRole('heading', { name: 'Mitgliedsantrag' })).toBeVisible()
