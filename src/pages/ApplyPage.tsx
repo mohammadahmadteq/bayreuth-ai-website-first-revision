@@ -112,8 +112,31 @@ export const ApplyPage: FC = () => {
             </Stack>
           </FadeInWhenVisible>
 
-          {/* TODO: replace this mailto block with an embedded application form
-              (e.g. Tally / Typeform / Google Form) once the association picks a tool. */}
+          <FadeInWhenVisible delay={0.12}>
+            <Stack
+              gap={14}
+              align="flex-start"
+              className="glow-card"
+              style={{ padding: 'clamp(24px, 4vw, 40px)' }}
+            >
+              <Text
+                ff='"Source Sans 3", sans-serif'
+                fw={700}
+                fz={24}
+                style={{ color: 'var(--color-text)' }}
+              >
+                Becoming a member
+              </Text>
+              <Text style={{ color: 'var(--color-subtext)', fontSize: 15, lineHeight: 1.6 }}>
+                You don’t need to sign up for our meetings and events. To become a member of the
+                association, fill in the membership application.
+              </Text>
+              <JoinButton to="/membership" size="sm">
+                Apply for membership
+              </JoinButton>
+            </Stack>
+          </FadeInWhenVisible>
+
           <FadeInWhenVisible delay={0.16}>
             <Box
               style={{

@@ -221,6 +221,14 @@ section[id],
 }
 
 /* --- Buttons --- */
+/* A link inside running text on light content. */
+.inline-link {
+  color: var(--teal);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .btn-member {
   background: var(--teal) !important;
   color: var(--on-teal) !important;

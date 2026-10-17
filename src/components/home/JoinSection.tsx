@@ -1,4 +1,5 @@
 import { type FC } from 'react'
+import { Link } from 'react-router-dom'
 import { Box, Group, Stack, Text } from '@mantine/core'
 import { IconBrandWhatsapp, IconCalendarTime } from '@tabler/icons-react'
 import { JoinButton } from '../ui/JoinButton'
@@ -46,7 +47,12 @@ export const JoinSection: FC<{ nextEvent?: EventItem }> = ({ nextEvent }) => {
                 maxWidth: 520,
               }}
             >
-              There’s no application process. Just come along when you’re ready.
+              You don’t need to sign up for our meetings and events. Just come along when you’re
+              ready. To become a member of the association, fill in the{' '}
+              <Link to="/membership" className="inline-link">
+                membership application
+              </Link>
+              .
             </Text>
           </Stack>
 
