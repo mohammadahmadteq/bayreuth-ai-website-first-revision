@@ -60,6 +60,18 @@ test('primary navigation works on desktop and mobile', async ({ page, isMobile }
   await expect(page.getByText('ML4Mensa')).toBeVisible()
 })
 
+test('the Join Us page names the next date from the schedule', async ({ page }) => {
+  // Fixed between the Mensaabend and the kick-off, so the next event is stable.
+  await page.clock.setFixedTime(new Date('2026-10-13T12:00:00Z'))
+  await page.goto('/apply')
+  await expect(page.getByText('Next up: Kick-off meeting for the WS26-27')).toBeVisible()
+  await expect(
+    page.getByText('Thu, 15 Oct 2026 · 18:00-19:30 · Room S93, GW I - University of Bayreuth'),
+  ).toBeVisible()
+  await page.getByRole('link', { name: 'See all dates' }).click()
+  await expect(page).toHaveURL(/\/meetings$/)
+})
+
 test('mobile navigation closes after routing', async ({ page, isMobile }) => {
   test.skip(!isMobile, 'mobile-only interaction')
 
