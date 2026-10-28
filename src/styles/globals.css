@@ -620,6 +620,53 @@ section[id],
   }
 }
 
+/* Enlarged photo: the image fills the frame, with no band for a title. */
+.photo-lightbox {
+  overflow: hidden;
+  background: transparent;
+}
+
+.photo-lightbox__figure {
+  position: relative;
+  margin: 0;
+}
+
+.photo-lightbox__image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(1600px, 88vw);
+  max-height: 85vh;
+}
+
+.photo-lightbox__caption {
+  left: 14px;
+  bottom: 14px;
+  max-width: calc(100% - 28px);
+  font-size: 15px;
+}
+
+/* Two classes so these win over Mantine's own close button styles. */
+.photo-lightbox .photo-lightbox__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(5, 8, 10, 0.62);
+  color: #f7f7fb;
+}
+
+.photo-lightbox .photo-lightbox__close:hover {
+  background: rgba(5, 8, 10, 0.82);
+}
+
+.photo-lightbox .photo-lightbox__close:focus-visible {
+  outline: 2px solid #f7f7fb;
+  outline-offset: 2px;
+}
+
 /* Without motion the strip becomes a still row people can scroll themselves. */
 @media (prefers-reduced-motion: reduce) {
   .community-strip {

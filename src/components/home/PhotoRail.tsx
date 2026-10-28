@@ -9,8 +9,15 @@ import type { AssociationPhoto } from '../../types/content'
 const SECONDS_PER_PHOTO = 6
 
 export const PhotoRail: FC<{ photos: AssociationPhoto[] }> = ({ photos }) => {
+  // The photo stays set after closing so it remains visible while the modal fades out.
   const [enlarged, setEnlarged] = useState<AssociationPhoto | null>(null)
+  const [open, setOpen] = useState(false)
   if (photos.length === 0) return null
+
+  const enlarge = (photo: AssociationPhoto) => {
+    setEnlarged(photo)
+    setOpen(true)
+  }
 
   // The set is rendered twice so the loop can wrap seamlessly; the copy is
   // hidden from assistive technology and keyboard focus.
@@ -21,7 +28,7 @@ export const PhotoRail: FC<{ photos: AssociationPhoto[] }> = ({ photos }) => {
           <button
             type="button"
             aria-label={`Open photo: ${photo.alt}`}
-            onClick={() => setEnlarged(photo)}
+            onClick={() => enlarge(photo)}
           >
             <img
               src={asset(photoThumbnail(photo.imageUrl))}
@@ -41,7 +48,7 @@ export const PhotoRail: FC<{ photos: AssociationPhoto[] }> = ({ photos }) => {
       <SectionHeading eyebrow="Community" title="Moments from our meetings, socials and events." />
 
       <div
-        className={`community-strip${enlarged ? ' is-paused' : ''}`}
+        className={`community-strip${open ? ' is-paused' : ''}`}
         style={{ '--strip-duration': `${photos.length * SECONDS_PER_PHOTO}s` } as CSSProperties}
       >
         <div className="community-strip__track">
@@ -50,28 +57,26 @@ export const PhotoRail: FC<{ photos: AssociationPhoto[] }> = ({ photos }) => {
         </div>
       </div>
 
-      <Modal
-        opened={enlarged !== null}
-        onClose={() => setEnlarged(null)}
-        title={enlarged?.alt}
-        size="auto"
-        centered
-      >
-        {enlarged && (
-          <img
-            src={asset(enlarged.imageUrl)}
-            alt={enlarged.alt}
-            style={{
-              display: 'block',
-              maxWidth: 'min(1600px, 88vw)',
-              maxHeight: '75vh',
-              width: 'auto',
-              height: 'auto',
-              borderRadius: 8,
-            }}
-          />
-        )}
-      </Modal>
+      {/* No header band: the caption and the close button sit on the photo itself. */}
+      <Modal.Root opened={open} onClose={() => setOpen(false)} size="auto" centered>
+        <Modal.Overlay />
+        <Modal.Content aria-label={enlarged?.alt} radius="md" className="photo-lightbox">
+          {enlarged && (
+            <figure className="photo-lightbox__figure">
+              <img
+                src={asset(enlarged.imageUrl)}
+                alt={enlarged.alt}
+                className="photo-lightbox__image"
+              />
+              {/* The dialog and the image already carry this text for screen readers. */}
+              <figcaption className="community-strip__caption photo-lightbox__caption" aria-hidden>
+                {enlarged.alt}
+              </figcaption>
+              <Modal.CloseButton className="photo-lightbox__close" aria-label="Close photo" />
+            </figure>
+          )}
+        </Modal.Content>
+      </Modal.Root>
     </Stack>
   )
 }
