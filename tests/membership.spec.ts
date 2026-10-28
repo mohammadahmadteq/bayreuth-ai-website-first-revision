@@ -239,7 +239,7 @@ test.describe('membership application page', () => {
     status = 429
     await page.getByRole('button', { name: 'Send application' }).click()
     await expect(
-      page.getByText('Too many applications have been sent', { exact: false }),
+      page.getByText('We’ve received too many applications', { exact: false }),
     ).toBeVisible()
   })
 

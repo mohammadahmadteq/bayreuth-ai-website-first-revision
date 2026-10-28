@@ -101,7 +101,7 @@ export const membershipFormText: Record<MembershipLanguage, MembershipFormText> 
       failed:
         'Your application could not be sent. Please try again later or use the paper form below.',
       rateLimited:
-        'Too many applications have been sent from your connection. Please try again later.',
+        'We’ve received too many applications in a short time. Please try again later or use the paper form below.',
     },
     confirmation: {
       title: 'Thank you for your application.',
@@ -211,7 +211,7 @@ export const membershipFormText: Record<MembershipLanguage, MembershipFormText> 
       failed:
         'Ihr Antrag konnte nicht gesendet werden. Bitte versuchen Sie es später erneut oder nutzen Sie den Papierantrag unten.',
       rateLimited:
-        'Von Ihrer Verbindung wurden zu viele Anträge gesendet. Bitte versuchen Sie es später erneut.',
+        'Wir haben in kurzer Zeit zu viele Anträge erhalten. Bitte versuchen Sie es später erneut oder nutzen Sie den Papierantrag unten.',
     },
     confirmation: {
       title: 'Vielen Dank für Ihren Antrag.',
