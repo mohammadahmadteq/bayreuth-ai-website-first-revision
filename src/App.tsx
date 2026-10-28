@@ -12,6 +12,7 @@ import { ResourcesPage } from './pages/ResourcesPage'
 import { ProjectsPage } from './pages/ProjectsPage'
 import { PartnersPage } from './pages/PartnersPage'
 import { ApplyPage } from './pages/ApplyPage'
+import { MembershipPage } from './pages/MembershipPage'
 import { QaPage } from './pages/QaPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
@@ -23,6 +24,7 @@ const PAGE_ROUTES = [
   { path: '/projects', Page: ProjectsPage },
   { path: '/partners', Page: PartnersPage },
   { path: '/apply', Page: ApplyPage },
+  { path: '/membership', Page: MembershipPage },
   { path: '/qa', Page: QaPage },
   { path: '*', Page: NotFoundPage },
 ]

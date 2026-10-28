@@ -26,6 +26,24 @@ test('home page renders the association content', async ({ page }) => {
   )
 })
 
+test('the font is served by the site itself, not by Google', async ({ page }) => {
+  const googleRequests: string[] = []
+  page.on('request', (request) => {
+    if (/fonts\.(googleapis|gstatic)\.com/.test(request.url())) googleRequests.push(request.url())
+  })
+  await page.goto('/')
+  await expect
+    .poll(() =>
+      page.evaluate(() =>
+        [...document.fonts].some(
+          (face) => face.family.replace(/"/g, '') === 'Source Sans 3' && face.status === 'loaded',
+        ),
+      ),
+    )
+    .toBe(true)
+  expect(googleRequests).toEqual([])
+})
+
 test('primary navigation works on desktop and mobile', async ({ page, isMobile }) => {
   await page.goto('/')
   await page.locator('main').getByRole('link', { name: 'Join Us', exact: true }).first().click()
@@ -40,6 +58,18 @@ test('primary navigation works on desktop and mobile', async ({ page, isMobile }
   }
   await expect(page).toHaveURL(/\/projects$/)
   await expect(page.getByText('ML4Mensa')).toBeVisible()
+})
+
+test('the Join Us page names the next date from the schedule', async ({ page }) => {
+  // Fixed between the Mensaabend and the kick-off, so the next event is stable.
+  await page.clock.setFixedTime(new Date('2026-10-13T12:00:00Z'))
+  await page.goto('/apply')
+  await expect(page.getByText('Next up: Kick-off meeting for the WS26-27')).toBeVisible()
+  await expect(
+    page.getByText('Thu, 15 Oct 2026 · 18:00-19:30 · Room S93, GW I - University of Bayreuth'),
+  ).toBeVisible()
+  await page.getByRole('link', { name: 'See all dates' }).click()
+  await expect(page).toHaveURL(/\/meetings$/)
 })
 
 test('mobile navigation closes after routing', async ({ page, isMobile }) => {

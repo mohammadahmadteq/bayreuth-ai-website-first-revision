@@ -5,6 +5,7 @@
     "": {
       "name": "bayreuth-ai-website",
       "dependencies": {
+        "@fontsource/source-sans-3": "^5.3.1",
         "@lingui/core": "^6.2.0",
         "@lingui/macro": "^5.9.5",
         "@lingui/react": "^6.2.0",
@@ -167,6 +168,8 @@
     "@floating-ui/react-dom": ["@floating-ui/react-dom@2.1.8", "", { "dependencies": { "@floating-ui/dom": "^1.7.6" }, "peerDependencies": { "react": ">=16.8.0", "react-dom": ">=16.8.0" } }, "sha512-cC52bHwM/n/CxS87FH0yWdngEZrjdtLW/qVruo68qg+prK7ZQ4YGdut2GyDVpoGeAYe/h899rVeOVm6Oi40k2A=="],
 
     "@floating-ui/utils": ["@floating-ui/utils@0.2.11", "", {}, "sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg=="],
+
+    "@fontsource/source-sans-3": ["@fontsource/source-sans-3@5.3.1", "", {}, "sha512-O3YxvbotUOgYI2Zx0bBcEMNjnwitRf9P2+9pd54sMoux1NHrdXnMwZusw2P78lFhEzOPN4glOEQmX0ASaS68uA=="],
 
     "@humanfs/core": ["@humanfs/core@0.19.2", "", { "dependencies": { "@humanfs/types": "^0.15.0" } }, "sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA=="],
 

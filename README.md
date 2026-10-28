@@ -40,6 +40,14 @@ The portal can add, edit, and delete partners, team members, events, and associa
 
 SQL migrations live in `supabase/migrations/`. The project has been seeded with the records from `src/data/` and the existing photo rail.
 
+## Membership applications
+
+`/membership` is the online version of the paper membership application in `public/membership/`, in English and German. The legal and fee texts in `src/data/membership.ts` are copied word for word from the paper form, so change the Word file first, export the PDF, and then update the page.
+
+The page posts each application as JSON to the address in `VITE_MEMBERSHIP_FORM_URL`. While the variable is empty, the page says online applications aren't open yet and points to the paper form, and nothing is sent. Production builds only send to an `https://` address. Add the variable next to the Supabase ones under **Settings → Secrets and variables → Actions → Variables**; the deployment workflow passes it to the build.
+
+Browser tests answer that address themselves, so no application leaves the test browser. Playwright starts its dev server with the test address from `tests/membership-endpoint.ts`. If you run the tests against a dev server you started yourself, start it with `VITE_MEMBERSHIP_FORM_URL` set to that address.
+
 ## Where changes belong
 
 | Location                                       | Responsibility                                        |
@@ -53,6 +61,7 @@ SQL migrations live in `supabase/migrations/`. The project has been seeded with 
 | `src/lib/events.ts`                            | Event ordering, selection, and filtering              |
 | `src/lib/team.ts`                              | Team page sections and their order                    |
 | `src/lib/meetingArchive.ts`                    | Reads the meeting archive into tracks and years       |
+| `src/lib/membership.ts`                        | Membership application rules: fields, fees and checks |
 | `src/lib/dates.ts`                             | Display formatting for dates                          |
 | `src/lib/ics.ts`                               | Calendar export and download                          |
 | `src/services/i18n.ts`                         | Activates the English message catalog                 |

@@ -1,9 +1,13 @@
 import { type FC } from 'react'
+import { Link } from 'react-router-dom'
 import { Anchor, Box, Container, Group, List, Stack, Text, ThemeIcon } from '@mantine/core'
 import { IconCheck, IconMail, IconCalendarHeart } from '@tabler/icons-react'
 import { PageHeader } from '../components/layout/PageHeader'
 import { JoinButton } from '../components/ui/JoinButton'
 import { FadeInWhenVisible } from '../components/ui/FadeInWhenVisible'
+import { useSiteContent } from '../hooks/useSiteContent'
+import { formatEventDate } from '../lib/dates'
+import { getUpcomingEvents } from '../lib/events'
 import { MAILING_LIST_URL, WHATSAPP_URL } from '../lib/utils'
 
 const APPLY_EMAIL = 'bayreuth.ai@gmail.com'
@@ -29,7 +33,18 @@ const EXPECTATIONS = [
   'Membership is 12 euros per calendar year, with discounts depending on your circumstances.',
 ]
 
+// The first two come from § 4 of the statutes; project credit is the association's practice.
+const MEMBER_BENEFITS = [
+  'Vote, speak and put forward motions at the general meeting.',
+  'Ask the board for a confirmation of your involvement or a letter of recommendation.',
+  'Get credit for your contributions to our projects.',
+]
+
 export const ApplyPage: FC = () => {
+  // Same source as the home page and footer, so they all name the same next date.
+  const { events } = useSiteContent()
+  const nextEvent = getUpcomingEvents(events)[0]
+
   return (
     <>
       <PageHeader
@@ -112,8 +127,31 @@ export const ApplyPage: FC = () => {
             </Stack>
           </FadeInWhenVisible>
 
-          {/* TODO: replace this mailto block with an embedded application form
-              (e.g. Tally / Typeform / Google Form) once the association picks a tool. */}
+          <FadeInWhenVisible delay={0.12}>
+            <Stack
+              gap={14}
+              align="flex-start"
+              className="glow-card"
+              style={{ padding: 'clamp(24px, 4vw, 40px)' }}
+            >
+              <Text
+                ff='"Source Sans 3", sans-serif'
+                fw={700}
+                fz={24}
+                style={{ color: 'var(--color-text)' }}
+              >
+                Becoming a member
+              </Text>
+              <Text style={{ color: 'var(--color-subtext)', fontSize: 15, lineHeight: 1.6 }}>
+                You don’t need to sign up for our meetings and events. To become a member of the
+                association, fill in the membership application.
+              </Text>
+              <JoinButton to="/membership" size="sm">
+                Apply for membership
+              </JoinButton>
+            </Stack>
+          </FadeInWhenVisible>
+
           <FadeInWhenVisible delay={0.16}>
             <Box
               style={{
@@ -172,12 +210,22 @@ export const ApplyPage: FC = () => {
                     </Group>
                   </JoinButton>
                 </Group>
-                <Group gap={8} justify="center">
-                  <IconCalendarHeart size={16} color="var(--color-subtext)" />
-                  <Text fz={14} style={{ color: 'var(--color-subtext)' }}>
-                    Next meeting: every other Thursday, 18:00 · Room S93, GW I
-                  </Text>
-                </Group>
+                <Stack gap={4} align="center">
+                  <Group gap={8} justify="center">
+                    <IconCalendarHeart size={16} color="var(--color-subtext)" />
+                    <Text fz={14} style={{ color: 'var(--color-subtext)' }}>
+                      {nextEvent ? `Next up: ${nextEvent.title}` : 'No upcoming dates yet.'}
+                    </Text>
+                  </Group>
+                  {nextEvent && (
+                    <Text fz={14} style={{ color: 'var(--color-subtext)' }}>
+                      {formatEventDate(nextEvent.date)} · {nextEvent.time} · {nextEvent.location}
+                    </Text>
+                  )}
+                  <Anchor component={Link} to="/meetings" fz={14} style={INLINE_LINK}>
+                    See all dates
+                  </Anchor>
+                </Stack>
               </Stack>
             </Box>
           </FadeInWhenVisible>
