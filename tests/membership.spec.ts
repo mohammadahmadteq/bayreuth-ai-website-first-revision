@@ -243,19 +243,13 @@ test.describe('membership application page', () => {
     ).toBeVisible()
   })
 
-  test('the paper form can be downloaded', async ({ page }) => {
-    // File signatures rather than content types: Vite's dev server sends none for .docx.
-    for (const [name, signature] of [
-      ['PDF', '%PDF'],
-      ['Word (.docx)', 'PK'],
-    ]) {
-      const link = page.getByRole('link', { name })
-      await expect(link).toHaveAttribute('download', '')
-      const response = await page.request.get((await link.getAttribute('href'))!)
-      expect(response.ok()).toBe(true)
-      expect((await response.body()).subarray(0, signature.length).toString('latin1')).toBe(
-        signature,
-      )
-    }
+  test('the paper form can be downloaded as a PDF only', async ({ page }) => {
+    const link = page.getByRole('link', { name: 'Download the paper form (PDF)' })
+    await expect(link).toHaveAttribute('download', '')
+    const response = await page.request.get((await link.getAttribute('href'))!)
+    expect(response.ok()).toBe(true)
+    // The PDF signature proves the file itself is served, not the app's fallback page.
+    expect((await response.body()).subarray(0, 4).toString('latin1')).toBe('%PDF')
+    await expect(page.getByRole('link', { name: /Word|docx/ })).toHaveCount(0)
   })
 })

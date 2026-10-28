@@ -6,10 +6,7 @@ import type { MembershipFormText, MembershipLanguage } from '../types/content'
 // The bank details are left out on purpose: applicants get them by email, so
 // the IBAN is not published where scrapers can collect it.
 
-export const membershipPaperForms = {
-  docx: '/membership/Mitgliedsantrag_Bayreuth_AI_Association.docx',
-  pdf: '/membership/Mitgliedsantrag_Bayreuth_AI_Association.pdf',
-}
+export const membershipPaperForm = '/membership/Mitgliedsantrag_Bayreuth_AI_Association.pdf'
 
 export const membershipFormText: Record<MembershipLanguage, MembershipFormText> = {
   en: {
@@ -116,8 +113,7 @@ export const membershipFormText: Record<MembershipLanguage, MembershipFormText> 
     paper: {
       title: 'Prefer paper?',
       text: 'Download the application, fill it in and send it, signed, to the board. Applicants under 18 need the signature of their legal guardian(s).',
-      word: 'Word (.docx)',
-      pdf: 'PDF',
+      download: 'Download the paper form (PDF)',
     },
   },
 
@@ -229,8 +225,7 @@ export const membershipFormText: Record<MembershipLanguage, MembershipFormText> 
     paper: {
       title: 'Lieber auf Papier?',
       text: 'Laden Sie den Antrag herunter, füllen Sie ihn aus und senden Sie ihn unterschrieben an den Vorstand. Bei Minderjährigen ist die Unterschrift der/des gesetzlichen Vertreter(s) nötig.',
-      word: 'Word (.docx)',
-      pdf: 'PDF',
+      download: 'Papierantrag herunterladen (PDF)',
     },
   },
 }

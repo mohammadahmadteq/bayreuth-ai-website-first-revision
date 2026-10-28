@@ -275,7 +275,6 @@ export interface MembershipFormText {
   paper: {
     title: string
     text: string
-    word: string
-    pdf: string
+    download: string
   }
 }

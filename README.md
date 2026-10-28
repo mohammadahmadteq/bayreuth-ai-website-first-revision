@@ -42,7 +42,7 @@ SQL migrations live in `supabase/migrations/`. The project has been seeded with 
 
 ## Membership applications
 
-`/membership` is the online version of the paper membership application in `public/membership/`, in English and German. The legal and fee texts in `src/data/membership.ts` are copied word for word from the paper form, so change the Word file first, export the PDF, and then update the page.
+`/membership` is the online version of the paper membership application, in English and German; the paper form itself is the PDF in `public/membership/`. The legal and fee texts in `src/data/membership.ts` are copied word for word from it. Its Word source is kept outside the repository: change that first, export the PDF, and then update the page. The bank details are deliberately not on the page; applicants get them by email.
 
 The page posts each application as JSON to the address in `VITE_MEMBERSHIP_FORM_URL`. While the variable is empty, the page says online applications aren't open yet and points to the paper form, and nothing is sent. Production builds only send to an `https://` address. Add the variable next to the Supabase ones under **Settings → Secrets and variables → Actions → Variables**; the deployment workflow passes it to the build.
 

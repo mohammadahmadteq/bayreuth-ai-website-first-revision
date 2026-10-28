@@ -4,10 +4,10 @@ import { PageHeader } from '../components/layout/PageHeader'
 import { LanguageToggle } from '../components/membership/LanguageToggle'
 import { MembershipForm } from '../components/membership/MembershipForm'
 import { MembershipConfirmation } from '../components/membership/MembershipConfirmation'
-import { PaperFormDownloads } from '../components/membership/PaperFormDownloads'
+import { PaperFormDownload } from '../components/membership/PaperFormDownload'
 import { ErrorBoundary } from '../components/ErrorBoundary'
 import { useMembershipForm } from '../hooks/useMembershipForm'
-import { membershipFormText, membershipPaperForms } from '../data'
+import { membershipFormText, membershipPaperForm } from '../data'
 
 const LANGUAGE_OPTIONS = [
   { value: 'en' as const, label: membershipFormText.en.languageName },
@@ -47,7 +47,7 @@ export const MembershipPage: FC = () => {
             )}
           </ErrorBoundary>
 
-          <PaperFormDownloads text={text.paper} files={membershipPaperForms} />
+          <PaperFormDownload text={text.paper} href={membershipPaperForm} />
         </Stack>
       </Container>
     </div>
