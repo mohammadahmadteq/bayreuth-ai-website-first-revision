@@ -151,6 +151,7 @@ test.describe('membership application page', () => {
 
   test('the Join Us page links to the application', async ({ page }) => {
     await page.goto('/apply')
+    await expect(page.getByText('Becoming an official member')).toBeVisible()
     await page.getByRole('link', { name: 'Apply for membership' }).click()
     await expect(page).toHaveURL(/\/membership$/)
     await expect(page.getByRole('heading', { name: 'Membership application' })).toBeVisible()

@@ -47,10 +47,11 @@ export const JoinSection: FC<{ nextEvent?: EventItem }> = ({ nextEvent }) => {
                 maxWidth: 520,
               }}
             >
-              You don’t need to sign up for our meetings and events. Just come along when you’re
-              ready. To become a member of the association, fill in the{' '}
-              <Link to="/membership" className="inline-link">
-                membership application
+              Our meetings and events are open to everyone. They’re generally free and you don’t
+              need to sign up, so just come along when you’re ready. If you take part regularly, you
+              can also{' '}
+              <Link to="/apply" className="inline-link">
+                become an official member
               </Link>
               .
             </Text>
