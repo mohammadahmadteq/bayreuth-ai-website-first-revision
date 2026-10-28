@@ -140,36 +140,12 @@ export const ApplyPage: FC = () => {
                 fz={24}
                 style={{ color: 'var(--color-text)' }}
               >
-                Becoming an official member
+                Becoming a member
               </Text>
               <Text style={{ color: 'var(--color-subtext)', fontSize: 15, lineHeight: 1.6 }}>
-                Our meetings and events are open to everyone. They’re generally free, and you don’t
-                need to sign up. If you take part regularly, you can also become an official member
-                of the association. As a full member, you can:
+                You don’t need to sign up for our meetings and events. To become a member of the
+                association, fill in the membership application.
               </Text>
-              <List
-                spacing="sm"
-                icon={
-                  <ThemeIcon
-                    size={22}
-                    radius="xl"
-                    style={{
-                      background: 'rgba(var(--teal-rgb),0.15)',
-                      border: '1px solid rgba(var(--teal-rgb),0.3)',
-                    }}
-                  >
-                    <IconCheck size={14} color="var(--teal)" />
-                  </ThemeIcon>
-                }
-              >
-                {MEMBER_BENEFITS.map((benefit) => (
-                  <List.Item key={benefit}>
-                    <Text component="span" style={{ color: 'var(--color-subtext)', fontSize: 15 }}>
-                      {benefit}
-                    </Text>
-                  </List.Item>
-                ))}
-              </List>
               <JoinButton to="/membership" size="sm">
                 Apply for membership
               </JoinButton>
