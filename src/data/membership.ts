@@ -3,8 +3,8 @@ import type { MembershipFormText, MembershipLanguage } from '../types/content'
 // The legal and fee texts are copied word for word from the paper form in
 // public/membership/; change them there first, then here. Only the labels the
 // paper does not need (hints, errors, status messages) were written for the web.
-
-const BANK_ACCOUNT = ['IBAN: DE90 8306 5408 0007 0227 78', 'BIC: GENO DEF1 SLR']
+// The bank details are left out on purpose: applicants get them by email, so
+// the IBAN is not published where scrapers can collect it.
 
 export const membershipPaperForms = {
   docx: '/membership/Mitgliedsantrag_Bayreuth_AI_Association.docx',
@@ -63,12 +63,8 @@ export const membershipFormText: Record<MembershipLanguage, MembershipFormText> 
       'The ordinary membership fee is, in principle, €1 per month (€12 per year). Upon written application to the board, the fee may be paid pro rata from the month of joining in the year of entry or may also be waived in full.',
     ],
     feeReduction: 'I am applying for a reduction or waiver of the fee.',
-    bankDetails: [
-      'Recipient: Bayreuth AI Association e.V.',
-      ...BANK_ACCOUNT,
-      'Payment reference: membership fee + name',
-    ],
-    directDebit: 'Direct debit is currently not offered.',
+    bankDetailsByEmail:
+      'We’ll send you the bank details for the transfer by email once we have received your application.',
     communicationIntro:
       'The following details are voluntary and not a condition of membership. Consent may be withdrawn at any time with future effect (e.g. by email to the board).',
     emailList:
@@ -114,7 +110,7 @@ export const membershipFormText: Record<MembershipLanguage, MembershipFormText> 
       title: 'Thank you for your application.',
       sent: 'Your application has been sent to the board.',
       admission: 'Membership begins with the board’s admission resolution.',
-      payment: 'The fee is due upon admission. Please pay it by bank transfer:',
+      payment: 'The fee is due upon admission. We’ll email you the bank details for the transfer.',
       withdraw: 'You can withdraw the consents from section 4 at any time by email to the board.',
     },
     paper: {
@@ -176,12 +172,8 @@ export const membershipFormText: Record<MembershipLanguage, MembershipFormText> 
       'Der ordentliche Mitgliedsbeitrag beträgt im Grundsatz 1 € pro Monat (12 € pro Jahr). Auf schriftlichen Antrag beim Vorstand kann der Beitrag im Eintrittsjahr anteilig ab dem Eintrittsmonat gezahlt werden oder vollständig erlassen werden.',
     ],
     feeReduction: 'Ich beantrage eine Ermäßigung oder einen Erlass des Beitrags.',
-    bankDetails: [
-      'Empfänger: Bayreuth AI Association e.V.',
-      ...BANK_ACCOUNT,
-      'Verwendungszweck: Mitgliedsbeitrag + Name',
-    ],
-    directDebit: 'SEPA-Lastschrift ist derzeit nicht vorgesehen.',
+    bankDetailsByEmail:
+      'Die Bankverbindung für die Überweisung senden wir Ihnen per E-Mail, sobald Ihr Antrag bei uns eingegangen ist.',
     communicationIntro:
       'Die folgenden Angaben sind freiwillig und keine Voraussetzung für die Mitgliedschaft. Die Einwilligungen können jederzeit mit Wirkung für die Zukunft widerrufen werden (z. B. per E-Mail an den Vorstand).',
     emailList:
@@ -230,7 +222,7 @@ export const membershipFormText: Record<MembershipLanguage, MembershipFormText> 
       sent: 'Ihr Antrag wurde an den Vorstand gesendet.',
       admission: 'Die Mitgliedschaft beginnt mit dem Aufnahmebeschluss des Vorstands.',
       payment:
-        'Der Beitrag ist mit der Aufnahme fällig. Bitte überweisen Sie ihn auf folgendes Konto:',
+        'Der Beitrag ist mit der Aufnahme fällig. Die Bankverbindung für die Überweisung senden wir Ihnen per E-Mail.',
       withdraw:
         'Die Einwilligungen aus Abschnitt 4 können Sie jederzeit per E-Mail an den Vorstand widerrufen.',
     },

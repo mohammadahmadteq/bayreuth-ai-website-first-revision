@@ -5,6 +5,7 @@ import {
   toMembershipApplication,
   validateMembershipForm,
 } from '../src/lib/membership'
+import { membershipFormText } from '../src/data/membership'
 import type { MembershipFormValues } from '../src/types/content'
 import { MEMBERSHIP_TEST_ENDPOINT } from './membership-endpoint'
 
@@ -21,6 +22,11 @@ const VALID: MembershipFormValues = {
   adultConfirmed: true,
   confirmationName: 'Ada Lovelace',
 }
+
+test('the bank details stay off the website', () => {
+  // Applicants get them by email; anything in these texts ships in the page's code.
+  expect(JSON.stringify(membershipFormText)).not.toMatch(/IBAN|BIC|DE\d{2} ?\d{4}/)
+})
 
 test('euro amounts accept a decimal point or comma', () => {
   expect(parseEuroAmount('25')).toBe(25)
@@ -198,7 +204,9 @@ test.describe('membership application page', () => {
     await expect(
       page.getByRole('heading', { name: 'Thank you for your application.' }),
     ).toBeFocused()
-    await expect(page.getByText('IBAN: DE90 8306 5408 0007 0227 78')).toBeVisible()
+    await expect(
+      page.getByText('We’ll email you the bank details for the transfer.', { exact: false }),
+    ).toBeVisible()
     expect(sent).toEqual({
       language: 'en',
       firstName: 'Ada',

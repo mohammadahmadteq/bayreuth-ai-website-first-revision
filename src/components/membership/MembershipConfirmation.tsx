@@ -1,6 +1,5 @@
 import { type FC } from 'react'
 import { Stack, Text } from '@mantine/core'
-import { BankDetails } from './BankDetails'
 import type { MembershipFormText } from '../../types/content'
 
 interface MembershipConfirmationProps {
@@ -32,7 +31,6 @@ export const MembershipConfirmation: FC<MembershipConfirmationProps> = ({ text }
     <Text fz={16}>{text.confirmation.sent}</Text>
     <Text fz={16}>{text.confirmation.admission}</Text>
     <Text fz={16}>{text.confirmation.payment}</Text>
-    <BankDetails lines={text.bankDetails} note={text.directDebit} />
     <Text fz={15} style={{ color: 'var(--color-subtext)' }}>
       {text.confirmation.withdraw}
     </Text>

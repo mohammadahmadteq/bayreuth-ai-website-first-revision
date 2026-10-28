@@ -235,8 +235,7 @@ export interface MembershipFormText {
   organisationHint: string
   feeParagraphs: string[]
   feeReduction: string
-  bankDetails: string[]
-  directDebit: string
+  bankDetailsByEmail: string
   communicationIntro: string
   emailList: string
   whatsapp: string

@@ -1,7 +1,6 @@
 import { type FC, type FormEvent, type ReactNode } from 'react'
 import { Alert, Checkbox, Radio, SimpleGrid, Stack, Text, TextInput, Textarea } from '@mantine/core'
 import { JoinButton } from '../ui/JoinButton'
-import { BankDetails } from './BankDetails'
 import {
   MAX_LENGTH,
   MEMBERSHIP_TYPES,
@@ -223,7 +222,7 @@ export const MembershipForm: FC<MembershipFormProps> = ({
               minRows={3}
             />
           )}
-          <BankDetails lines={text.bankDetails} note={text.directDebit} />
+          <Paragraph>{text.bankDetailsByEmail}</Paragraph>
         </Section>
 
         <Section id="membership-section-communication" title={text.sections.communication}>
