@@ -108,16 +108,16 @@ section[id],
   background: linear-gradient(150deg, #051914 0%, var(--color-bg) 75%);
 }
 
-/* Two oversized, very low-alpha blobs drifting on a long loop. Transform +
-   opacity only, and deliberately no blur filter: re-blurring layers this
-   large on every animation frame held the hero at about 9 fps, and the
-   radial gradients already fade out softly on their own. */
+/* Two oversized, very low-alpha blobs, held still at the frame the page used to
+   open on. They used to drift on a long loop, but recompositing layers this
+   large on every frame kept the compositor busy for about two thirds of each
+   second at 2x pixel density, and the page lagged while the hero was in view.
+   Still, they paint once with the rest of the hero. */
 .hero-gradient-bg::before,
 .hero-gradient-bg::after {
   content: '';
   position: absolute;
   border-radius: 50%;
-  will-change: transform, opacity;
 }
 
 .hero-gradient-bg::before {
@@ -126,7 +126,7 @@ section[id],
   width: 120%;
   height: 170%;
   background: radial-gradient(ellipse at center, rgba(var(--teal-rgb), 0.09), transparent 70%);
-  animation: hero-drift-a 42s ease-in-out infinite alternate;
+  opacity: 0.55;
 }
 
 .hero-gradient-bg::after {
@@ -135,37 +135,8 @@ section[id],
   width: 125%;
   height: 175%;
   background: radial-gradient(ellipse at center, rgba(var(--teal-dark-rgb), 0.55), transparent 68%);
-  animation: hero-drift-b 56s ease-in-out infinite alternate;
-}
-
-@keyframes hero-drift-a {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 0.55;
-  }
-  50% {
-    transform: translate3d(6%, 4%, 0) scale(1.12);
-    opacity: 1;
-  }
-  100% {
-    transform: translate3d(-3%, 8%, 0) scale(1.04);
-    opacity: 0.7;
-  }
-}
-
-@keyframes hero-drift-b {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1.06);
-    opacity: 0.8;
-  }
-  50% {
-    transform: translate3d(-7%, -5%, 0) scale(1);
-    opacity: 0.45;
-  }
-  100% {
-    transform: translate3d(4%, -9%, 0) scale(1.14);
-    opacity: 0.9;
-  }
+  transform: scale(1.06);
+  opacity: 0.8;
 }
 
 /* --- Card: thin 1px border, restrained radius, minimal hover feedback --- */
@@ -902,9 +873,7 @@ section[id],
   .animate-float,
   .btn-member,
   .data-wave-trace,
-  .data-wave-dot,
-  .hero-gradient-bg::before,
-  .hero-gradient-bg::after {
+  .data-wave-dot {
     animation: none !important;
     transition: none !important;
   }
