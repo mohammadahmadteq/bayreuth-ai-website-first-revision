@@ -1,8 +1,8 @@
 [
   {
     "id": "prj-pool-forecasting",
-    "title": "Pool visitor forecasting",
-    "description": "In this ongoing project with Stadtwerke Bayreuth, members of the AI Association forecast visitor numbers at its outdoor pool, so that lifeguard rosters can match the demand. Rosters are fixed two weeks in advance, so the team aims to predict that far ahead whether a day will be quiet, average or busy: anywhere from a few hundred visitors to 5,000 at the peak. The team works with three years of daily visitor counts, and the weather plays a big part. Reliability matters most: without enough lifeguards on duty, the pool would have to close.",
+    "title": "Kreuzsteinbad pool visitors forecasting",
+    "description": "In this ongoing project with Stadtwerke Bayreuth, members of the AI Association forecast visitor numbers at its outdoor pool (Kreuzsteinbad), so that lifeguard rosters can match the demand. Rosters are fixed two weeks in advance, so the team aims to predict that far ahead whether a day will be quiet, average or busy. The team works using daily visitor counts from past years, and the weather plays a big part.",
     "tags": ["Forecasting", "Time Series", "Staff Planning"],
     "category": "tool",
     "status": "in-progress",
@@ -21,7 +21,7 @@
   {
     "id": "prj-website",
     "title": "Rebuilding our website with agentic AI",
-    "description": "Four members with no coding experience rebuilt the association’s website together with one web developer and an AI coding agent. Over four sessions, the group worked out the concept, set up Claude Code on every laptop and learned the basics of GitHub, then built and refined the site, each member on their own branch. The team decided what to build, the agent wrote the code, and the developer reviewed major changes; the non-coders now run this workflow on their own. Lessons learned: the hard part became deciding what to build, version control was harder to learn than prompting, and one experienced reviewer is still needed.",
+    "description": "Four members with no coding experience rebuilt the association’s website together with one web developer and an AI coding agent. Over four sessions, the group worked out the concept, set up coding agents and learned the basics of GitHub, then built and refined the site. The team decided what to build, the agent wrote the code, and the developer reviewed major changes. The non-coders now run this workflow on their own. Lessons learned: the hard part became deciding what to build, version control was harder to learn than prompting, and one experienced reviewer is still needed.",
     "tags": ["Agentic AI", "Web Development", "Version Control"],
     "category": "tool",
     "status": "concluded",

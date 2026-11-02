@@ -6,13 +6,13 @@ test('projects page shows each project with its status, contributors and press c
   await page.goto('/projects')
   const main = page.locator('main')
   await expect(main.getByRole('heading', { level: 2 })).toHaveText([
-    'Pool visitor forecasting',
+    'Kreuzsteinbad pool visitors forecasting',
     'Rebuilding our website with agentic AI',
     'ML4Mensa',
     'Coffee consumption forecasting',
   ])
 
-  const pool = main.getByRole('article').filter({ hasText: 'Pool visitor forecasting' })
+  const pool = main.getByRole('article').filter({ hasText: 'Kreuzsteinbad pool visitors' })
   await expect(pool.getByText('In progress', { exact: true })).toBeVisible()
   await expect(pool.getByText(/Contributors:.*Simon Reif/)).toBeVisible()
 
