@@ -39,7 +39,7 @@ export const ProjectsSpotlight: FC<ProjectsSpotlightProps> = ({ projects }) => {
       <SectionHeading
         eyebrow="Projects"
         title="What we’ve worked on."
-        subtitle="We learn machine learning by working on real data together. So far that has meant forecasting our Mensa’s dishes demand and the cafeteria’s coffee sales."
+        subtitle="We learn machine learning by working on real data together. So far that has meant forecasting our Mensa’s dishes demand and the cafeteria’s coffee sales. Now we’re forecasting visitor numbers for Stadtwerke Bayreuth’s outdoor pool."
       />
 
       <Box mt={28}>
