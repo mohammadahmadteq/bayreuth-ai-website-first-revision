@@ -28,7 +28,7 @@ export const stats: Stat[] = statsRaw
 export const faq: FaqItem[] = faqRaw
 export const resourceCategories: ResourceCategory[] = resourcesRaw
 export const founders: string[] = foundersRaw
-export { membershipFormText, membershipPaperForm } from './membership'
+export { membershipDocuments, membershipFormText, membershipPaperForm } from './membership'
 
 // Like the founders list, the archive is fixed history kept only in the
 // repository. The tests fail on lines it cannot read; in development they are

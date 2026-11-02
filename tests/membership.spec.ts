@@ -261,6 +261,33 @@ test.describe('membership application page', () => {
     ).toBeVisible()
   })
 
+  test('the statutes and regulations can be read from the page', async ({ page }) => {
+    await expect(
+      page.getByRole('link', { name: 'Read the statutes and the membership and fee regulations' }),
+    ).toHaveAttribute('href', '#membership-documents')
+    await expect(page.getByText('Only the German original is legally binding.')).toBeVisible()
+    await expect(page.getByText('Signatures blacked out for publication.')).toBeVisible()
+    for (const [name, file] of [
+      ['Statutes, signed German original (PDF)', 'Satzung_Bayreuth_AI_Association.pdf'],
+      [
+        'Statutes, English translation (PDF)',
+        'Articles_of_Association_Bayreuth_AI_Association.pdf',
+      ],
+      [
+        'Membership and fee regulations (PDF)',
+        'Membership_and_Fee_Regulations_Bayreuth_AI_Association.pdf',
+      ],
+    ]) {
+      const link = page.getByRole('link', { name })
+      await expect(link).toHaveAttribute(
+        'href',
+        new RegExp(`/membership/${file.replace('.', '\\.')}$`),
+      )
+      const response = await page.request.get((await link.getAttribute('href'))!)
+      expect((await response.body()).subarray(0, 4).toString('latin1')).toBe('%PDF')
+    }
+  })
+
   test('the paper form can be downloaded as a PDF only', async ({ page }) => {
     const link = page.getByRole('link', { name: 'Download the paper form (PDF)' })
     await expect(link).toHaveAttribute('download', '')

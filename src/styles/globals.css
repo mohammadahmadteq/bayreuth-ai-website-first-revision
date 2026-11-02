@@ -837,6 +837,31 @@ section[id],
   font-weight: 600;
 }
 
+/* Jump targets clear the fixed navbar. */
+.membership-section {
+  scroll-margin-top: 110px;
+}
+
+.membership-documents {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.membership-documents li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 10px;
+}
+
+.membership-read {
+  align-self: flex-start;
+  font-size: 14px;
+}
+
 /* Spam trap: off-screen rather than display: none, which some bots skip. */
 .membership-honeypot {
   position: absolute;

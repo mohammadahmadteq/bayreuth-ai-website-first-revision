@@ -254,6 +254,9 @@ export const MembershipForm: FC<MembershipFormProps> = ({
             {...checkbox('declarationAccepted', <RequiredLabel>{text.declaration}</RequiredLabel>)}
             required
           />
+          <a href="#membership-documents" className="inline-link membership-read">
+            {text.documents.read}
+          </a>
         </Section>
 
         <Section id="membership-section-privacy" title={text.sections.privacy}>

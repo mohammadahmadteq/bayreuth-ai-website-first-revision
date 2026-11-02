@@ -278,4 +278,15 @@ export interface MembershipFormText {
     text: string
     download: string
   }
+  documents: {
+    title: string
+    intro: string
+    /** Link from the declarations to the documents section. */
+    read: string
+    statute: string
+    statuteNote: string
+    translation: string
+    translationNote: string
+    regulations: string
+  }
 }

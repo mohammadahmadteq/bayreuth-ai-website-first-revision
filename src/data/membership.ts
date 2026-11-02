@@ -8,6 +8,14 @@ import type { MembershipFormText, MembershipLanguage } from '../types/content'
 
 export const membershipPaperForm = '/membership/Mitgliedsantrag_Bayreuth_AI_Association.pdf'
 
+// The statute is the signed German original as adopted on 2 April 2026, with the
+// signatures blacked out for publication; only it is legally binding. The regulations were provided in English.
+export const membershipDocuments = {
+  statute: '/membership/Satzung_Bayreuth_AI_Association.pdf',
+  translation: '/membership/Articles_of_Association_Bayreuth_AI_Association.pdf',
+  regulations: '/membership/Membership_and_Fee_Regulations_Bayreuth_AI_Association.pdf',
+}
+
 export const membershipFormText: Record<MembershipLanguage, MembershipFormText> = {
   en: {
     languageName: 'English',
@@ -115,6 +123,17 @@ export const membershipFormText: Record<MembershipLanguage, MembershipFormText> 
       title: 'Prefer paper?',
       text: 'Download the application, fill it in on your computer or by hand, and send it, signed, to the board. Applicants under 18 need the signature of their legal guardian(s).',
       download: 'Download the paper form (PDF)',
+    },
+    documents: {
+      title: 'Statutes and regulations',
+      intro:
+        'The statutes and the membership and fee regulations set out the members’ rights and duties. By applying, you accept both.',
+      read: 'Read the statutes and the membership and fee regulations',
+      statute: 'Statutes, signed German original (PDF)',
+      statuteNote: 'Signatures blacked out for publication.',
+      translation: 'Statutes, English translation (PDF)',
+      translationNote: 'Only the German original is legally binding.',
+      regulations: 'Membership and fee regulations (PDF)',
     },
   },
 
@@ -228,6 +247,17 @@ export const membershipFormText: Record<MembershipLanguage, MembershipFormText> 
       title: 'Lieber auf Papier?',
       text: 'Laden Sie den Antrag herunter, füllen Sie ihn am Computer oder von Hand aus und senden Sie ihn unterschrieben an den Vorstand. Bei Minderjährigen ist die Unterschrift der/des gesetzlichen Vertreter(s) nötig.',
       download: 'Papierantrag herunterladen (PDF)',
+    },
+    documents: {
+      title: 'Satzung sowie Mitglieder- und Beitragsordnung',
+      intro:
+        'Die Satzung sowie die Mitglieder- und Beitragsordnung regeln die Rechte und Pflichten der Mitglieder. Mit Ihrem Antrag erkennen Sie beide an.',
+      read: 'Satzung sowie Mitglieder- und Beitragsordnung lesen',
+      statute: 'Satzung, unterschriebenes Original (PDF)',
+      statuteNote: 'Unterschriften für die Veröffentlichung geschwärzt.',
+      translation: 'Satzung, englische Übersetzung (PDF)',
+      translationNote: 'Rechtsverbindlich ist nur das deutsche Original.',
+      regulations: 'Mitglieder- und Beitragsordnung (PDF, auf Englisch)',
     },
   },
 }
