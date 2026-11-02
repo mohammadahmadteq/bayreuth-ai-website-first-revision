@@ -25,6 +25,10 @@ interface UseMembershipFormResult {
   errors: MembershipErrors
   status: MembershipSubmitStatus
   onlineSubmission: boolean
+  /** Whether sending was tried; the summary message only appears after that. */
+  attempted: boolean
+  /** Marks a filled-in field as left, so its mistakes show before sending. */
+  touchField: (field: MembershipField) => void
   /** Validates and sends. Resolves to the first invalid field, if any, so it can take focus. */
   submit: () => Promise<MembershipField | undefined>
 }
@@ -32,14 +36,24 @@ interface UseMembershipFormResult {
 export function useMembershipForm(): UseMembershipFormResult {
   const [language, setLanguage] = useState<MembershipLanguage>('en')
   const [values, setValues] = useState(EMPTY_MEMBERSHIP_FORM)
-  // Errors appear after the first attempt to send, then update as the applicant fixes them.
+  // Every error shows after the first attempt to send. Before that, only fields the
+  // applicant has filled in and left are checked, so a fee below the minimum shows at
+  // once while untouched required fields stay quiet.
   const [attempted, setAttempted] = useState(false)
+  const [touched, setTouched] = useState<Partial<Record<MembershipField, true>>>({})
   const [status, setStatus] = useState<MembershipSubmitStatus>('idle')
 
-  const errors = useMemo(
-    () => (attempted ? validateMembershipForm(values) : {}),
-    [attempted, values],
-  )
+  const errors = useMemo(() => {
+    const all = validateMembershipForm(values)
+    if (attempted) return all
+    return Object.fromEntries(
+      Object.entries(all).filter(([field]) => touched[field as MembershipField]),
+    ) as MembershipErrors
+  }, [attempted, touched, values])
+
+  const touchField = useCallback((field: MembershipField) => {
+    setTouched((current) => (current[field] ? current : { ...current, [field]: true }))
+  }, [])
 
   const setField = useCallback(
     <K extends MembershipField>(field: K, value: MembershipFormValues[K]) => {
@@ -63,6 +77,7 @@ export function useMembershipForm(): UseMembershipFormResult {
     if (result === 'sent') {
       setValues(EMPTY_MEMBERSHIP_FORM)
       setAttempted(false)
+      setTouched({})
     }
     return undefined
   }
@@ -75,6 +90,8 @@ export function useMembershipForm(): UseMembershipFormResult {
     errors,
     status,
     onlineSubmission: isMembershipSubmissionConfigured(),
+    attempted,
+    touchField,
     submit,
   }
 }

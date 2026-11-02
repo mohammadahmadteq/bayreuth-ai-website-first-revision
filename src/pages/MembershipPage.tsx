@@ -42,6 +42,8 @@ export const MembershipPage: FC = () => {
                 status={form.status}
                 onlineSubmission={form.onlineSubmission}
                 onChange={form.setField}
+                onBlur={form.touchField}
+                attempted={form.attempted}
                 onSubmit={form.submit}
               />
             )}

@@ -225,6 +225,7 @@ export interface MembershipFormText {
     email: string
     emailHint: string
     chosenFee: string
+    chosenFeeHint: (euros: number) => string
     feeReductionRequest: string
     feeReductionHint: string
     mobile: string

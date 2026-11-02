@@ -26,6 +26,8 @@ interface MembershipFormProps {
   status: MembershipSubmitStatus
   onlineSubmission: boolean
   onChange: <K extends MembershipField>(field: K, value: MembershipFormValues[K]) => void
+  onBlur: (field: MembershipField) => void
+  attempted: boolean
   onSubmit: () => Promise<MembershipField | undefined>
 }
 
@@ -65,6 +67,8 @@ export const MembershipForm: FC<MembershipFormProps> = ({
   status,
   onlineSubmission,
   onChange,
+  onBlur,
+  attempted,
   onSubmit,
 }) => {
   const message = (field: MembershipField): string | undefined => {
@@ -90,6 +94,9 @@ export const MembershipForm: FC<MembershipFormProps> = ({
     value: values[field],
     onChange: (event: { currentTarget: { value: string } }) =>
       onChange(field, event.currentTarget.value),
+    onBlur: (event: { currentTarget: { value: string } }) => {
+      if (event.currentTarget.value.trim() !== '') onBlur(field)
+    },
     error: message(field),
     maxLength: MAX_LENGTH[field],
   })
@@ -118,7 +125,7 @@ export const MembershipForm: FC<MembershipFormProps> = ({
     if (invalid) document.getElementById(membershipFieldId(invalid))?.focus()
   }
 
-  const hasErrors = Object.keys(errors).length > 0
+  const hasErrors = attempted && Object.keys(errors).length > 0
   const statusMessage =
     status === 'unavailable'
       ? text.status.unavailable
@@ -202,6 +209,7 @@ export const MembershipForm: FC<MembershipFormProps> = ({
           {minimumFee(values.membershipType) !== undefined && (
             <TextInput
               {...input('chosenFee', text.fields.chosenFee)}
+              description={text.fields.chosenFeeHint(minimumFee(values.membershipType)!)}
               required
               inputMode="decimal"
               w={{ base: '100%', sm: 260 }}

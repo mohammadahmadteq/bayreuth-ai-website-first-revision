@@ -174,6 +174,24 @@ test.describe('membership application page', () => {
     await expect(page.getByText('Bitte prüfen Sie die markierten Felder.')).toBeVisible()
   })
 
+  test('a supporting fee below the minimum is flagged when the field is left', async ({ page }) => {
+    await page.getByRole('radio', { name: /legal entity/ }).check()
+    await expect(page.getByText('At least €50 per year.')).toBeVisible()
+
+    const fee = page.getByLabel('Chosen annual fee (in €)')
+    await fee.fill('10')
+    await fee.blur()
+    await expect(page.getByText('The minimum is €50 per year.')).toBeVisible()
+    // Nothing was sent yet, so untouched fields stay quiet.
+    await expect(page.getByText('Please fill in this field.')).toHaveCount(0)
+    await expect(page.getByText('Please check the highlighted fields.')).toHaveCount(0)
+
+    await page.getByRole('radio', { name: /Supporting member \(individual\)/ }).check()
+    await expect(page.getByText('The minimum is €20 per year.')).toBeVisible()
+    await fee.fill('25,50')
+    await expect(page.getByText(/The minimum is/)).toHaveCount(0)
+  })
+
   test('conditional fields appear only when they apply', async ({ page }) => {
     const organisation = page.getByLabel('Organisation and contact person')
     const fee = page.getByLabel('Chosen annual fee (in €)')
