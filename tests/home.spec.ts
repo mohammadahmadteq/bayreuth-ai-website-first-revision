@@ -72,6 +72,34 @@ test('the Join Us page names the next date from the schedule', async ({ page }) 
   await expect(page).toHaveURL(/\/meetings$/)
 })
 
+test('the upcoming events scroll instead of growing past the calendar', async ({
+  page,
+  isMobile,
+}) => {
+  // Before the semester, so all nine dates are still ahead.
+  await page.clock.setFixedTime(new Date('2026-09-24T12:00:00Z'))
+  await page.goto('/')
+  await expect(page.getByRole('status', { name: 'Loading Bayreuth AI Association' })).toHaveCount(0)
+  const list = page.locator('.scroll-panel', { has: page.getByText('Next up', { exact: true }) })
+  await list.scrollIntoViewIfNeeded()
+
+  if (!isMobile) {
+    const calendar = page.locator('.glow-card', {
+      has: page.getByText('October 2026', { exact: true }),
+    })
+    const listBox = (await list.boundingBox())!
+    const calendarBox = (await calendar.boundingBox())!
+    // A few px of slack: the scroll box reaches past the cards to keep their hover lift visible.
+    expect(
+      Math.abs(listBox.y + listBox.height - (calendarBox.y + calendarBox.height)),
+    ).toBeLessThanOrEqual(5)
+  }
+
+  await list.hover()
+  await page.mouse.wheel(0, 400)
+  await expect.poll(() => list.evaluate((el) => el.scrollTop)).toBeGreaterThan(0)
+})
+
 test('mobile navigation closes after routing', async ({ page, isMobile }) => {
   test.skip(!isMobile, 'mobile-only interaction')
 

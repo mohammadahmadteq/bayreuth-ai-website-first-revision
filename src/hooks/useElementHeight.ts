@@ -1,14 +1,13 @@
-import { useLayoutEffect, useRef, useState, type RefObject } from 'react'
+import { useCallback, useState, type RefCallback } from 'react'
 
-export function useElementHeight<T extends HTMLElement>(): [
-  RefObject<T | null>,
-  number | undefined,
-] {
-  const ref = useRef<T>(null)
+/**
+ * Tracks an element's content height in px. A callback ref rather than a ref object, so the
+ * observer follows the element when a layout switch (such as the mobile breakpoint) remounts it.
+ */
+export function useElementHeight<T extends HTMLElement>(): [RefCallback<T>, number | undefined] {
   const [height, setHeight] = useState<number>()
 
-  useLayoutEffect(() => {
-    const el = ref.current
+  const ref = useCallback((el: T | null) => {
     if (!el) return
 
     const observer = new ResizeObserver((entries) => {
