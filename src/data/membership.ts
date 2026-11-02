@@ -113,7 +113,7 @@ export const membershipFormText: Record<MembershipLanguage, MembershipFormText> 
     },
     paper: {
       title: 'Prefer paper?',
-      text: 'Download the application, fill it in and send it, signed, to the board. Applicants under 18 need the signature of their legal guardian(s).',
+      text: 'Download the application, fill it in on your computer or by hand, and send it, signed, to the board. Applicants under 18 need the signature of their legal guardian(s).',
       download: 'Download the paper form (PDF)',
     },
   },
@@ -226,7 +226,7 @@ export const membershipFormText: Record<MembershipLanguage, MembershipFormText> 
     },
     paper: {
       title: 'Lieber auf Papier?',
-      text: 'Laden Sie den Antrag herunter, füllen Sie ihn aus und senden Sie ihn unterschrieben an den Vorstand. Bei Minderjährigen ist die Unterschrift der/des gesetzlichen Vertreter(s) nötig.',
+      text: 'Laden Sie den Antrag herunter, füllen Sie ihn am Computer oder von Hand aus und senden Sie ihn unterschrieben an den Vorstand. Bei Minderjährigen ist die Unterschrift der/des gesetzlichen Vertreter(s) nötig.',
       download: 'Papierantrag herunterladen (PDF)',
     },
   },
