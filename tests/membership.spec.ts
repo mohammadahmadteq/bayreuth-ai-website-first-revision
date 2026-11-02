@@ -265,8 +265,6 @@ test.describe('membership application page', () => {
     await expect(
       page.getByRole('link', { name: 'Read the statutes and the membership and fee regulations' }),
     ).toHaveAttribute('href', '#membership-documents')
-    await expect(page.getByText('Only the German original is legally binding.')).toBeVisible()
-    await expect(page.getByText('Signatures blacked out for publication.')).toBeVisible()
     for (const [name, file] of [
       ['Statutes, signed German original (PDF)', 'Satzung_Bayreuth_AI_Association.pdf'],
       [

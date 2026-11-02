@@ -284,9 +284,7 @@ export interface MembershipFormText {
     /** Link from the declarations to the documents section. */
     read: string
     statute: string
-    statuteNote: string
     translation: string
-    translationNote: string
     regulations: string
   }
 }

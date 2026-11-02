@@ -34,15 +34,9 @@ export const MembershipDocuments: FC<MembershipDocumentsProps> = ({ text, files 
     <ul className="membership-documents">
       <li>
         <DocumentLink href={files.statute} label={text.statute} />
-        <Text component="span" fz={13} style={{ color: 'var(--color-subtext)' }}>
-          {text.statuteNote}
-        </Text>
       </li>
       <li>
         <DocumentLink href={files.translation} label={text.translation} />
-        <Text component="span" fz={13} style={{ color: 'var(--color-subtext)' }}>
-          {text.translationNote}
-        </Text>
       </li>
       <li>
         <DocumentLink href={files.regulations} label={text.regulations} />

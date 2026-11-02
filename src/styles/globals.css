@@ -850,13 +850,6 @@ section[id],
   list-style: none;
 }
 
-.membership-documents li {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  column-gap: 10px;
-}
-
 .membership-read {
   align-self: flex-start;
   font-size: 14px;
