@@ -60,14 +60,13 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
       )}
 
       <Stack gap={14} style={{ padding: 'clamp(20px, 3vw, 32px)' }}>
-        <Group gap={8}>
-          <Badge variant="teal">{project.category}</Badge>
-          {project.status && (
+        {project.status && (
+          <Group>
             <Badge variant={project.status === 'in-progress' ? 'accent' : 'muted'}>
               {STATUS_LABEL[project.status]}
             </Badge>
-          )}
-        </Group>
+          </Group>
+        )}
 
         <Text
           component="h2"

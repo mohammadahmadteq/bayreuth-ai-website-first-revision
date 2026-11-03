@@ -48,7 +48,6 @@ export interface AssociationPhoto {
   alt: string
 }
 
-export type ProjectCategory = 'research' | 'hackathon' | 'paper' | 'tool'
 export type ProjectStatus = 'in-progress' | 'concluded'
 
 export interface PressLink {
@@ -61,7 +60,6 @@ export interface Project {
   title: string
   description: string
   tags: string[]
-  category: ProjectCategory
   status?: ProjectStatus
   imageUrl?: string
   imageAlt?: string

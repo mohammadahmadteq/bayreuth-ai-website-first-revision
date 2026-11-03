@@ -4,7 +4,6 @@
     "title": "Kreuzsteinbad pool visitors forecasting",
     "description": "In this ongoing project with Stadtwerke Bayreuth, members of the AI Association forecast visitor numbers at its outdoor pool (Kreuzsteinbad), so that lifeguard rosters can match the demand. Rosters are fixed two weeks in advance, so the team aims to predict that far ahead whether a day will be quiet, average or busy. The team works using daily visitor counts from past years, and the weather plays a big part.",
     "tags": ["Forecasting", "Time Series", "Staff Planning"],
-    "category": "tool",
     "status": "in-progress",
     "authors": [
       "Nico Höllerich",
@@ -23,7 +22,6 @@
     "title": "Rebuilding our website with agentic AI",
     "description": "Four members with no coding experience rebuilt the association’s website together with one web developer and an AI coding agent. Over four sessions, the group worked out the concept, set up coding agents and learned the basics of GitHub, then built and refined the site. The team decided what to build, the agent wrote the code, and the developer reviewed major changes. The non-coders now run this workflow on their own. Lessons learned: the hard part became deciding what to build, version control was harder to learn than prompting, and one experienced reviewer is still needed.",
     "tags": ["Agentic AI", "Web Development", "Version Control"],
-    "category": "tool",
     "status": "concluded",
     "authors": [
       "Mohammad Ahmad",
@@ -41,7 +39,6 @@
     "title": "ML4Mensa",
     "description": "In this project, members of the AI Association collaboratively explored how machine learning methods can be applied to real-world tabular data. Using anonymised historical cafeteria transaction data provided by the university services, team members learned and applied techniques for data preprocessing, feature engineering, the comparison and evaluation of different machine learning models, and the interpretation of model behaviour and limitations.",
     "tags": ["Machine Learning", "Campus Data", "Forecasting"],
-    "category": "tool",
     "status": "concluded",
     "imageUrl": "/official/ml4mensa.png",
     "imageAlt": "Main dishes demand predicted using TabPFN, compared to the ground truth",
@@ -83,7 +80,6 @@
     "title": "Coffee consumption forecasting",
     "description": "This project focused on learning sequential modelling techniques using time series data. Based on historical sales data of hot beverages from the university cafeteria, members jointly investigated how time-dependent data can be structured for machine learning, the use of recurrent neural networks (such as LSTM models), and how different modelling assumptions influence predictions.",
     "tags": ["Time Series", "LSTM", "Forecasting"],
-    "category": "research",
     "status": "concluded",
     "authors": [
       "Ivan Khrop",

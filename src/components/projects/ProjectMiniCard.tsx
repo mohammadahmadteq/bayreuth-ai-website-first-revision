@@ -2,7 +2,6 @@ import { type FC } from 'react'
 import { Box, Group, Stack, Text } from '@mantine/core'
 import { IconArrowUpRight } from '@tabler/icons-react'
 import type { Project } from '../../types/content'
-import { Badge } from '../ui/Badge'
 import { asset } from '../../lib/utils'
 
 interface ProjectMiniCardProps {
@@ -30,7 +29,6 @@ export const ProjectMiniCard: FC<ProjectMiniCardProps> = ({ project }) => {
     >
       <Box
         style={{
-          position: 'relative',
           aspectRatio: '4 / 3',
           overflow: 'hidden',
           display: 'grid',
@@ -48,9 +46,6 @@ export const ProjectMiniCard: FC<ProjectMiniCardProps> = ({ project }) => {
         ) : (
           <img src={asset('/official/logo.svg')} alt="" style={{ width: '30%', opacity: 0.85 }} />
         )}
-        <Box style={{ position: 'absolute', top: 10, left: 10 }}>
-          <Badge variant="teal">{project.category}</Badge>
-        </Box>
       </Box>
 
       <Stack gap={6} p={16}>
