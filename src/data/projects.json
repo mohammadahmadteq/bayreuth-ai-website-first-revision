@@ -23,6 +23,8 @@
     "description": "Four members with no coding experience rebuilt the association’s website together with one web developer and an AI coding agent. Over four sessions, the group worked out the concept, set up coding agents and learned the basics of GitHub, then built and refined the site. The team decided what to build, the agent wrote the code, and the developer reviewed major changes. The non-coders now run this workflow on their own. Lessons learned: the hard part became deciding what to build, version control was harder to learn than prompting, and one experienced reviewer is still needed.",
     "tags": ["Agentic AI", "Web Development", "Version Control"],
     "status": "concluded",
+    "link": "/projects/AI_Day_2026_poster_AIAssociation.pdf",
+    "linkLabel": "Poster (PDF)",
     "authors": [
       "Mohammad Ahmad",
       "Laura Hafner",

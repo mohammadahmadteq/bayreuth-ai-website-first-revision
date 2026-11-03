@@ -126,13 +126,13 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
 
         {project.link && (
           <Anchor
-            href={project.link}
+            href={asset(project.link)}
             target="_blank"
             rel="noopener noreferrer"
             fz={15}
             style={{ ...LINK_STYLE, display: 'inline-flex', alignItems: 'center', gap: 4 }}
           >
-            Read more
+            {project.linkLabel ?? 'Read more'}
             <IconArrowUpRight size={16} />
           </Anchor>
         )}

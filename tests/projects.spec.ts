@@ -19,6 +19,11 @@ test('projects page shows each project with its status, contributors and press c
   const website = main.getByRole('article').filter({ hasText: 'Rebuilding our website' })
   await expect(website.getByText('Concluded', { exact: true })).toBeVisible()
   await expect(website.getByText(/Contributors:.*Tizian Küffner/)).toBeVisible()
+  const poster = website.getByRole('link', { name: 'Poster (PDF)' })
+  await expect(poster).toHaveAttribute('href', /\/projects\/AI_Day_2026_poster_AIAssociation\.pdf$/)
+  // The PDF signature proves the file itself is served, not the app's fallback page.
+  const response = await page.request.get((await poster.getAttribute('href'))!)
+  expect((await response.body()).subarray(0, 4).toString('latin1')).toBe('%PDF')
 
   const ml4mensa = main.getByRole('article').filter({ hasText: 'ML4Mensa' })
   await expect(ml4mensa.getByText('Concluded', { exact: true })).toBeVisible()

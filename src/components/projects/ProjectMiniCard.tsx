@@ -11,7 +11,7 @@ interface ProjectMiniCardProps {
 export const ProjectMiniCard: FC<ProjectMiniCardProps> = ({ project }) => {
   const Wrapper = project.link ? 'a' : 'div'
   const wrapperProps = project.link
-    ? { href: project.link, target: '_blank', rel: 'noopener noreferrer' }
+    ? { href: asset(project.link), target: '_blank', rel: 'noopener noreferrer' }
     : {}
 
   return (

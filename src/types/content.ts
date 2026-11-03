@@ -63,7 +63,10 @@ export interface Project {
   status?: ProjectStatus
   imageUrl?: string
   imageAlt?: string
+  /** A web address, or the path of a file in public/ such as a poster. */
   link?: string
+  /** Text of the link on the projects page; "Read more" if not set. */
+  linkLabel?: string
   /** Contributors, in the order they are credited. */
   authors: string[]
   press?: PressLink[]
