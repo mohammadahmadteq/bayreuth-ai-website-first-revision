@@ -2,7 +2,7 @@ import { type FC } from 'react'
 import { Anchor, Box, Group, Stack, Text } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import { IconArrowUpRight } from '@tabler/icons-react'
-import type { Project, ProjectStatus } from '../../types/content'
+import type { Project, ProjectLink, ProjectStatus } from '../../types/content'
 import { Badge } from '../ui/Badge'
 import { asset } from '../../lib/utils'
 
@@ -22,8 +22,30 @@ const LINK_STYLE = {
   textUnderlineOffset: 3,
 }
 
+const LinkList: FC<{ title: string; links: ProjectLink[] }> = ({ title, links }) => (
+  <Stack gap={6}>
+    <Text fz={14} fw={600} style={{ color: 'var(--color-text)' }}>
+      {title}
+    </Text>
+    <Group gap="6px 18px">
+      {links.map((item) => (
+        <Anchor
+          key={item.url}
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          fz={14}
+          style={LINK_STYLE}
+        >
+          {item.label}
+        </Anchor>
+      ))}
+    </Group>
+  </Stack>
+)
+
 // Content stays visible at all times (no hover reveal) so touch screens see it,
-// and the card is not one big link, which lets it hold the press links.
+// and the card is not one big link, which lets it hold the prize and press links.
 export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
   const isMobile = useMediaQuery('(max-width: 767px)')
   const sideBySide = Boolean(project.imageUrl) && !isMobile
@@ -102,26 +124,12 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
           </Text>
         )}
 
+        {project.prizes && project.prizes.length > 0 && (
+          <LinkList title="Prizes" links={project.prizes} />
+        )}
+
         {project.press && project.press.length > 0 && (
-          <Stack gap={6}>
-            <Text fz={14} fw={600} style={{ color: 'var(--color-text)' }}>
-              In the press
-            </Text>
-            <Group gap="6px 18px">
-              {project.press.map((item) => (
-                <Anchor
-                  key={item.url}
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  fz={14}
-                  style={LINK_STYLE}
-                >
-                  {item.label}
-                </Anchor>
-              ))}
-            </Group>
-          </Stack>
+          <LinkList title="In the press" links={project.press} />
         )}
 
         {project.link && (

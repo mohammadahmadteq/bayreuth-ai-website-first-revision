@@ -50,7 +50,7 @@ export interface AssociationPhoto {
 
 export type ProjectStatus = 'in-progress' | 'concluded'
 
-export interface PressLink {
+export interface ProjectLink {
   label: string
   url: string
 }
@@ -69,7 +69,9 @@ export interface Project {
   linkLabel?: string
   /** Contributors, in the order they are credited. */
   authors: string[]
-  press?: PressLink[]
+  /** Newest first. */
+  prizes?: ProjectLink[]
+  press?: ProjectLink[]
   date?: string
 }
 

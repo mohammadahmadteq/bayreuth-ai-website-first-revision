@@ -31,6 +31,21 @@ test('projects page shows each project with its status, contributors and press c
   await expect(
     ml4mensa.getByRole('link', { name: 'Bayreuther Tagblatt (German)' }),
   ).toHaveAttribute('href', /bayreuther-tagblatt\.de/)
+  await expect(ml4mensa.getByText('Prizes', { exact: true })).toBeVisible()
+  // Newest first; the German LinkedIn post is marked like the German press links.
+  const prizes = ml4mensa.getByRole('link', { name: /prize/i })
+  await expect(prizes).toHaveText([
+    'Sustainability Transfer Prize 2026 of the University of Bayreuth, endowed with €5,000',
+    /^First place and audience prize for MetricMeals at the Ideenwettbewerb 2025\/2026,.*\(German\)$/,
+  ])
+  await expect(prizes.first()).toHaveAttribute(
+    'href',
+    'https://ubtaktuell.uni-bayreuth.de/en/sustainability-prizes-2026',
+  )
+  await expect(prizes.last()).toHaveAttribute(
+    'href',
+    'https://www.linkedin.com/posts/iei-uni-bayreuth_ieiabrunibayreuth-ieiabrbayreuth-riaabrbayreuth-activity-7417886242563997696-kbYt',
+  )
 
   const coffee = main.getByRole('article').filter({ hasText: 'Coffee consumption forecasting' })
   await expect(coffee.getByText('Concluded', { exact: true })).toBeVisible()
